@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
-  const url = "https://swadv0-backend.onrender.com"
+  const url = "https://swad-v7-backend.onrender.com"
 
   return (
     <div>
