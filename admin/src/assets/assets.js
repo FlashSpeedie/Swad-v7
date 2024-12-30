@@ -14,4 +14,4 @@ export const assets ={
     parcel_icon
 }
 
-export const url = 'https://swadv0-backend.onrender.com'
+export const url = 'https://swad-v7-backend.onrender.com'
