@@ -1,0 +1,173 @@
+/* General layout */
+.place-order {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Left section styles */
+  .place-order-left {
+    width: 60%;
+  }
+  
+  .place-order-left .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .multi-fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Maintain equal gap for multi-field */
+  }
+  
+  .multi-fields input {
+    flex: 1;
+  }
+  
+  /* Add a consistent margin-bottom to all input fields */
+  input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px; /* Ensure all input fields have equal spacing */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #f16322;
+  }
+  
+  input::placeholder {
+    color: #aaa;
+  }
+  
+  /* Right section styles (cart total) */
+  .place-order-right {
+    width: 35%;
+  }
+  
+  .cart-total {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-total h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .cart-total-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cart-total-details div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+  
+  .cart-total-details hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  
+  .total b {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #f16322;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #e14a13;
+  }
+  
+  /* Responsive behavior */
+  @media screen and (max-width: 768px) {
+    .place-order {
+      flex-direction: column;
+    }
+  
+    .place-order-left, 
+    .place-order-right {
+      width: 100%;
+    }
+  
+    .multi-fields {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+  
+
+.payment-method {
+  margin-top: 30px; /* Increased spacing from the Cart Totals container */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.payment-method .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.payment-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+}
+
+.payment-options input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #007bff; /* Customize the radio button color */
+  cursor: pointer;
+}
+
+.payment-options label:hover {
+  color: #007bff;
+}
+
+.payment-method {
+  max-width: 300px;
+  margin: auto;
+  margin-top: 20px;
+}

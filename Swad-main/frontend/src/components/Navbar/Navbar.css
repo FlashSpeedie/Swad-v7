@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+.navbar {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.navbar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar-logo-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #49557e;
+    font-weight: 600;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    color: #49557e;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.navbar-menu li {
+    cursor: pointer;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu li:hover {
+    color: #32de84;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar-right img {
+    width: 24px;
+    transition: all 0.3s ease;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: 16px;
+    color: #49557e;
+    border: 1px solid green;
+    padding: 10px 30px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.navbar button:hover {
+    background-color: #e0e0e0;
+}
+
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #49557e;
+}
+
+.navbar-search-icon {
+    position: relative;
+}
+
+.navbar-search-icon .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+}
+
+.navbar-profile{
+    position: relative;
+}
+
+.nav-profile-dropdown{
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+
+.navbar-profile:hover .nav-profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f3ffef;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid green;
+    outline: 2px solid white;
+    list-style: none;
+}
+
+.nav-profile-dropdown li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-profile-dropdown img{
+    width: 20px;
+}
+
+.nav-profile-dropdown li:hover{
+    color: green;
+}
+
+@media (max-width: 1050px) {
+    .navbar-logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .navbar-logo-text {
+        font-size: 1.4rem;
+    }
+
+    .navbar-menu {
+        gap: 15px;
+        font-size: 17px;
+    }
+
+    .navbar-right {
+        gap: 30px;
+    }
+
+    .navbar-right img {
+        width: 22px;
+    }
+
+    .navbar button {
+        padding: 8px 25px;
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar-logo-text {
+        font-size: 1.3rem;
+    }
+
+    .navbar-menu {
+        gap: 10px;
+        font-size: 16px;
+    }
+
+    .navbar-right {
+        gap: 20px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+    }
+
+    .navbar button {
+        padding: 7px 20px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 750px) {
+    .navbar-menu {
+        display: none;
+    }
+
+    .navbar-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .navbar-logo-text {
+        font-size: 1.2rem;
+    }
+
+    .navbar-right {
+        gap: 15px;
+    }
+
+    .navbar-right img {
+        width: 18px;
+    }
+
+    .navbar button {
+        padding: 6px 18px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .navbar-logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .navbar-logo-text {
+        font-size: 1.1rem;
+    }
+
+    .navbar-right img {
+        width: 16px;
+    }
+
+    .navbar button {
+        padding: 5px 15px;
+        font-size: 13px;
+    }
+}
+
+.navbar-cart-icon {
+    position: relative; /* Ensure the parent has positioning */
+}
+  
+.navbar-cart-icon .dot {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 12px; /* You might want to make the dot bigger for better visibility */
+    height: 12px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.navbar-profile-icon {
+    position: relative; /* Ensure the parent has positioning */
+    width: 45px !important; /* Increase the width */
+    height: 45px !important; /* Adjust the height to maintain aspect ratio */
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar-cart-icon{
+    position: relative;
+    width: 35px !important; /* Increase the width */
+    height: 35px !important; /* Adjust the height to maintain aspect ratio */
+    border-radius: 50%;
+    object-fit: cover;
+}
+

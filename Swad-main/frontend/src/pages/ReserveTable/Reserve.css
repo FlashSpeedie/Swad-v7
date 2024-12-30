@@ -1,0 +1,205 @@
+/* Reserve.css */
+
+/* Top Section */
+.top-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.top-section-image {
+  width: 50%;
+  border-radius: 1rem;
+}
+
+.top-section-text {
+  flex: 1;
+}
+
+.top-section-text h2 {
+  font-size: 1.8rem;
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 1rem;
+}
+
+.top-section-text p {
+  font-size: 1rem;
+  color: #4caf50; /* Light green */
+  line-height: 1.6;
+}
+
+
+/* Base Styles */
+.reserve-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.date-time-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Label and Input Spacing */
+.label-text {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
+}
+
+/* Error Styles */
+.error {
+  border-color: red;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.875rem;
+}
+
+/* Time Buttons */
+.time-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+}
+
+.time-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 2rem; /* Compact height and wider width */
+  background-color: #f1f1f1;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.time-button:hover {
+  background-color: #e7fbe7;
+}
+
+.time-button.selected {
+  background-color: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+/* Time Text and Period */
+.time-text {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 0.2rem;
+}
+
+.time-period {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Details Form */
+.details-form {
+  margin-top: 2.5rem;
+}
+
+.row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* Ensures items wrap on smaller screens */
+}
+
+.column {
+  flex: 1;
+  min-width: 300px; /* Minimum width for columns */
+}
+
+textarea.input-field {
+  resize: none;
+}
+
+.form-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.03);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .reserve-container {
+    padding: 1rem;
+  }
+
+  .date-time-section {
+    flex-direction: column; /* Stack date and time selectors vertically */
+  }
+
+  .row {
+    flex-direction: column; /* Stack form fields vertically */
+  }
+
+  .column {
+    min-width: 100%; /* Columns take full width on small screens */
+  }
+
+  .time-buttons {
+    justify-content: space-around; /* Distribute buttons evenly on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .time-button {
+    padding: 0.5rem 1.5rem; /* Adjust button size for smaller screens */
+    font-size: 0.9rem;
+  }
+
+  .input-field {
+    font-size: 0.9rem; /* Slightly smaller font for inputs on very small screens */
+    padding: 0.8rem;
+  }
+
+  .form-btn {
+    font-size: 1rem; /* Adjust button font size */
+    padding: 0.8rem;
+  }
+}
+
