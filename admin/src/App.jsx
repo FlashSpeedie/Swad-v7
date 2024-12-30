@@ -13,7 +13,7 @@ import Messages from "./pages/Messages/Messages";
 
 const App = () => {
 
-  const url = "https://swad-v7-backend.onrender.com"
+  const url = "https://swad-v7-backend.onrender.com"; // API base URL
 
   return (
     <div>
@@ -24,11 +24,11 @@ const App = () => {
         <Sidebar />
         <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/add" element={<Add url={apiBaseUrl} />} />
-            <Route path="/list" element={<List url={apiBaseUrl} />} />
-            <Route path="/orders" element={<Orders url={apiBaseUrl} />} />
-            <Route path="/sales" element={<Sales url={apiBaseUrl} />} />
-            <Route path="/message" element={<Messages url={apiBaseUrl} />} />
+            <Route path="/add" element={<Add url={url} />} />
+            <Route path="/list" element={<List url={url} />} />
+            <Route path="/orders" element={<Orders url={url} />} />
+            <Route path="/sales" element={<Sales url={url} />} />
+            <Route path="/message" element={<Messages url={url} />} />
           </Routes>
       </div>
     </div>
