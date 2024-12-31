@@ -116,6 +116,10 @@ const verifyEmailCode = async (req, res) => {
             return res.status(400).json({ success: false, message: "User not found" });
         }
 
+        // Debugging logs
+        console.log("Received code:", verificationCode); // Print received code from frontend
+        console.log("Stored code:", user.verificationCode); // Print stored verification code from DB
+
         // Check if the verification code matches
         if (user.verificationCode !== verificationCode) {
             return res.status(400).json({ success: false, message: "Invalid verification code" });
