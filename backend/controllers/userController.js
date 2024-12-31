@@ -27,21 +27,26 @@ const loginUser = async (req, res) => {
     try {
         const user = await userModel.findOne({ email });
         if (!user) {
+            console.log("Login failed: User doesn't exist for email:", email);
             return res.json({ success: false, message: "User Doesn't Exist" });
         }
+        
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
+            console.log("Login failed: Invalid credentials for email:", email);
             return res.json({ success: false, message: "Invalid Credentials" });
         }
 
         const token = createToken(user._id);
+        console.log("Login successful for email:", email);
         res.json({ success: true, token });
     } catch (error) {
-        console.log(error);
+        console.log("Login error:", error);
         res.json({ success: false, message: "Error" });
     }
 };
 
+// Helper function to create JWT token
 const createToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET);
 };
@@ -53,16 +58,18 @@ const registerUser = async (req, res) => {
         // Check whether the user exists
         const exists = await userModel.findOne({ email });
         if (exists) {
+            console.log("Registration failed: User already exists for email:", email);
             return res.json({ success: false, message: "User already exists" });
         }
 
-        // Validate email and strong password
-        console.log(req.body);
+        // Validate email and password
         if (!validator.isEmail(email)) {
+            console.log("Registration failed: Invalid email format for email:", email);
             return res.json({ success: false, message: "Please enter a valid email" });
         }
 
         if (password.length < 8) {
+            console.log("Registration failed: Password is too weak for email:", email);
             return res.json({ success: false, message: "Please enter a strong password" });
         }
 
@@ -95,12 +102,14 @@ const registerUser = async (req, res) => {
 
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
+                console.log("Registration failed: Error sending verification email for email:", email);
                 return res.status(500).json({ success: false, message: "Error sending email" });
             }
+            console.log("Verification email sent to email:", email);
             return res.status(200).json({ success: true, message: "Verification code sent to your email" });
         });
     } catch (error) {
-        console.log(error);
+        console.log("Registration error:", error);
         res.json({ success: false, message: "Error" });
     }
 };
@@ -113,20 +122,24 @@ const verifyEmailCode = async (req, res) => {
         // Find the user by email
         const user = await userModel.findOne({ email });
         if (!user) {
+            console.log("Verification failed: User not found for email:", email);
             return res.status(400).json({ success: false, message: "User not found" });
         }
 
-        // Debugging logs
-        console.log("Received code:", verificationCode); // Print received code from frontend
-        console.log("Stored code:", user.verificationCode); // Print stored verification code from DB
+        // Debugging: Log both the entered code and the stored code
+        console.log("Verification attempt for email:", email);
+        console.log("Entered code:", verificationCode); // Log the code entered by the user
+        console.log("Stored code:", user.verificationCode); // Log the code stored in the database
 
-        // Check if the verification code matches
-        if (user.verificationCode !== verificationCode) {
+        // Check if the verification code matches (case-insensitive and trim whitespace)
+        if (user.verificationCode.trim().toLowerCase() !== verificationCode.trim().toLowerCase()) {
+            console.log("Verification failed: Invalid code entered for email:", email);
             return res.status(400).json({ success: false, message: "Invalid verification code" });
         }
 
         // Check if the code has expired
         if (Date.now() > user.verificationCodeExpires) {
+            console.log("Verification failed: Code expired for email:", email);
             return res.status(400).json({ success: false, message: "Verification code expired" });
         }
 
@@ -136,9 +149,10 @@ const verifyEmailCode = async (req, res) => {
         user.verificationCodeExpires = null; // Clear expiry
         await user.save();
 
+        console.log("Verification successful for email:", email); // Log successful verification
         return res.status(200).json({ success: true, message: "Email verified successfully!" });
     } catch (error) {
-        console.log(error);
+        console.log("Verification code error for email:", email, error); // Log any errors
         return res.status(500).json({ success: false, message: "Server error" });
     }
 };

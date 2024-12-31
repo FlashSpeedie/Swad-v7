@@ -21,6 +21,7 @@ const LoginPopup = ({ setShowLogin }) => {
 
     const [passwordStrength, setPasswordStrength] = useState(0);
 
+    // Handle input changes and password strength
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
@@ -39,42 +40,48 @@ const LoginPopup = ({ setShowLogin }) => {
         setData((data) => ({ ...data, [name]: value }));
     };
 
+    // Handle login and signup
     const onLogin = async (event) => {
         event.preventDefault();
 
         if (currState === "Login") {
-            // Login API
-            const response = await axios.post(`${url}/api/user/login`, data);
-
-            if (response.data.success) {
-                setToken(response.data.token);
-                if (isLocalStorageAvailable()) {
+            // Login API call
+            try {
+                const response = await axios.post(`${url}/api/user/login`, data);
+                if (response.data.success) {
+                    setToken(response.data.token);
                     localStorage.setItem("token", response.data.token);
+                    setShowLogin(false);
                 } else {
-                    console.error("LocalStorage is not available");
+                    alert(response.data.message);
                 }
-                setShowLogin(false);
-            } else {
-                alert(response.data.message);
+            } catch (error) {
+                console.error("Login failed", error);
+                alert("An error occurred during login.");
             }
         } else if (currState === "Sign Up") {
-            // Registration API
-            const response = await axios.post(`${url}/api/user/register`, data);
-
-            if (response.data.success) {
-                alert("Verification code sent to your email.");
-                setServerCode(response.data.verificationCode); // Simulated code from backend
-                setIsVerified(false); // Set to true after successful verification
-            } else {
-                alert(response.data.message);
+            // Registration API call
+            try {
+                const response = await axios.post(`${url}/api/user/register`, data);
+                if (response.data.success) {
+                    alert("Verification code sent to your email.");
+                    setServerCode(response.data.verificationCode); // Simulated code from backend
+                    setIsVerified(false); // Set to true after successful verification
+                } else {
+                    alert(response.data.message);
+                }
+            } catch (error) {
+                console.error("Signup failed", error);
+                alert("An error occurred during signup.");
             }
         }
     };
 
-    const onVerifyCode = () => {
+    // Handle email verification
+    const onVerifyCode = async () => {
         if (verificationCode === serverCode) {
             alert("Email verified successfully!");
-            setIsVerified(true);
+            setIsVerified(true); // Set verified to true after success
         } else {
             alert("Invalid code. Please try again.");
         }
