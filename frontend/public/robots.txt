@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://swad-sv13.onrender.com/sitemap.xml

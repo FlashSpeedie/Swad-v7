@@ -13,7 +13,7 @@ const Header = () => {
           <span className="highlight-green"> fresh ingredients</span>. We’re dedicated to bringing you 
           <span className="highlight-green"> flavors</span> that inspire and satisfy.
         </p>
-        <button onClick={() => window.location.href = '/menu'}>View Menu</button>
+        <button onClick={() => window.location.href = '#explore-menu'}>View Menu</button>
       </div>
     </div>
   );

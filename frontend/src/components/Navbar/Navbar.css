@@ -1,14 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
 
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Sticky Navbar */
 .navbar {
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: relative;
+    /* position: sticky; */
+    top: 0;
+    z-index: 1000;
+    background: white;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
 }
 
+/* Navbar Logo */
 .navbar-logo-container {
     display: flex;
     align-items: center;
@@ -29,6 +42,7 @@
     font-weight: 600;
 }
 
+/* Navbar Menu */
 .navbar-menu {
     display: flex;
     gap: 20px;
@@ -48,6 +62,12 @@
     color: #32de84;
 }
 
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #49557e;
+}
+
+/* Navbar Right Section */
 .navbar-right {
     display: flex;
     align-items: center;
@@ -74,37 +94,19 @@
     background-color: #e0e0e0;
 }
 
-.navbar .active {
-    padding-bottom: 2px;
-    border-bottom: 2px solid #49557e;
-}
-
-.navbar-search-icon {
+/* Dropdown Menu */
+.navbar-profile {
     position: relative;
 }
 
-.navbar-search-icon .dot {
-    position: absolute;
-    min-width: 10px;
-    min-height: 10px;
-    background-color: green;
-    border-radius: 50%;
-    top: -8px;
-    right: -8px;
-}
-
-.navbar-profile{
-    position: relative;
-}
-
-.nav-profile-dropdown{
+.nav-profile-dropdown {
     position: absolute;
     display: none;
     right: 0;
     z-index: 1;
 }
 
-.navbar-profile:hover .nav-profile-dropdown{
+.navbar-profile:hover .nav-profile-dropdown {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -116,21 +118,113 @@
     list-style: none;
 }
 
-.nav-profile-dropdown li{
+.nav-profile-dropdown li {
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
 }
 
-.nav-profile-dropdown img{
+.nav-profile-dropdown img {
     width: 20px;
 }
 
-.nav-profile-dropdown li:hover{
+.nav-profile-dropdown li:hover {
     color: green;
 }
 
+/* Cart Icon */
+.navbar-cart-icon {
+    position: relative;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar-cart-icon .dot {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+/* Floating Robot */
+.floating-robot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1001;
+    animation: float 2s infinite ease-in-out;
+}
+
+.robot-face {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background: #f0f0f0;
+    border: 3px solid #49557e;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.robot-face .eye {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #49557e;
+    border-radius: 50%;
+    animation: blink 3s infinite ease-in-out;
+}
+
+.robot-face .eye.left-eye {
+    left: 20px;
+}
+
+.robot-face .eye.right-eye {
+    right: 20px;
+}
+
+.robot-face .mouth {
+    position: absolute;
+    bottom: 15px;
+    width: 20px;
+    height: 5px;
+    background: #49557e;
+    border-radius: 2px;
+}
+
+@keyframes blink {
+
+    0%,
+    20%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    10% {
+        transform: scaleY(0.1);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 1050px) {
     .navbar-logo {
         width: 45px;
@@ -235,35 +329,3 @@
         font-size: 13px;
     }
 }
-
-.navbar-cart-icon {
-    position: relative; /* Ensure the parent has positioning */
-}
-  
-.navbar-cart-icon .dot {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 12px; /* You might want to make the dot bigger for better visibility */
-    height: 12px;
-    background-color: green;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.navbar-profile-icon {
-    position: relative; /* Ensure the parent has positioning */
-    width: 45px !important; /* Increase the width */
-    height: 45px !important; /* Adjust the height to maintain aspect ratio */
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.navbar-cart-icon{
-    position: relative;
-    width: 35px !important; /* Increase the width */
-    height: 35px !important; /* Adjust the height to maintain aspect ratio */
-    border-radius: 50%;
-    object-fit: cover;
-}
-

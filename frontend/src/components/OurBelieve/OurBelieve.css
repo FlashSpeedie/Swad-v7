@@ -1,0 +1,65 @@
+.our-believe {
+    background-color: transparent;
+    padding: 50px 0;
+}
+
+.our-believe .container {
+    display: flex;
+    gap: 20px; /* Space between blocks */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.our-believe .block {
+    flex: 1;
+    min-width: 300px; /* Ensures proper sizing for smaller screens */
+    background-color: #e2eee0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+.our-believe .block:hover {
+    background-color: #bad3b6;
+    transform: scale(1.05); /* Slightly enlarges the block */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+}
+
+.our-believe .block h2 {
+    font-size: 1.8em;
+    color: #4b8a08;
+    margin-bottom: 15px;
+}
+
+.our-believe .block p {
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Optional media query for responsiveness */
+@media (max-width: 768px) {
+    .our-believe .container {
+        flex-direction: column; /* Stacks blocks vertically on smaller screens */
+    }
+    .our-believe .block {
+        margin-bottom: 20px;
+    }
+}
+.section-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.section-header h1 {
+    font-size: 2.5em;
+    color: #0e0e0e;
+    margin: 0;
+    padding: 0;
+    text-align: left; /* Ensures the header text is aligned to the left */
+}

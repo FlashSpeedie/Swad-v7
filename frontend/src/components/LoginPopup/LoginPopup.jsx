@@ -3,101 +3,83 @@ import './LoginPopup.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const LoginPopup = ({ setShowLogin }) => {
     const { url, setToken } = useContext(StoreContext);
-    const [currState, setCurrState] = useState("Login"); // "Login" or "Sign Up"
-    const [isVerified, setIsVerified] = useState(false); // For email verification
-    const [verificationCode, setVerificationCode] = useState(""); // For user-entered code
-    const [serverCode, setServerCode] = useState(""); // Code sent to email
+
+    const [currState, setCurrState] = useState("Login");
     const [data, setData] = useState({
         name: "",
         email: "",
-        password: "",
-        birthday: "",
-        phone: "",
-        gender: ""
+        password: ""
     });
+    const [showPassword, setShowPassword] = useState(false);
+    const [passwordStrength, setPasswordStrength] = useState({
+        length: false,
+        uppercase: false,
+        lowercase: false,
+        number: false,
+        specialChar: false
+    });
+    const [errorMessage, setErrorMessage] = useState("");
 
-    const [passwordStrength, setPasswordStrength] = useState(0);
-
-    // Handle input changes and password strength
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
+        setData((data) => ({ ...data, [name]: value }));
 
         if (name === "password") {
-            // Check password strength
-            let strength = 0;
-            if (value.length >= 8) strength++;
-            if (/[a-z]/.test(value)) strength++;
-            if (/[A-Z]/.test(value)) strength++;
-            if (/[0-9]/.test(value)) strength++;
-            if (/[@$!%*?&#]/.test(value)) strength++;
-            setPasswordStrength(strength);
+            calculatePasswordStrength(value);
         }
-
-        setData((data) => ({ ...data, [name]: value }));
     };
 
-    // Handle login and signup
+    const calculatePasswordStrength = (password) => {
+        const strength = {
+            length: password.length > 8,
+            uppercase: /[A-Z]/.test(password),
+            lowercase: /[a-z]/.test(password),
+            number: /[0-9]/.test(password),
+            specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password)
+        };
+        setPasswordStrength(strength);
+    };
+
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const isPasswordStrong = () => {
+        return Object.values(passwordStrength).every(value => value);
+    };
+
     const onLogin = async (event) => {
         event.preventDefault();
 
-        if (currState === "Login") {
-            // Login API call
-            try {
-                const response = await axios.post(`${url}/api/user/login`, data);
-                if (response.data.success) {
-                    setToken(response.data.token);
-                    localStorage.setItem("token", response.data.token);
-                    setShowLogin(false);
-                } else {
-                    alert(response.data.message);
-                }
-            } catch (error) {
-                console.error("Login failed", error);
-                alert("An error occurred during login.");
-            }
-        } else if (currState === "Sign Up") {
-            // Registration API call
-            try {
-                const response = await axios.post(`${url}/api/user/register`, data);
-                if (response.data.success) {
-                    alert("Verification code sent to your email.");
-                    setServerCode(response.data.verificationCode); // Simulated code from backend
-                    setIsVerified(false); // Set to true after successful verification
-                } else {
-                    alert(response.data.message);
-                }
-            } catch (error) {
-                console.error("Signup failed", error);
-                alert("An error occurred during signup.");
-            }
+        if (currState === "Sign Up" && !isPasswordStrong()) {
+            setErrorMessage("Password does not meet the strength requirements.");
+            return;
         }
-    };
 
-    // Handle email verification
-    const onVerifyCode = async () => {
-        if (verificationCode === serverCode) {
-            alert("Email verified successfully!");
-            setIsVerified(true); // Set verified to true after success
-        } else {
-            alert("Invalid code. Please try again.");
-        }
-    };
+        const endpoint = currState === "Login" ? "/api/user/login" : "/api/user/register";
+        const requestUrl = `${url}${endpoint}`;
 
-    // Function to check if localStorage is available
-    function isLocalStorageAvailable() {
         try {
-            const testKey = '__test__';
-            localStorage.setItem(testKey, testKey);
-            localStorage.removeItem(testKey);
-            return true; // localStorage is available
-        } catch (e) {
-            return false; // localStorage is not available
+            const response = await axios.post(requestUrl, data);
+
+            if (response.data.success) {
+                setToken(response.data.token);
+                localStorage.setItem("token", response.data.token);
+                setShowLogin(false);
+            } else {
+                setErrorMessage(response.data.message || "An error occurred. Please try again.");
+            }
+        } catch (error) {
+            console.error("Login/Registration error:", error.message || error);
+            setErrorMessage("Unable to connect to the server. Please try again later.");
         }
-    }
+    };
 
     return (
         <div className="login-popup">
@@ -112,44 +94,15 @@ const LoginPopup = ({ setShowLogin }) => {
                 </div>
 
                 <div className="login-popup-inputs">
-                    {currState === "Sign Up" && (
-                        <>
-                            <input
-                                name="name"
-                                onChange={onChangeHandler}
-                                value={data.name}
-                                type="text"
-                                placeholder="Your name"
-                                required
-                            />
-                            <input
-                                name="birthday"
-                                onChange={onChangeHandler}
-                                value={data.birthday}
-                                type="date"
-                                placeholder="Your birthday"
-                                required
-                            />
-                            <input
-                                name="phone"
-                                onChange={onChangeHandler}
-                                value={data.phone}
-                                type="tel"
-                                placeholder="Your phone number"
-                                required
-                            />
-                            <select
-                                name="gender"
-                                onChange={onChangeHandler}
-                                value={data.gender}
-                                required
-                            >
-                                <option value="">Select gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </>
+                    {currState === "Login" ? null : (
+                        <input
+                            name="name"
+                            onChange={onChangeHandler}
+                            value={data.name}
+                            type="text"
+                            placeholder="Your name"
+                            required
+                        />
                     )}
                     <input
                         name="email"
@@ -159,54 +112,49 @@ const LoginPopup = ({ setShowLogin }) => {
                         placeholder="Your email"
                         required
                     />
-                    <input
-                        name="password"
-                        onChange={onChangeHandler}
-                        value={data.password}
-                        type="password"
-                        placeholder="Password"
-                        required
-                    />
+                    <div className="password-input-container">
+                        <input
+                            name="password"
+                            onChange={onChangeHandler}
+                            value={data.password}
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Password"
+                            required
+                        />
+                        <button
+                            type="button"
+                            onClick={toggleShowPassword}
+                            className="password-toggle-icon"
+                        >
+                            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                        </button>
+                    </div>
                     {currState === "Sign Up" && (
                         <div className="password-strength">
-                            <div
-                                className={`strength-bar ${passwordStrength >= 1 ? "filled" : ""}`}
-                            ></div>
-                            <div
-                                className={`strength-bar ${passwordStrength >= 2 ? "filled" : ""}`}
-                            ></div>
-                            <div
-                                className={`strength-bar ${passwordStrength >= 3 ? "filled" : ""}`}
-                            ></div>
-                            <div
-                                className={`strength-bar ${passwordStrength >= 4 ? "filled" : ""}`}
-                            ></div>
-                            <div
-                                className={`strength-bar ${passwordStrength === 5 ? "filled" : ""}`}
-                            ></div>
+                            <p>Password Strength:</p>
+                            <ul>
+                                <li className={passwordStrength.length ? "valid" : "invalid"}>At least 8 characters</li>
+                                <li className={passwordStrength.uppercase ? "valid" : "invalid"}>At least one uppercase letter</li>
+                                <li className={passwordStrength.lowercase ? "valid" : "invalid"}>At least one lowercase letter</li>
+                                <li className={passwordStrength.number ? "valid" : "invalid"}>At least one number</li>
+                                <li className={passwordStrength.specialChar ? "valid" : "invalid"}>At least one special character</li>
+                            </ul>
                         </div>
                     )}
                 </div>
 
-                {currState === "Sign Up" && !isVerified ? (
-                    <>
-                        <input
-                            name="verificationCode"
-                            onChange={(e) => setVerificationCode(e.target.value)}
-                            value={verificationCode}
-                            type="text"
-                            placeholder="Enter verification code"
-                            required
-                        />
-                        <button type="button" onClick={onVerifyCode}>
-                            Verify Code
-                        </button>
-                    </>
-                ) : null}
+                {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-                <button type="submit" disabled={currState === "Sign Up" && (!isVerified || passwordStrength < 5)}>
-                    {currState === "Sign Up" ? "Create account" : "Login"}
-                </button>
+                <button type="submit">{currState === "Sign Up" ? "Create account" : "Login"}</button>
+
+                {currState === "Sign Up" && (
+                    <div className="login-popup-condition">
+                        <input type="checkbox" required />
+                        <p>
+                            By continuing, I agree to the <a href="/terms" target="_blank">Terms of Use</a> & <a href="/policy" target="_blank">Privacy Policy</a>.
+                        </p>
+                    </div>
+                )}
 
                 {currState === "Login" ? (
                     <p>
