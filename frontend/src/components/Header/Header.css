@@ -1,11 +1,14 @@
 .Header {
     height: 34vw;
     margin: 30px auto;
-    background: url('https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg') no-repeat center center; /* Updated with a responsive image */
-    background-size: cover; /* Ensures the image covers the entire header */
+    background: url('https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg') no-repeat center center;
+    /* Updated with a responsive image */
+    background-size: cover;
+    /* Ensures the image covers the entire header */
     position: relative;
     border-radius: 20px;
-    overflow: hidden; /* Ensures any overflowed content is clipped */
+    overflow: hidden;
+    /* Ensures any overflowed content is clipped */
 }
 
 .header-contents {
@@ -32,9 +35,10 @@
 }
 
 .header-contents .highlight-green {
-    color: #47f564; /* Dark green for highlighted words */
+    color: #47f564;
+    /* Dark green for highlighted words */
     font-weight: bold;
-  }
+}
 
 .header-contents button {
     border: none;
@@ -45,12 +49,15 @@
     font-size: max(1vw, 13px);
     border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Add hover effects */
+    transition: background-color 0.3s, color 0.3s;
+    /* Add hover effects */
 }
 
 .header-contents button:hover {
-    background-color: #4caf50; /* Light green on hover */
-    color: white; /* Text color changes on hover */
+    background-color: #4caf50;
+    /* Light green on hover */
+    color: white;
+    /* Text color changes on hover */
 }
 
 /* Tablet Screen Adjustments */
@@ -67,10 +74,12 @@
     }
 
     .header-contents p {
-        display: none; /* Hide paragraph text on smaller screens */
+        display: none;
+        /* Hide paragraph text on smaller screens */
     }
 
     .header-contents button {
-        padding: 2vw 4vw; /* Increase padding for better touch target size */
+        padding: 2vw 4vw;
+        /* Increase padding for better touch target size */
     }
 }
