@@ -29,7 +29,7 @@ const Footer = () => {
             <div className="footer-bottom">
                 <div className="footer-copyright-container">
                     <div className="footer-copyright">
-                        &copy; 2024 Swad - All Rights Reserved.
+                        &copy; 2025 Swad - All Rights Reserved.
                     </div>
                     <div className="footer-policy">
                         <p onClick={() => navigate('/terms')}>Terms and Conditions</p>

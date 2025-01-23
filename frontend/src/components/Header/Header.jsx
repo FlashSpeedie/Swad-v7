@@ -1,17 +1,19 @@
 import React from 'react';
 import './Header.css';
+import { assets } from '../../assets/assets';
 
 const Header = () => {
   return (
     <div className="Header">
+      <img src={assets.header_img} alt="" />
       <div className="header-contents">
         <h2>
           Elevate Your <span className="highlight-green">Dining Experience!</span>
         </h2>
         <p>
-          Choose from our extensive menu of <span className="highlight-green">delicious vegetarian dishes</span>, each one expertly prepared with 
-          <span className="highlight-green"> fresh ingredients</span>. We’re dedicated to bringing you 
-          <span className="highlight-green"> flavors</span> that inspire and satisfy.
+          Choose from our extensive menu of delicious vegetarian dishes, each one expertly prepared with 
+           fresh ingredients. We’re dedicated to bringing you 
+           flavors that inspire and satisfy.
         </p>
         <button onClick={() => window.location.href = '#explore-menu'}>View Menu</button>
       </div>

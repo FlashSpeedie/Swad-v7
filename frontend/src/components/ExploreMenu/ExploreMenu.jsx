@@ -5,19 +5,19 @@ import { menu_list } from '../../assets/assets'
 const ExploreMenu = ({ category, setCategory }) => {
   return (
     <div className='explore-menu' id='explore-menu'>
-      <h1>Explore our Menu</h1>
-      <p className='explore-menu-text'>
-        Choose from our extensive menu of delicious vegetarian dishes, each one expertly prepared with fresh ingredients. We’re dedicated to bringing you flavors that inspire and satisfy.
-      </p>
+      <h1>Menu</h1>
       <div className="explore-menu-list">
         {menu_list.map((item, index) => (
           <div onClick={() => setCategory(prev => (prev === item.menu_name ? "All" : item.menu_name))} key={index} className="explore-menu-list-item">
-            <img className={category===item.menu_name?"active":""}src={item.menu_image} alt={item.menu_name} />
+            <img className={category === item.menu_name ? "active" : ""} src={item.menu_image} alt={item.menu_name} />
             <p>{item.menu_name}</p>
           </div>
         ))}
       </div>
       <hr />
+      <p className='explore-menu-text'>
+        * Select a category to view its items. If the category is already selected, clicking it again will show all items.
+      </p>
     </div>
   )
 }

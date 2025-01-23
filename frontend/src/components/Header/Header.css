@@ -1,76 +1,100 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 .Header {
     height: 34vw;
     margin: 30px auto;
-    background: url('https://cdn.pixabay.com/photo/2017/02/15/10/39/salad-2068220_1280.jpg') no-repeat center center; /* Updated with a responsive image */
-    background-size: cover; /* Ensures the image covers the entire header */
+    background: no-repeat center center; 
+    background-size: cover;
     position: relative;
-    border-radius: 20px;
-    overflow: hidden; /* Ensures any overflowed content is clipped */
+    overflow: hidden;
+    display: flex;
+    flex-direction: row-reverse; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.Header img {
+    height: 100%;
+    object-fit: cover;
+    max-width: 50%;
+    border-radius: 25px;
 }
 
 .header-contents {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 1.5vw;
-    max-width: 50%;
-    bottom: 10%;
-    left: 6vw;
+    max-width: 50%; 
+    padding-left: 5vw;
     animation: fadeIn 3s;
 }
 
 .header-contents h2 {
-    font-weight: 500;
-    color: white;
-    font-size: max(4.5vw, 22px);
+    font-weight: 600;
+    color: black;
+    font-size: 50px;
 }
 
 .header-contents p {
-    color: white;
-    font-size: 1vw;
+    color: black;
+    font-size: 1.2vw;
 }
 
 .header-contents .highlight-green {
-    color: #47f564; /* Dark green for highlighted words */
+    color: #47f564;
     font-weight: bold;
-  }
+}
 
 .header-contents button {
     border: none;
     color: #747474;
     font-weight: 500;
-    padding: 1vw 2.3vw;
-    background-color: white;
+    padding: 1.2vw 2.5vw;
+    background-color: rgb(0, 255, 0);
     font-size: max(1vw, 13px);
-    border-radius: 50px;
+    width: 200px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Add hover effects */
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .header-contents button:hover {
-    background-color: #4caf50; /* Light green on hover */
-    color: white; /* Text color changes on hover */
+    background-color: #4caf50;
+    color: black;
 }
 
 /* Tablet Screen Adjustments */
 @media (max-width: 1050px) {
     .header-contents {
-        max-width: 45%;
+        max-width: 60%; /* Adjust content width on tablet */
+    }
+
+    .Header {
+        flex-direction: column-reverse; /* Stack image and content vertically on tablets */
+    }
+
+    .Header img {
+        max-width: 100%; /* Image takes full width on tablet */
+        height: auto;
     }
 }
 
 /* Mobile Screen Adjustments */
 @media (max-width: 750px) {
     .header-contents {
-        max-width: 65%;
+        max-width: 80%; /* More space for content on smaller screens */
+        padding-left: 3vw;
     }
 
     .header-contents p {
-        display: none; /* Hide paragraph text on smaller screens */
+        font-size: 3.5vw; /* Adjust text size for smaller screens */
+        display: none; /* Hide paragraph text on mobile for simplicity */
     }
 
     .header-contents button {
-        padding: 2vw 4vw; /* Increase padding for better touch target size */
+        padding: 2.5vw 5vw; /* Larger buttons on mobile for better accessibility */
     }
 }

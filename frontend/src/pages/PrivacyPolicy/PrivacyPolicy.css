@@ -3,17 +3,17 @@
     padding: 20px;
     margin: 0 auto;
     max-width: 800px;
-    background-color: #e8f5e9; /* Light green */
-    color: #2e7d32; /* Dark green for text */
+    background-color: #e1ebe2; 
+    color: #2e7d32; 
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   }
   
   .privacy-policy-title {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 20px;
-    color: #388e3c; /* Medium green */
+    color: #388e3c; 
   }
   
   .privacy-policy-intro {

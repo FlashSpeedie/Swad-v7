@@ -8,7 +8,7 @@ const Cart = () => {
 
   const subtotal = getTotalCartAmount();
   const deliveryFee = 2;
-  const taxRate = 0.045; // 4.5% tax rate
+  const taxRate = 0.045; 
   const taxes = (subtotal * taxRate) + 0.09 ;
   const total = subtotal + taxes + deliveryFee;
   const navigate = useNavigate();
