@@ -1,44 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import './List.css';
 import axios from 'axios';
-
-const removeFood = async (id) => {
-  try {
-    const response = await axios.delete(`${url}/api/food/remove`, {
-      data: { id } 
-    });
-
-    if (response.data.success) {
-      console.log("Food removed successfully");
-      setList(prevList => prevList.filter(item => item._id !== id));
-      setFoodCount(prevCount => prevCount - 1); 
-    } else {
-      console.error("Error removing food:", response.data.message);
-    }
-  } catch (error) {
-    console.error("Failed to remove food:", error.message);
-  }
-};
+import { toast } from 'react-toastify';
 
 const List = ({ url }) => {
   const [list, setList] = useState([]);
-  const [foodCount, setFoodCount] = useState(0);
 
-  // Fetch the food list from the backend
   const fetchList = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
 
-      console.log('Food List Response:', response);
-
       if (response.data.success) {
         setList(response.data.data);
-        setFoodCount(response.data.data.length);
       } else {
-        console.error('Error fetching list');
+        toast.error('Error fetching list');
       }
     } catch (error) {
-      console.error('Failed to fetch data:', error.message);
+      toast.error('Failed to fetch data');
+      console.error('Error fetching data:', error.message);
+    }
+  };
+
+  const removeFood = async (foodId) => {
+    try {
+      const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
+      await fetchList();
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error('Error removing food item');
+      }
+    } catch (error) {
+      toast.error('Failed to remove food item');
+      console.error('Error removing food item:', error.message);
     }
   };
 
@@ -49,7 +43,6 @@ const List = ({ url }) => {
   return (
     <div className="list add flex-col">
       <p>All Foods List</p>
-      <p>Total Food Count: {foodCount}</p>
       <div className="list-table">
         <div className="list-table-format">
           <b>Image</b>
