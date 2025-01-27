@@ -1,38 +1,26 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import './List.css';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 
 const List = ({ url }) => {
   const [list, setList] = useState([]);
+  const [foodCount, setFoodCount] = useState(0);  
 
+  // Fetch the food list from the backend
   const fetchList = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
 
+      console.log('Food List Response:', response); 
+
       if (response.data.success) {
         setList(response.data.data);
+        setFoodCount(response.data.data.length); 
       } else {
-        toast.error('Error fetching list');
+        console.error('Error fetching list');
       }
     } catch (error) {
-      toast.error('Failed to fetch data');
-      console.error('Error fetching data:', error.message);
-    }
-  };
-
-  const removeFood = async (foodId) => {
-    try {
-      const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
-      await fetchList(); 
-      if (response.data.success) {
-        toast.success(response.data.message);
-      } else {
-        toast.error('Error removing food item');
-      }
-    } catch (error) {
-      toast.error('Failed to remove food item');
-      console.error('Error removing food item:', error.message);
+      console.error('Failed to fetch data:', error.message);
     }
   };
 
@@ -43,6 +31,7 @@ const List = ({ url }) => {
   return (
     <div className="list add flex-col">
       <p>All Foods List</p>
+      <p>Total Food Count: {foodCount}</p> 
       <div className="list-table">
         <div className="list-table-format">
           <b>Image</b>
@@ -53,7 +42,7 @@ const List = ({ url }) => {
         </div>
         {list.map((item, index) => (
           <div key={index} className='list-table-format'>
-            <img src={`${url}/images/${item.image}`} alt={item.name} />
+            <img src={item.image} alt={item.name} />
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>${item.price.toFixed(2)}</p>

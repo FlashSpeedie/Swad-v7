@@ -15,7 +15,8 @@ const FoodItem = ({ id, name, price, description, image }) => {
     <div className="food-item">
       <div className="food-item-img-container">
         <img
-          src={image ? `${url}/images/${image}` : assets.fallback_image}
+          // If image exists, use the Cloudinary URL directly
+          src={image ? image : assets.fallback_image} 
           alt={name || "Food Item"}
           className="food-item-image"
         />

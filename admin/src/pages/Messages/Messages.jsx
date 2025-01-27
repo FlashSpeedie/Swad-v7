@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Messages.css";
 
 const Messages = () => {
-  // Sample Messages Data
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -46,14 +45,11 @@ const Messages = () => {
     },
   ]);
 
-  // State for Filter
   const [filter, setFilter] = useState("all");
 
-  // State to manage the message being replied to
   const [activeMessage, setActiveMessage] = useState(null);
   const [reply, setReply] = useState("");
 
-  // Filter Messages
   const filteredMessages = messages.filter((msg) => {
     if (filter === "all") return true;
     if (filter === "unread") return msg.status === "unread";
@@ -61,17 +57,15 @@ const Messages = () => {
     return true;
   });
 
-  // Handle Reply Button Click
   const handleReply = (id) => {
     const message = messages.find((msg) => msg.id === id);
     setActiveMessage(message);
   };
 
-  // Handle Send Reply
   const handleSendReply = () => {
-    setMessages(messages.filter((msg) => msg.id !== activeMessage.id)); // Remove the replied message
-    setActiveMessage(null); // Clear active message
-    setReply(""); // Reset reply input
+    setMessages(messages.filter((msg) => msg.id !== activeMessage.id)); 
+    setActiveMessage(null); 
+    setReply(""); 
     alert("Reply sent successfully!");
   };
 
@@ -101,7 +95,6 @@ const Messages = () => {
         </div>
       </div>
 
-      {/* Message List */}
       <div className="messages-list">
         {filteredMessages.length > 0 ? (
           filteredMessages.map((msg) => (

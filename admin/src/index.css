@@ -9,7 +9,7 @@
 
 body{
   min-height: 100vh;
-  background-color: #fcfcfc;
+  background: linear-gradient(360deg, #00ff15, #fcfcfc)
 }
 
 a{

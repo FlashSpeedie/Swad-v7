@@ -7,10 +7,15 @@ import 'dotenv/config.js'
 import mongoose from "mongoose"
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+import dotenv from 'dotenv';
 
 // app config
 const app = express()
 const port = process.env.PORT || 4000;
+console.log('Cloudinary Config:', process.env.CLOUDINARY_CLOUD_NAME, process.env.CLOUDINARY_API_KEY);
+dotenv.config();
+console.log('Cloudinary Config:', process.env.CLOUDINARY_CLOUD_NAME, process.env.CLOUDINARY_API_KEY);
+
 
 // middleware
 app.use(express.json())

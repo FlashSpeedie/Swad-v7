@@ -72,3 +72,7 @@
     width: 30px;
     
 }
+
+.food-item-counter p {
+    margin-bottom: 0;
+}

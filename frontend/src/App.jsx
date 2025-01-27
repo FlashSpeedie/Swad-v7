@@ -16,7 +16,7 @@ import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 import Blog from './pages/Blog/Blog'
 import GiftCard from './pages/GiftCard/GiftCard'
-// import Reference_Page from './pages/Reference_Page/Reference_Page';
+import Reference_Page from './pages/Reference_Page/Reference_Page';
 
 
 const App = () => {
@@ -41,7 +41,7 @@ const App = () => {
           <Route path='/myorders' element={<MyOrders/>}/>
           <Route path='/blog' element={<Blog/>}/>
           <Route path='/gift-cards' element={<GiftCard/>}/>
-          {/* <Route path='/reference' element={<Reference_Page/>}/> */}
+          <Route path='/reference' element={<Reference_Page/>}/>
 
         </Routes>
       </div>
