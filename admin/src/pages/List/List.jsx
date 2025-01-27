@@ -2,20 +2,38 @@ import React, { useState, useEffect } from 'react';
 import './List.css';
 import axios from 'axios';
 
+const removeFood = async (id) => {
+  try {
+    const response = await axios.delete(`${url}/api/food/remove`, {
+      data: { id } 
+    });
+
+    if (response.data.success) {
+      console.log("Food removed successfully");
+      setList(prevList => prevList.filter(item => item._id !== id));
+      setFoodCount(prevCount => prevCount - 1); 
+    } else {
+      console.error("Error removing food:", response.data.message);
+    }
+  } catch (error) {
+    console.error("Failed to remove food:", error.message);
+  }
+};
+
 const List = ({ url }) => {
   const [list, setList] = useState([]);
-  const [foodCount, setFoodCount] = useState(0);  
+  const [foodCount, setFoodCount] = useState(0);
 
   // Fetch the food list from the backend
   const fetchList = async () => {
     try {
       const response = await axios.get(`${url}/api/food/list`);
 
-      console.log('Food List Response:', response); 
+      console.log('Food List Response:', response);
 
       if (response.data.success) {
         setList(response.data.data);
-        setFoodCount(response.data.data.length); 
+        setFoodCount(response.data.data.length);
       } else {
         console.error('Error fetching list');
       }
@@ -31,7 +49,7 @@ const List = ({ url }) => {
   return (
     <div className="list add flex-col">
       <p>All Foods List</p>
-      <p>Total Food Count: {foodCount}</p> 
+      <p>Total Food Count: {foodCount}</p>
       <div className="list-table">
         <div className="list-table-format">
           <b>Image</b>
