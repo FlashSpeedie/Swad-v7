@@ -1,7 +1,7 @@
 import React from 'react';
-import './GiftCard.css';
+import './Career.css';
 
-const GiftCard = () => {
+const Career = () => {
   return (
     <div className="coming-soon-container">
       <img
@@ -10,10 +10,10 @@ const GiftCard = () => {
         className="coming-soon-image"
       />
       <h1 className="coming-soon-title">Swad - Farm to Table</h1>
-      <p className="coming-soon-text">Cool Swad - Farm to Table Restaurant gift cards on its way. Stay tuned!</p>
-      <p className="coming-soon-contact">For inquiries, email us at: contact@swad.com</p>
+      <p className="coming-soon-text">Online job application and online interviews. Stay tuned!</p>
+      <p className="coming-soon-contact">For inquiries, email us at: career@swad.com</p>
     </div>
   );
 };
 
-export default GiftCard;
+export default Career;

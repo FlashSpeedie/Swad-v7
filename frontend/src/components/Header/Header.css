@@ -45,16 +45,16 @@
 }
 
 .header-contents .highlight-green {
-    color: #47f564;
+    color: #2bad41;
     font-weight: bold;
 }
 
 .header-contents button {
-    border: none;
-    color: #747474;
+    border: #747474 solid 1px;
+    color: #000000;
     font-weight: 500;
     padding: 1.2vw 2.5vw;
-    background-color: rgb(0, 255, 0);
+    background: linear-gradient(180deg, #00ff2a, #ffffff);
     font-size: max(1vw, 13px);
     width: 200px;
     border-radius: 5px;

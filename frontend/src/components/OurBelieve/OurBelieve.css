@@ -5,34 +5,33 @@
 
 .our-believe .container {
     display: flex;
-    gap: 20px; /* Space between blocks */
+    gap: 20px;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap; /* Ensures responsiveness */
+    flex-wrap: wrap;
 }
 
 .our-believe .block {
     flex: 1;
-    min-width: 300px; /* Ensures proper sizing for smaller screens */
-    background-color: #e2eee0;
+    min-width: 300px;
+    background: linear-gradient(360deg, #00ff2a, #ffffff);
     border: 1px solid #ddd;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
 
-
 .our-believe .block:hover {
     background-color: #bad3b6;
-    transform: scale(1.05); /* Slightly enlarges the block */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+    transform: scale(1.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .our-believe .block h2 {
     font-size: 1.8em;
-    color: #4b8a08;
+    color: #000000;
     margin-bottom: 15px;
 }
 
@@ -42,15 +41,15 @@
     line-height: 1.6;
 }
 
-/* Optional media query for responsiveness */
 @media (max-width: 768px) {
     .our-believe .container {
-        flex-direction: column; /* Stacks blocks vertically on smaller screens */
+        flex-direction: column;
     }
     .our-believe .block {
         margin-bottom: 20px;
     }
 }
+
 .section-header {
     text-align: left;
     margin-bottom: 40px;
@@ -61,5 +60,5 @@
     color: #0e0e0e;
     margin: 0;
     padding: 0;
-    text-align: left; /* Ensures the header text is aligned to the left */
+    text-align: left;
 }

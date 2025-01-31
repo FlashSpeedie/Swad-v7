@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
-import { StoreContext } from '../../context/StoreContext'; // Import StoreContext
+import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext); // Use StoreContext
+  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext); 
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
         <img
-          // If image exists, use the Cloudinary URL directly
           src={image ? image : assets.fallback_image} 
           alt={name || "Food Item"}
           className="food-item-image"
@@ -19,20 +18,20 @@ const FoodItem = ({ id, name, price, description, image }) => {
         {!cartItems?.[id] ? (
           <img
             className="add"
-            onClick={() => addToCart(id)} // Fix onClick: Wrap it in a function
+            onClick={() => addToCart(id)} 
             src={assets.add_icon_white}
             alt="Add item"
           />
         ) : (
           <div className="food-item-counter">
             <img
-              onClick={() => removeFromCart(id)} // Fix onClick: Wrap it in a function
+              onClick={() => removeFromCart(id)} 
               src={assets.remove_icon_red}
               alt="Remove item"
             />
             <p>{cartItems[id]}</p>
             <img
-              onClick={() => addToCart(id)} // Fix onClick: Wrap it in a function
+              onClick={() => addToCart(id)} 
               src={assets.add_icon_green}
               alt="Add item"
             />

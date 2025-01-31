@@ -8,10 +8,10 @@
     color: #262626;
     font-weight: 500;
     font-size: 3rem; 
-    text-align: center; /* Centers the text */
-    border-bottom: 3px solid #262626; /* Underline */
+    text-align: center; 
+    border-bottom: 3px solid #262626; 
     margin-bottom: 10px;
-    display: inline-block; /* Keeps the underline the same width as the text */
+    display: inline-block; 
     padding-bottom: 10px;
 }
 

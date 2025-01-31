@@ -17,6 +17,8 @@ import MyOrders from './pages/MyOrders/MyOrders'
 import Blog from './pages/Blog/Blog'
 import GiftCard from './pages/GiftCard/GiftCard'
 import Reference_Page from './pages/Reference_Page/Reference_Page';
+import Career from './pages/Career/Career';
+import AI_Swad from './pages/AI_Swad/AI_Swad';
 
 
 const App = () => {
@@ -37,11 +39,13 @@ const App = () => {
           <Route path="/reserve" element={<ReserveTable />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path='/verify' element={<Verify/>}/>
+          <Route path="/verify" element={<Verify />} />
           <Route path='/myorders' element={<MyOrders/>}/>
           <Route path='/blog' element={<Blog/>}/>
           <Route path='/gift-cards' element={<GiftCard/>}/>
+          <Route path='/careers' element={<Career/>}/>
           <Route path='/reference' element={<Reference_Page/>}/>
+          <Route path='/ai-swad' element={<AI_Swad/>}/>
 
         </Routes>
       </div>

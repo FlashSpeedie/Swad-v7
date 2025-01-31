@@ -18,6 +18,7 @@ const Navbar = ({ setShowLogin }) => {
     else if (currentPath.includes("reserve")) setMenu("Reservation");
     else if (currentPath.includes("contact")) setMenu("Contact Us");
     else if (currentPath.includes("reference")) setMenu("Reference Page");
+    else if (currentPath.includes("ai-swad")) setMenu("AI - Swad");
     else setMenu("Home");
   }, [location]);
 
@@ -104,6 +105,17 @@ const Navbar = ({ setShowLogin }) => {
               Reference Page
             </Link>
           </li>
+          <li>
+            <Link
+              to="/ai-swad"
+              onClick={() => setMenu("AI - Swad")}
+              className={menu === "AI - Swad" ? "active" : ""}
+            >
+              AI - Swad
+            </Link>
+          </li>
+          
+
         </ul>
         <div className="navbar-right">
           <div className="navbar-cart-icon">
@@ -157,6 +169,7 @@ const Navbar = ({ setShowLogin }) => {
           <li onClick={() => { navigate("/reserve"); setMenu("Reservation"); }}>Table Reservation</li>
           <li onClick={() => { navigate("/contact"); setMenu("Contact Us"); }}>Contact Us</li>
           <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); }}>Reference Page</li>
+          <li onClick={() => { navigate("/ai-swad"); setMenu("AI - Swad"); }}>AI - Swad</li>
         </ul>
       </div>
     </>

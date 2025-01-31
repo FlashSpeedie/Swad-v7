@@ -2,28 +2,18 @@ import React from 'react';
 import './Blog.css';
 
 const Blog = () => {
-    return (
-        <div className="blog-container">
-            <header className="blog-header">
-                <h1>Welcome to Swad's Blog</h1>
-                <p>Your source for the latest news and recipes from our vegetarian restaurant</p>
-            </header>
-            <section className="blog-content">
-                <article className="blog-post">
-                    <img src="https://via.placeholder.com/800x400" alt="Delicious vegetarian dish" />
-                    <h2>Our Latest Recipe</h2>
-                    <p>Discover the secrets behind our delicious vegetarian dishes. This week, we're sharing our recipe for a mouth-watering vegetable curry...</p>
-                </article>
-                <article className="blog-post">
-                    <img src="https://via.placeholder.com/800x400" alt="Fresh ingredients" />
-                    <h2>Fresh Ingredients</h2>
-                    <p>At Swad, we believe in using only the freshest ingredients. Learn more about our sourcing practices and how we ensure the highest quality...</p>
-                </article>
-            </section>
-        </div>
-    );
-}
+  return (
+    <div className="coming-soon-container">
+      <img
+        src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+        alt="Vegetarian Dish"
+        className="coming-soon-image"
+      />
+      <h1 className="coming-soon-title">Swad - Farm to Table</h1>
+      <p className="coming-soon-text">Interesting blogs about #1 Swad - Farm to Table Restaurant on its way. Stay tuned!</p>
+      <p className="coming-soon-contact">For inquiries, email us at: blog@swad.com</p>
+    </div>
+  );
+};
 
 export default Blog;
-
-
