@@ -105,7 +105,7 @@ const Navbar = ({ setShowLogin }) => {
               Reference Page
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               to="/ai-swad"
               onClick={() => setMenu("AI - Swad")}
@@ -113,7 +113,7 @@ const Navbar = ({ setShowLogin }) => {
             >
               AI - Swad
             </Link>
-          </li>
+          </li> */}
           
 
         </ul>
