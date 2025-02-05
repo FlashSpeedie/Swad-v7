@@ -24,11 +24,16 @@ const MyOrders = () => {
       fetchOrders();
     }
   }, [token]);
+
   return (
     <div className="my-order">
       <h2>Orders</h2>
       <div className="container">
         {data.map((order, index) => {
+          // Calculate tax and total amount (without displaying tax)
+          const taxAmount = order.amount * 0.045;
+          const totalAmount = order.amount + taxAmount;
+
           return (
             <div key={index} className="my-order-order">
               <img src={assets.parcel_icon} alt="" />
@@ -41,7 +46,7 @@ const MyOrders = () => {
                   }
                 })}
               </p>
-              <p>${order.amount}.00</p>
+              <p>${totalAmount.toFixed(2)}</p> {/* Display only the total amount with tax */}
               <p>Items: {order.items.length}</p>
               <p>
                 <span>&#x25cf;</span>
