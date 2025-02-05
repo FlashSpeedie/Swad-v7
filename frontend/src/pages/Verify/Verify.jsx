@@ -19,9 +19,12 @@ const Verify = () => {
         }
 
         try {
-            console.log("Verifying payment:", { success, orderId });
+            console.log("Sending verification request with:", { success, orderId });
 
-            const response = await axios.post(`${url}/api/order/verify`, { success, orderId });
+            const response = await axios.post(`${url}/api/order/verify`, {
+                success: success === "true", // Ensure it's a boolean
+                orderId,
+            });
 
             console.log("API Response:", response.data);
 
@@ -31,14 +34,16 @@ const Verify = () => {
                 navigate("/");
             }
         } catch (error) {
-            console.error("Payment verification failed:", error);
+            console.error("Payment verification failed:", error.response?.data || error);
             navigate("/");
         }
     };
 
+
     useEffect(() => {
+        console.log("Verify component mounted, calling verifyPayment...");
         verifyPayment();
-    }, [success, orderId, url, navigate]); 
+    }, [success, orderId, url, navigate]);
 
     return (
         <div className='verify'>
