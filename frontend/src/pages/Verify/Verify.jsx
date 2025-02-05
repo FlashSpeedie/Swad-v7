@@ -12,24 +12,33 @@ const Verify = () => {
     const navigate = useNavigate();
 
     const verifyPayment = async () => {
+        if (!orderId) {
+            console.error("No orderId provided for verification.");
+            navigate("/");
+            return;
+        }
+
         try {
             console.log("Verifying payment:", { success, orderId });
-            const response = await axios.post(url + "/api/order/verify", { success, orderId });
+
+            const response = await axios.post(`${url}/api/order/verify`, { success, orderId });
+
             console.log("API Response:", response.data);
+
             if (response.data.success) {
                 navigate("/myorders");
             } else {
                 navigate("/");
             }
         } catch (error) {
-            console.error("Payment verification failed:", error.message);
+            console.error("Payment verification failed:", error);
             navigate("/");
         }
     };
 
     useEffect(() => {
         verifyPayment();
-    }, []);
+    }, [success, orderId, url, navigate]); 
 
     return (
         <div className='verify'>

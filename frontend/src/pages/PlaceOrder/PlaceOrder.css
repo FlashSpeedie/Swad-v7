@@ -72,6 +72,10 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .cart-total .proceed{
+    margin-top: 20px;
+  }
   
   .cart-total-details div {
     display: flex;

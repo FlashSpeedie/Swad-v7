@@ -207,7 +207,7 @@ const PlaceOrder = () => {
               <span><b>${total.toFixed(2)}</b></span>
             </div>
           </div>
-          <button type="submit">PROCEED TO PAYMENT</button>
+          <button className="proceed" type="submit">PROCEED TO PAYMENT</button>
         </div>
         {/* <div className="payment-method">
           <p className="title">Payment Method</p>

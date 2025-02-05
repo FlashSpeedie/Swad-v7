@@ -6,10 +6,8 @@ function AboutUs() {
   const [submitted, setSubmitted] = useState(false);
 
   const handlePhoneNumberChange = (e) => {
-    // Remove all non-digit characters and limit the number to 10 digits
     const formattedNumber = e.target.value.replace(/\D/g, '').slice(0, 10);
     
-    // Format the phone number into (XXX) XXX-XXXX
     if (formattedNumber.length <= 3) {
       setPhoneNumber(formattedNumber);
     } else if (formattedNumber.length <= 6) {
