@@ -22,5 +22,5 @@ export const assets ={
     list_icon
 }
 
-export const url = 'https://swad-v7-backend.onrender.com'
+export const url = 'https://swad-sv13.onrender.com'
 // export const url = 'http://localhost:4000'

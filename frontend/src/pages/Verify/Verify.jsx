@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './Verify.css';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { StoreContext } from '../../context/StoreContext';
@@ -11,38 +11,37 @@ const Verify = () => {
     const { url } = useContext(StoreContext);
     const navigate = useNavigate();
 
-    const verifyPayment = async () => {
-        if (!orderId) {
-            console.error("No orderId provided for verification.");
-            navigate("/");
-            return;
-        }
+    useEffect(() => {
+        const verifyPayment = async () => {
+            if (!orderId) {
+                console.error("No orderId provided for verification.");
+                navigate("/");
+                return;
+            }
 
-        try {
-            console.log("Verifying payment:", { success, orderId });
+            try {
+                console.log("Verifying payment for order:", orderId);
 
-            const response = await axios.post(`${url}/api/order/verify`, {
-                success: success === "true", // Convert string to boolean
-                orderId
-            });
+                const response = await axios.post(`${url}/api/order/verify`, {
+                    success: success === "true", // Ensure boolean value
+                    orderId
+                });
 
-            console.log("API Response:", response.data);
+                console.log("API Response:", response.data);
 
-            if (response.data.success) {
-                navigate("/myorders");
-            } else {
+                if (response.data.success) {
+                    navigate("/myorders");  // Redirect to My Orders
+                } else {
+                    navigate("/");
+                }
+            } catch (error) {
+                console.error("Payment verification failed:", error.response?.data || error);
                 navigate("/");
             }
-        } catch (error) {
-            console.error("Payment verification failed:", error.response?.data || error);
-            navigate("/");
-        }
-    };
+        };
 
-    useEffect(() => {
-        console.log("Verify component mounted, calling verifyPayment...");
         verifyPayment();
-    }, [success, orderId, url]); 
+    }, [success, orderId, url, navigate]); // Ensure dependencies trigger useEffect correctly
 
     return (
         <div className='verify'>
