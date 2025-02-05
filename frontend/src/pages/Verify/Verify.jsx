@@ -19,11 +19,11 @@ const Verify = () => {
         }
 
         try {
-            console.log("Sending verification request with:", { success, orderId });
+            console.log("Verifying payment:", { success, orderId });
 
             const response = await axios.post(`${url}/api/order/verify`, {
-                success: success === "true", // Ensure it's a boolean
-                orderId,
+                success: success === "true", // Convert string to boolean
+                orderId
             });
 
             console.log("API Response:", response.data);
@@ -39,11 +39,11 @@ const Verify = () => {
         }
     };
 
-
     useEffect(() => {
         console.log("Verify component mounted, calling verifyPayment...");
         verifyPayment();
-    }, [success, orderId, url, navigate]);
+        // Exclude navigate from dependencies to avoid unnecessary re-renders
+    }, [success, orderId, url]); 
 
     return (
         <div className='verify'>
