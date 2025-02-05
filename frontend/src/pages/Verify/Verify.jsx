@@ -23,14 +23,15 @@ const Verify = () => {
                 console.log("Verifying payment for order:", orderId);
 
                 const response = await axios.post(`${url}/api/order/verify`, {
-                    success: success === "true", // Ensure boolean value
+                    success: success === "true", 
                     orderId
                 });
+
 
                 console.log("API Response:", response.data);
 
                 if (response.data.success) {
-                    navigate("/myorders");  // Redirect to My Orders
+                    navigate("/myorders");
                 } else {
                     navigate("/");
                 }
@@ -41,7 +42,7 @@ const Verify = () => {
         };
 
         verifyPayment();
-    }, [success, orderId, url, navigate]); // Ensure dependencies trigger useEffect correctly
+    }, [success, orderId, url, navigate]);
 
     return (
         <div className='verify'>

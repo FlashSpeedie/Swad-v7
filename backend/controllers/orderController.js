@@ -69,21 +69,36 @@ const placeOrder = async (req, res) => {
     }
 }
 
-const verifyOrder = async (req, res) => {
-    const { orderId, success } = req.body;
+export const verifyOrder = async (req, res) => {
     try {
-        if (success == 'true') {
-            await orderModel.findByIdAndUpdate(orderId, { payment: true });
-            res.json({ success: true, message: "Paid" })
-        } else {
-            await orderModel.findByIdAndDelete(orderId);
-            res.json({ success: false, message: "Not Paid" })
+        const { success, orderId } = req.body;
+
+        if (!orderId) {
+            return res.status(400).json({ success: false, message: "Order ID is required" });
         }
+
+        if (!success) {
+            return res.status(400).json({ success: false, message: "Payment failed" });
+        }
+
+        // Fetch order from database
+        const order = await Order.findById(orderId);
+        if (!order) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+
+        // Update order status
+        order.isPaid = true;
+        await order.save();
+
+        return res.json({ success: true, message: "Payment verified successfully" });
+
     } catch (error) {
-        console.log(error)
-        res.json({ success: false, message: "Error" })
+        console.error("Error verifying payment:", error);
+        return res.status(500).json({ success: false, message: "Internal server error" });
     }
-}
+};
+
 
 // user orders for frontend
 const userOrders = async (req, res) => {
