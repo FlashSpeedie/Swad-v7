@@ -42,7 +42,6 @@ const Verify = () => {
     useEffect(() => {
         console.log("Verify component mounted, calling verifyPayment...");
         verifyPayment();
-        // Exclude navigate from dependencies to avoid unnecessary re-renders
     }, [success, orderId, url]); 
 
     return (
