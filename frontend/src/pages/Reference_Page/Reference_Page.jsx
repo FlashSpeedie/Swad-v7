@@ -95,7 +95,7 @@ const ReferencePage = () => {
                             <li>Salad - <a href="https://pixabay.com/photos/meal-salad-cucumbers-food-leaves-2834549/" target="_blank" rel="noopener noreferrer">Link</a></li>
                             <li>Rolls - <a href="https://pixabay.com/photos/burrito-tortilla-food-mexican-4126116/" target="_blank" rel="noopener noreferrer">Link</a></li>
                             <li>Dessert - <a href="https://pixabay.com/photos/dessert-berries-calories-ice-cream-1786311/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                            <li>Sandwich - <a href="https://pixabay.com/photos/green-leaf-vegetable-bread-2596087/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                            <li>Sandwich - <a href="https://pixabay.com/photos/bread-sandwich-food-plate-toast-1867208/" target="_blank" rel="noopener noreferrer">Link</a></li>
                             <li>Cake - <a href="https://pixabay.com/photos/cake-torte-dessert-sweet-fruit-1284548/" target="_blank" rel="noopener noreferrer">Link</a></li>
                             <li>Vegan - <a href="https://pixabay.com/photos/vegan-vegan-food-potatos-food-4833041/" target="_blank" rel="noopener noreferrer">Link</a></li>
                             <li>Pasta - <a href="https://pixabay.com/photos/tortelloni-pasta-tortellini-food-646680/" target="_blank" rel="noopener noreferrer">Link</a></li>
