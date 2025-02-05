@@ -69,55 +69,42 @@ const placeOrder = async (req, res) => {
     }
 }
 
-export const verifyOrder = async (req, res) => {
+const verifyOrder = async (req, res) => {
+    const { orderId, success } = req.body;
     try {
-        const { success, orderId } = req.body;
-
-        if (!orderId) {
-            return res.status(400).json({ success: false, message: "Order ID is required" });
+        if (success == "true") {
+            await orderModel.findByIdAndUpdate(orderId, { payment: true });
+            res.json({ success: true, message: "Paid" })
         }
-
-        if (!success) {
-            return res.status(400).json({ success: false, message: "Payment failed" });
+        else {
+            await orderModel.findByIdAndDelete(orderId);
+            res.json({ success: false, message: "Not Paid" })
         }
-
-        // Fetch order from database
-        const order = await Order.findById(orderId);
-        if (!order) {
-            return res.status(404).json({ success: false, message: "Order not found" });
-        }
-
-        // Update order status
-        order.isPaid = true;
-        await order.save();
-
-        return res.json({ success: true, message: "Payment verified successfully" });
-
     } catch (error) {
-        console.error("Error verifying payment:", error);
-        return res.status(500).json({ success: false, message: "Internal server error" });
-    }
-};
-
-
-// user orders for frontend
-const userOrders = async (req, res) => {
-    try {
-        const orders = await orderModel.find({ userId: req.body.userId })
-        res.json({ success: true, data: orders })
-    } catch (error) {
-        console.log(error)
+        console.log(error);
         res.json({ success: false, message: "Error" })
     }
 }
 
-// listing orders for admin panel
-const listOrders = async (req, res) => {
+
+// user orders for frontend
+
+const userOrders = async (req, res) => {
+    try {
+        const orders = await orderModel.find({ userId: req.body.userId });
+        res.json({ success: true, data: orders })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
+    }
+}
+
+const listOrders = async (res) => {
     try {
         const orders = await orderModel.find({});
         res.json({ success: true, data: orders })
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.json({ success: false, message: "Error" })
     }
 }
@@ -125,12 +112,13 @@ const listOrders = async (req, res) => {
 // api for updating order status
 const updateStatus = async (req, res) => {
     try {
-        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status })
+        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status });
         res.json({ success: true, message: "Status Updated" })
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.json({ success: false, message: "Error" })
     }
 }
+
 
 export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus }
