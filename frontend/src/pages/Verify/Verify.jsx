@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const Verify = () => {
 
+    console.log("Verify component mounted");
     const [searchParams,setSearchParams] = useSearchParams();
     const success = searchParams.get("success")
     const orderId = searchParams.get("orderId")
