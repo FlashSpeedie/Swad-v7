@@ -13,7 +13,7 @@ import Messages from "./pages/Messages/Messages";
 
 const App = () => {
 
-  const url = "https://swad-v7-backend.onrender.com/"; // API base URL
+  const url = "https://swad-v7-backend.onrender.com"; // API base URL
   // const url = "http://localhost:4000"; // API base URL
 
   return (
