@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #e8f5e9; /* Light green background */
+  background-color: #e8f5e9;
   text-align: center;
   padding: 20px;
 }
@@ -18,13 +18,13 @@
 
 .coming-soon-title {
   font-size: 2.5em;
-  color: #388e3c; /* Dark green color */
+  color: #388e3c;
   margin-bottom: 10px;
 }
 
 .coming-soon-text {
   font-size: 1.2em;
-  color: #4caf50; /* Medium green color */
+  color: #4caf50;
   margin-bottom: 20px;
 }
 
