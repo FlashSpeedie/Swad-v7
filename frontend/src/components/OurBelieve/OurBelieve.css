@@ -15,7 +15,7 @@
 .our-believe .block {
     flex: 1;
     min-width: 300px;
-    background: linear-gradient(360deg, #00ff2a, #ffffff);
+    background: #0fc82e;
     border: 1px solid #ddd;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,6 @@
 }
 
 .our-believe .block:hover {
-    background-color: #bad3b6;
     transform: scale(1.05);
     transition: transform 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
@@ -31,13 +30,13 @@
 
 .our-believe .block h2 {
     font-size: 1.8em;
-    color: #000000;
+    color: white;
     margin-bottom: 15px;
 }
 
 .our-believe .block p {
     font-size: 1em;
-    color: #333;
+    color: rgb(255, 255, 255);
     line-height: 1.6;
 }
 

@@ -20,6 +20,11 @@ body {
     height: 100px;
 }
 
+@media (max-width: 608px) {
+    header {
+        margin-top: 100px; /* Adjust this value as needed */
+    }
+}
 
 .navbar-logo-container {
     display: flex;
@@ -235,7 +240,6 @@ body {
     background-color: darkgreen;
 }
 
-
 /* Responsive Design */
 @media (max-width: 1050px) {
     .navbar-logo {
@@ -321,6 +325,12 @@ body {
     }
 }
 
+@media (max-width: 608px) {
+    header {
+        margin-top: 100px; /* Adjust this value as needed */
+    }
+}
+
 .coming-soon-btn {
     background-color: #333;
     color: #fff;
@@ -378,4 +388,56 @@ body {
     color: white;
     background-color: #388e3c;
     /* Active state with dark green background */
+}
+
+@media (max-width: 750px) {
+    .navbar-logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-logo-text {
+        font-size: 1.8rem;
+    }
+
+    .navbar-right {
+        gap: 20px;
+    }
+
+    .navbar-right img {
+        width: 20px;
+    }
+
+    .navbar button {
+        padding: 8px 20px;
+        font-size: 15px;
+    }
+
+    .navbar-hamburger {
+        display: flex;
+    }
+
+    .navbar-sidebar ul {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 450px) {
+    .navbar-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navbar-logo-text {
+        font-size: 1.5rem;
+    }
+
+    .navbar-right img {
+        width: 18px;
+    }
+
+    .navbar button {
+        padding: 7px 18px;
+        font-size: 14px;
+    }
 }

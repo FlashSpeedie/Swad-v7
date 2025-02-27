@@ -51,10 +51,10 @@
 
 .header-contents button {
     border: #747474 solid 1px;
-    color: #000000;
+    color: #ffffff;
     font-weight: 500;
     padding: 1.2vw 2.5vw;
-    background: linear-gradient(180deg, #00ff2a, #ffffff);
+    background: #009919;
     font-size: max(1vw, 13px);
     width: 200px;
     border-radius: 5px;
@@ -63,8 +63,7 @@
 }
 
 .header-contents button:hover {
-    background-color: #4caf50;
-    color: black;
+    background-color: #018606;
 }
 
 /* Tablet Screen Adjustments */

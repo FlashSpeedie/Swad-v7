@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import PlaceOrder from './pages/PlaceOrder/PlaceOrder';
@@ -27,6 +28,7 @@ const App = () => {
   return (
     <>
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
+      <ScrollToTop />
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
