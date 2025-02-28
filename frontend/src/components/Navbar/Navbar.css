@@ -7,16 +7,15 @@ body {
 }
 
 .navbar {
-    padding: 20px 0;
+    padding: 10px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 120%;
+    width: 110%;
     position: sticky;
     top: 0;
     z-index: 1000;
     background: white;
-    margin-left: -10%;
     height: 100px;
 }
 

@@ -19,7 +19,7 @@ const Footer = () => {
                         <li onClick={() => navigate('/about')}>About Us</li>
                         <li onClick={() => navigate('/blog')}>Blog</li>
                         <li onClick={() => navigate('/careers')}>Careers</li>
-                        <li onClick={() => navigate('/gift-cards')}>Gift Cards</li>
+                        {/* <li onClick={() => navigate('/gift-cards')}>Gift Cards</li> */}
                     </ul>
                 </div>
             </div>
