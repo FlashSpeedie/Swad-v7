@@ -84,7 +84,7 @@ const Navbar = ({ setShowLogin }) => {
               onClick={() => setMenu("Reservation")}
               className={menu === "Reservation" ? "active" : ""}
             >
-              Table Reservation
+              Book a Table
             </Link>
           </li>
           <li>

@@ -11,36 +11,29 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 110%;
-    position: sticky;
+    width: 100%;
     top: 0;
     z-index: 1000;
-    background: white;
     height: 100px;
-}
-
-@media (max-width: 608px) {
-    header {
-        margin-top: 100px; /* Adjust this value as needed */
-    }
 }
 
 .navbar-logo-container {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .navbar-logo {
-    width: 60px;
-    height: 60px;
+    width: 50px; /* Adjusted for better balance */
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .navbar-logo-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
+    font-size: 2.2rem; /* Adjusted for professionalism */
     color: #49557e;
     font-weight: 600;
 }
@@ -247,7 +240,7 @@ body {
     }
 
     .navbar-logo-text {
-        font-size: 1.4rem;
+        font-size: 1.8rem;
     }
 
     .navbar-menu {
@@ -279,7 +272,7 @@ body {
     }
 
     .navbar-logo-text {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .navbar-right {
@@ -311,7 +304,7 @@ body {
     }
 
     .navbar-logo-text {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .navbar-right img {
@@ -321,122 +314,5 @@ body {
     .navbar button {
         padding: 5px 15px;
         font-size: 13px;
-    }
-}
-
-@media (max-width: 608px) {
-    header {
-        margin-top: 100px; /* Adjust this value as needed */
-    }
-}
-
-.coming-soon-btn {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Style specific to the "AI Swad - Coming Soon" link */
-.ai-swad-coming-soon {
-    border: 2px solid #388e3c;
-    /* Green border */
-    color: #388e3c;
-    /* Green text color */
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    /* Smooth transition for hover effect */
-}
-
-.ai-swad-coming-soon:hover {
-    background-color: #388e3c;
-    /* Dark green background on hover */
-    color: white;
-    /* White text when hovered */
-    transform: scale(1.05);
-    /* Slight scaling on hover */
-}
-
-.ai-swad-coming-soon:focus {
-    outline: none;
-    /* Remove focus outline */
-}
-
-.ai-swad-coming-soon.active {
-    color: white;
-    background-color: #388e3c;
-    /* Active state with dark green background */
-}
-
-@media (max-width: 750px) {
-    .navbar-logo {
-        width: 50px;
-        height: 50px;
-    }
-
-    .navbar-logo-text {
-        font-size: 1.8rem;
-    }
-
-    .navbar-right {
-        gap: 20px;
-    }
-
-    .navbar-right img {
-        width: 20px;
-    }
-
-    .navbar button {
-        padding: 8px 20px;
-        font-size: 15px;
-    }
-
-    .navbar-hamburger {
-        display: flex;
-    }
-
-    .navbar-sidebar ul {
-        padding-top: 60px;
-    }
-}
-
-@media (max-width: 450px) {
-    .navbar-logo {
-        width: 40px;
-        height: 40px;
-    }
-
-    .navbar-logo-text {
-        font-size: 1.5rem;
-    }
-
-    .navbar-right img {
-        width: 18px;
-    }
-
-    .navbar button {
-        padding: 7px 18px;
-        font-size: 14px;
     }
 }
