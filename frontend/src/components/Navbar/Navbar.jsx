@@ -114,7 +114,7 @@ const Navbar = ({ setShowLogin }) => {
               AI - Swad
             </Link>
           </li> */}
-          
+
 
         </ul>
         <div className="navbar-right">
@@ -161,17 +161,23 @@ const Navbar = ({ setShowLogin }) => {
       </div>
 
       <div className={`navbar-sidebar ${sidebarOpen ? "active" : ""}`}>
-        <span className="close-btn" onClick={toggleSidebar}>
-          &times;
-        </span>
+        <span className="close-btn" onClick={toggleSidebar}>&times;</span>
         <ul>
-          <li onClick={() => { navigate("/"); setMenu("Home"); }}>Home</li>
-          <li onClick={() => { navigate("/reserve"); setMenu("Reservation"); }}>Table Reservation</li>
-          <li onClick={() => { navigate("/contact"); setMenu("Contact Us"); }}>Contact Us</li>
-          <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); }}>Reference Page</li>
-          <li onClick={() => { navigate("/ai-swad"); setMenu("AI - Swad"); }}>AI - Swad</li>
+          <li onClick={() => { navigate("/"); setMenu("Home"); toggleSidebar(); }}>Home</li>
+          <li onClick={() => { navigate("/reserve"); setMenu("Reservation"); toggleSidebar(); }}>Table Reservation</li>
+          <li onClick={() => { navigate("/contact"); setMenu("Contact Us"); toggleSidebar(); }}>Contact Us</li>
+          <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); toggleSidebar(); }}>Reference Page</li>
+          {/* <li onClick={() => { navigate("/myorders"); toggleSidebar(); }}>
+            <img src={assets.bag_icon} alt="Basket" />
+            <p>My Orders</p>
+          </li> */}
+          {/* Green button after Reference Page */}
+          <li>
+            {/* <button className="green-button" onClick={() => navigate("/ai-swad")}>AI - Swad</button> */}
+          </li>
         </ul>
       </div>
+
     </>
   );
 };

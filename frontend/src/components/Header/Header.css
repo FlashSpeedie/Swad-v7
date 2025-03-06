@@ -10,7 +10,7 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    flex-direction: row-reverse; 
+    flex-direction: row; /* Changed from row-reverse to row */
     justify-content: space-between; 
     align-items: center;
 }
