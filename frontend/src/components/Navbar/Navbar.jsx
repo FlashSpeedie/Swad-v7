@@ -167,16 +167,11 @@ const Navbar = ({ setShowLogin }) => {
           <li onClick={() => { navigate("/reserve"); setMenu("Reservation"); toggleSidebar(); }}>Table Reservation</li>
           <li onClick={() => { navigate("/contact"); setMenu("Contact Us"); toggleSidebar(); }}>Contact Us</li>
           <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); toggleSidebar(); }}>Reference Page</li>
-          {/* <li onClick={() => { navigate("/myorders"); toggleSidebar(); }}>
-            <img src={assets.bag_icon} alt="Basket" />
-            <p>My Orders</p>
-          </li> */}
-          {/* Green button after Reference Page */}
-          <li>
-            {/* <button className="green-button" onClick={() => navigate("/ai-swad")}>AI - Swad</button> */}
-          </li>
+          <li onClick={() => { navigate("/myorders"); setMenu("My Orders"); toggleSidebar(); }}>My Orders</li>
+
         </ul>
       </div>
+
 
     </>
   );

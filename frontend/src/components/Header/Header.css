@@ -10,9 +10,10 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    flex-direction: row; /* Changed from row-reverse to row */
+    flex-direction: row;
     justify-content: space-between; 
     align-items: center;
+    z-index: 1;
 }
 
 .Header img {
@@ -30,6 +31,7 @@
     max-width: 50%; 
     padding-left: 5vw;
     animation: fadeIn 3s;
+    z-index: 2;
 }
 
 .header-contents h2 {
@@ -66,35 +68,72 @@
     background-color: #018606;
 }
 
-/* Tablet Screen Adjustments */
-@media (max-width: 1050px) {
-    .header-contents {
-        max-width: 60%; /* Adjust content width on tablet */
-    }
-
+@media (max-width: 1200px) {
     .Header {
-        flex-direction: column-reverse; /* Stack image and content vertically on tablets */
+        flex-direction: row;
     }
 
     .Header img {
-        max-width: 100%; /* Image takes full width on tablet */
+        max-width: 50%;
+        height: auto;
+    }
+
+    .header-contents {
+        padding-left: 5vw;
+        max-width: 45%;
+    }
+
+    .header-contents h2 {
+        font-size: 6vw;
+    }
+
+    .header-contents p {
+        font-size: 3.5vw;
+    }
+}
+
+@media (max-width: 1050px) {
+    .header-contents {
+        max-width: 60%;
+    }
+
+    .Header {
+        flex-direction: column-reverse;
+    }
+
+    .Header img {
+        max-width: 100%;
         height: auto;
     }
 }
 
-/* Mobile Screen Adjustments */
 @media (max-width: 750px) {
     .header-contents {
-        max-width: 80%; /* More space for content on smaller screens */
+        max-width: 80%;
         padding-left: 3vw;
     }
 
+    .header-contents h2 {
+        font-size: 6vw;
+    }
+
     .header-contents p {
-        font-size: 3.5vw; /* Adjust text size for smaller screens */
-        display: none; /* Hide paragraph text on mobile for simplicity */
+        font-size: 4.5vw;
+        display: block;
     }
 
     .header-contents button {
-        padding: 2.5vw 5vw; /* Larger buttons on mobile for better accessibility */
+        padding: 4vw 8vw;
+    }
+
+    .Header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .Header img {
+        max-width: 100%;
+        height: auto;
     }
 }

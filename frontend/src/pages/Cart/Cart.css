@@ -8,6 +8,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cart:hover {
+  transform: scale(1.02);
 }
 
 .empty-cart {
@@ -35,7 +40,6 @@
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   width: 100%;
-  max-width: 10000px;
 }
 
 .cart-items-title {
@@ -82,8 +86,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1000rem;
-  max-width: 100%;
+  width: 100%;
 }
 
 .cart-total {
@@ -92,7 +95,6 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 1160px;
   text-align: center;
 }
 
@@ -101,12 +103,10 @@
   justify-content: space-between;
   gap: 20px;
   width: 100%;
-  max-width: 500px;
   margin-bottom: 20px;
 }
 
-.cart-subtotal,
-.cart-promocode {
+.cart-subtotal {
   flex: 1;
   background: white;
   padding: 15px;
@@ -127,46 +127,32 @@
   font-weight: bold;
 }
 
-.cart-promocode input {
-  width: 70%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.cart-promocode .apply{
-  width: 10%;
-  padding: 8px;
-  border: none;
-  background-color: #ff9800;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.cart-promocode button:hover {
-  background-color: #e68900;
-}
-
 .cart-total button {
   width: 100%;
   padding: 12px;
   border: none;
   color: white;
-  background: linear-gradient(to right, #4df028, #2bb673);
+  background: #00c521;
   border-radius: 5px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .cart-total button:hover {
-  background: linear-gradient(to right, #40e020, #249c63);
+  background: #0da827;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+  .cart {
+    padding: 15px;
+  }
+
+  .cart-items-title {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 0.5fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -174,12 +160,27 @@
     flex-direction: column;
   }
 
-  .cart-subtotal,
-  .cart-promocode {
+  .cart-subtotal {
     width: 100%;
   }
 
   .cart-items-title {
-    grid-template-columns: 1.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cart {
+    padding: 10px;
+  }
+
+  .cart-items-title {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 12px;
+  }
+
+  .cart-total button {
+    font-size: 14px;
+    padding: 10px;
   }
 }

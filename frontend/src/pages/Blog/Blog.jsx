@@ -46,17 +46,26 @@ const blogPosts = [
   },
 ];
 
+const categoryBackgrounds = {
+  All: '#5cb85c',
+  Health: '#2c7d5f',
+  Seasonal: '#d9534f',
+  Mission: '#5bc0de',
+  Dishes: '#f0ad4e',
+  Community: '#428bca',
+};
+
 const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const backgroundColor = categoryBackgrounds[selectedCategory];
 
   const filterPosts = (category) => {
     setSelectedCategory(category);
   };
 
-  const filteredPosts =
-    selectedCategory === 'All'
-      ? blogPosts
-      : blogPosts.filter((post) => post.category === selectedCategory);
+  const filteredPosts = selectedCategory === 'All'
+    ? blogPosts
+    : blogPosts.filter((post) => post.category === selectedCategory);
 
   const handleReadMore = (title) => {
     alert(`You clicked "Read More" for: ${title}`);
@@ -70,12 +79,42 @@ const BlogPage = () => {
       </header>
 
       <div className="filters">
-        <button onClick={() => filterPosts('All')}>All</button>
-        <button onClick={() => filterPosts('Health')}>Health</button>
-        <button onClick={() => filterPosts('Seasonal')}>Seasonal</button>
-        <button onClick={() => filterPosts('Mission')}>Mission</button>
-        <button onClick={() => filterPosts('Dishes')}>Dishes</button>
-        <button onClick={() => filterPosts('Community')}>Community</button>
+        <button
+          onClick={() => filterPosts('All')}
+          className={selectedCategory === 'All' ? 'active' : ''}
+        >
+          All
+        </button>
+        <button
+          onClick={() => filterPosts('Health')}
+          className={selectedCategory === 'Health' ? 'active' : ''}
+        >
+          Health
+        </button>
+        <button
+          onClick={() => filterPosts('Seasonal')}
+          className={selectedCategory === 'Seasonal' ? 'active' : ''}
+        >
+          Seasonal
+        </button>
+        <button
+          onClick={() => filterPosts('Mission')}
+          className={selectedCategory === 'Mission' ? 'active' : ''}
+        >
+          Mission
+        </button>
+        <button
+          onClick={() => filterPosts('Dishes')}
+          className={selectedCategory === 'Dishes' ? 'active' : ''}
+        >
+          Dishes
+        </button>
+        <button
+          onClick={() => filterPosts('Community')}
+          className={selectedCategory === 'Community' ? 'active' : ''}
+        >
+          Community
+        </button>
       </div>
 
       <section className="blog-posts">
@@ -85,21 +124,14 @@ const BlogPage = () => {
               <h2>{post.title}</h2>
               <p className="post-date">{post.date}</p>
               <p className="post-excerpt">{post.excerpt}</p>
-              <button
-                className="read-more-btn"
-                onClick={() => handleReadMore(post.title)}
-              >
+              {/* <button className="read-more-btn" onClick={() => handleReadMore(post.title)}>
                 Read More
-              </button>
+              </button> */}
             </div>
             <img src={post.imageUrl} alt="Blog Post" className="post-image" />
           </article>
         ))}
       </section>
-
-      <footer className="blog-footer">
-        <p>&copy; 2025 Swad - Farm to Table. All rights reserved.</p>
-      </footer>
     </div>
   );
 };

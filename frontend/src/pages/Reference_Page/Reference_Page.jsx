@@ -5,8 +5,15 @@ import './Reference_Page.css';
 const ReferencePage = () => {
     return (
         <div>
-            <div className="content">
+            <ul className="content">
                 <h1>Reference Page</h1>
+
+                <p>
+                    <h2>Admin Link</h2>
+                    On the production website, the admin link won't be visible to users, but for the competition, it is here:
+                    <a href="https://swad-admin.onrender.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#2980b9' }}> Click Here To Go To The Admin Page</a>
+                </p>
+
                 <h2>Copyright & Plan of Work Checklist</h2>
                 <ul className="source-list">
                     <li>
@@ -102,7 +109,7 @@ const ReferencePage = () => {
                         <li>Noodles - <a href="https://pixabay.com/photos/feast-noodles-noodles-noodle-image-1168322/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
                 </ul>
-            </div>
+            </ul>
         </div>
     );
 };
