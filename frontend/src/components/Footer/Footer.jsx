@@ -33,7 +33,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-policy">
                         <p onClick={() => navigate('/terms')}>Terms and Conditions</p>
-                        <span>|</span>
+                        <span className="footer-policy-divider" style={{ marginTop: '-20px' }}>|</span>
                         <p onClick={() => navigate('/privacy')}>Privacy Policy</p>
                     </div>
                 </div>
