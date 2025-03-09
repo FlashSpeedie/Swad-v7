@@ -62,16 +62,16 @@ const Add = ({url}) => {
           <input onChange={(e) => setImage(e.target.files[0])} type="file" id="image" hidden required />
         </div>
         <div className="add-product-name flex-col">
-          <p>Product Name</p>
+          <p>Food Item Name</p>
           <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here' />
         </div>
         <div className="add-product-description flex-col">
-          <p>Product Description</p>
+          <p>Food Description</p>
           <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder='Write content here required'></textarea>
         </div>
         <div className="add-category-price">
           <div className="add-category flex-col">
-            <p>Product Category</p>
+            <p>Food Category</p>
             <select onChange={onChangeHandler} name="category">
               <option value="Salad">Salad</option>
               <option value="Rolls">Rolls</option>
@@ -84,7 +84,7 @@ const Add = ({url}) => {
             </select>
           </div>
           <div className="add-price flex-col">
-            <p>Product Price</p>
+            <p>Food Price</p>
             <input onChange={onChangeHandler} value={data.price} type="number" name='price' placeholder='20' /> {/* Updated placeholder */}
           </div>
         </div>

@@ -54,11 +54,19 @@ const ReferencePage = () => {
                     <li><b>Category: Dessert</b></li>
                     <ul>
                         <li>Item: Vegan Chocolate Mousse - <a href="https://pixabay.com/photos/chocolate-mousse-au-chocolat-cream-3913334/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Apple Cinnamon Crumble - <a href="https://pixabay.com/photos/food-drinks-apple-bake-brulee-2940287/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Lemon Poppy Seed Slices - <a href="https://pixabay.com/photos/cake-dessert-food-lemon-3060458/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Coconut Chia Pudding - <a href="https://pixabay.com/photos/berries-chia-pudding-breakfast-6514670/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Raspberry Almond Tart - <a href="https://pixabay.com/photos/tart-raspberry-tart-dessert-cake-7322951/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
                     <li><b>Category: Sandwich</b></li>
                     <ul>
                         <li>Item: Grilled Veggie and Hummus Sandwich - <a href="https://pixabay.com/photos/bread-sandwich-food-plate-toast-1867208/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Avocado Toast with Roasted Tomatoes - <a href="https://pixabay.com/photos/toast-food-flat-lay-breakfast-6011147/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Caprese Sandwich - <a href="https://pixabay.com/photos/sandwich-delicious-food-dining-cafe-986784/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Mushroom and Swiss Melt - <a href="https://pixabay.com/photos/toast-vegan-sandwich-vegan-breakfast-7009956/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Falafel Pita - <a href="https://pixabay.com/photos/falafel-food-pitta-bread-1781656/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
                     <li><b>Category: Cake</b></li>

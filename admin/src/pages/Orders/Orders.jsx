@@ -57,8 +57,8 @@ const Orders = ({url}) => {
               </div>
               <p className='order-item-phone'>{order.address.phone}</p>
             </div>
-            <p>Itmes: {order.items.length}</p>
-            <p>${order.amount}</p>
+            <p>Items: {order.items.length}</p>
+            <p>${(order.amount * 1.045).toFixed(2)}</p>
             <select onChange={(event)=> statusHandler(event,order._id)} value={order.status} >
               <option value="Food Processing">Food Processing</option>
               <option value="Out for delivery">Out for delivery</option>

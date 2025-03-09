@@ -31,7 +31,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "Sales ($)",
-        data: [500, 800, 600, 1200, 1500, 2000],
+        data: [50000, 80000, 90000, 110000, 114750, 135000],
         borderColor: "#4caf50",
         backgroundColor: "rgba(76, 175, 80, 0.2)", // Chart area background color
         borderWidth: 2,
@@ -42,11 +42,11 @@ const Dashboard = () => {
 
   // Data for Bar Chart
   const barData = {
-    labels: ["Khana", "Khaka", "Jana", "Bye"],
+    labels: ["Spaghetti Aglio e Olio", "Vegan Sushi Rolls", "Penne Arrabbiata", "Raspberry Almond Tart"],
     datasets: [
       {
-        label: "Units Sold",
-        data: [50, 70, 40, 90],
+        label: "Food Items Delivered",
+        data: [5000, 7000, 4000, 9000],
         backgroundColor: ["#3f51b5", "#ff9800", "#e91e63", "#00bcd4"],
       },
     ],
@@ -59,22 +59,22 @@ const Dashboard = () => {
       <div className="dashboard-cards">
         <div className="card">
           <h3>Total Sales</h3>
-          <p>$25,000</p>
+          <p>$135,000</p>
           <span>+15% from last month</span>
         </div>
         <div className="card">
           <h3>Total Orders</h3>
-          <p>1,200</p>
+          <p>12,000</p>
           <span>+8% from last month</span>
         </div>
         <div className="card">
           <h3>New Customers</h3>
-          <p>350</p>
+          <p>3,500</p>
           <span>+12% from last month</span>
         </div>
         <div className="card">
-          <h3>Products Sold</h3>
-          <p>5,000</p>
+          <h3>Food Items Delivered</h3>
+          <p>18,500</p>
           <span>+10% from last month</span>
         </div>
       </div>
@@ -85,7 +85,7 @@ const Dashboard = () => {
           <Line data={lineData} options={{ responsive: true }} />
         </div>
         <div className="chart-container">
-          <h3>Top Products</h3>
+          <h3>Popular Food Delivered</h3>
           <Bar data={barData} options={{ responsive: true }} />
         </div>
       </div>
