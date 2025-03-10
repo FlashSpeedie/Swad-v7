@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Blog.css';
+import { assets } from '../../assets/assets';
 
 const blogPosts = [
   {
@@ -7,42 +8,42 @@ const blogPosts = [
     date: 'February 20, 2025',
     excerpt: 'Learn how farm-to-table dining supports healthy eating, sustainable practices, and local farmers.',
     category: 'Health',
-    imageUrl: 'https://placehold.co/400',
+    imageUrl: assets.story,
   },
   {
     title: 'Seasonal Ingredients: What\'s Fresh This Spring?',
     date: 'February 18, 2025',
     excerpt: 'Discover the seasonal produce that makes our dishes truly special, straight from the farm to your table.',
     category: 'Seasonal',
-    imageUrl: 'https://placehold.co/400',
+    imageUrl: assets.land,
   },
   {
     title: 'The Story Behind Swad: Our Farm-to-Table Mission',
     date: 'February 15, 2025',
     excerpt: 'Read about our mission to bring fresh, locally sourced ingredients to every meal and support sustainable farming.',
     category: 'Mission',
-    imageUrl: 'https://placehold.co/400',
+    imageUrl: assets.farm,
   },
   {
     title: 'Our Signature Dishes Made with Local Ingredients',
     date: 'February 10, 2025',
     excerpt: 'Explore our signature dishes that highlight the best of local, organic ingredients.',
     category: 'Dishes',
-    imageUrl: 'https://placehold.co/400',
+    imageUrl: assets.blossom,
   },
   {
     title: 'How Swad Supports Local Farmers and Communities',
     date: 'February 5, 2025',
     excerpt: 'Learn how our restaurant partners with local farmers to support communities and provide the best produce.',
     category: 'Community',
-    imageUrl: 'https://placehold.co/400',
+    imageUrl: assets.bread,
   },
   {
     title: 'Healthy Eating: The Benefits of Eating Fresh, Local Foods',
     date: 'January 30, 2025',
     excerpt: 'Discover the health benefits of choosing fresh, locally grown produce and how it can improve your well-being.',
     category: 'Health',
-    imageUrl: 'https://placehold.co/400',
+    imageUrl: assets.veggies,
   },
 ];
 

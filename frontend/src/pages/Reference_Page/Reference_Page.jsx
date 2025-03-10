@@ -31,7 +31,8 @@ const ReferencePage = () => {
 
                 <h2>Images and Information</h2>
                 <ul className="source-list">
-                    <li><b>Food Images Links:</b></li>
+                <li><b className="footer-links-title">Food Images Links:</b></li>
+                    
 
                     <li><b>Category: Salads</b></li>
                     <ul>
@@ -116,7 +117,26 @@ const ReferencePage = () => {
                         <li>Pasta - <a href="https://pixabay.com/photos/tortelloni-pasta-tortellini-food-646680/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Noodles - <a href="https://pixabay.com/photos/feast-noodles-noodles-noodle-image-1168322/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
+                    <br />
+                    <li><b className="footer-links-title">Footer Links:</b></li>
+                    <li><b>About Us Page</b></li>
+                    <ul>
+                        <li>Paragraph 1 - <a href="https://pixabay.com/photos/family-love-heart-reunion-winter-7727035/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Paragraph 2 - <a href="https://pixabay.com/illustrations/health-food-vegetable-person-9086445/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Paragraph 3 - <a href="https://www.istockphoto.com/photo/healthy-food-gm1887123734-553723077" target="_blank" rel="noopener noreferrer">Link</a></li>
+                    </ul>
+
+                    <li><b>Blog Page</b></li>
+                    <ul>
+                        <li>Why Farm-to-Table is Better for You - <a href="https://pixabay.com/photos/agriculture-vietnam-terraces-3732476/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>The Story Behind Swad: Our Farm-to-Table Mission -  <a href="https://pixabay.com/photos/time-reading-book-love-love-story-5342802/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>How Swad Supports Local Farmers and Communities - <a href="https://pixabay.com/photos/team-group-people-motivation-386673/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Seasonal Ingredients: What's Fresh This Spring? - <a href="https://pixabay.com/photos/tree-blossoms-blooms-spring-blossom-7022041/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Our Signature Dishes Made with Local Ingredients - <a href="https://pixabay.com/photos/loaf-sandwich-breakfast-fruit-3488727/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Healthy Eating: The Benefits of Eating Fresh, Local Foods - <a href="https://pixabay.com/photos/vegetables-water-droplets-fresh-1584999/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                    </ul>
                 </ul>
+                
             </ul>
         </div>
     );
