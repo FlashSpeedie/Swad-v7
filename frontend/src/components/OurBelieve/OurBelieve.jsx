@@ -5,7 +5,7 @@ const OurBelieve = () => {
     return (
         <section className="our-believe">
             <header className="section-header">
-                    <h1>About Our Beliefs, Mission, and Vision</h1>
+                    <h1>About Our Beliefs, Mission, and Approach</h1>
             </header>
             <div className="container">
                 <div className="block block1">
@@ -26,9 +26,9 @@ const OurBelieve = () => {
                     </p>
                 </div>
                 <div className="block block3">
-                    <h2>Our Vision</h2>
+                    <h2>Our Approach</h2>
                     <p>
-                        Our vision is to be a leader in the farm-to-table movement, inspiring other 
+                        Our approach is to be a leader in the farm-to-table movement, inspiring other 
                         restaurants to adopt sustainable practices and support local farmers. We aim 
                         to make a positive impact on our community and the environment.
                     </p>
