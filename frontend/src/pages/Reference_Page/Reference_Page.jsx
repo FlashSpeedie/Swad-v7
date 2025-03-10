@@ -14,6 +14,7 @@ const ReferencePage = () => {
                     <a href="https://swad-admin.onrender.com/" target="_blank" rel="noopener noreferrer" style={{ color: '#2980b9' }}> Click Here To Go To The Admin Page</a>
                 </p>
 
+
                 <h2>Copyright & Plan of Work Checklist</h2>
                 <ul className="source-list">
                     <li>
@@ -31,8 +32,10 @@ const ReferencePage = () => {
 
                 <h2>Images and Information</h2>
                 <ul className="source-list">
-                <li><b className="footer-links-title">Food Images Links:</b></li>
-                    
+                    <p>For the logo of our website we utilized Adobe Illustrator.</p>
+
+                    <li><b className="footer-links-title">Food Images Links:</b></li>
+
 
                     <li><b>Category: Salads</b></li>
                     <ul>
@@ -136,7 +139,7 @@ const ReferencePage = () => {
                         <li>Healthy Eating: The Benefits of Eating Fresh, Local Foods - <a href="https://pixabay.com/photos/vegetables-water-droplets-fresh-1584999/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
                 </ul>
-                
+
             </ul>
         </div>
     );
