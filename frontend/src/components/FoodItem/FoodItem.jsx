@@ -3,7 +3,7 @@ import './FoodItem.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 
-const FoodItem = ({ id, name, price, description, image }) => {
+const FoodItem = ({ id, name, price, description, image, category }) => {
   const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext); 
 
   return (
@@ -44,6 +44,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
           <img src={assets.rating_starts} alt="Rating stars" />
         </div>
         <p className="food-item-desc">{description || "No description available."}</p>
+        <p className="food-item-category">Category: {category || "Category not available"}</p>
         <p className="food-item-price">{price ? `$${price}` : "Price not available"}</p>
       </div>
     </div>

@@ -8,6 +8,7 @@ const CareerPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [locationFilter, setLocationFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const jobs = [
     { id: 1, title: 'Cashier', location: 'Tulsa', type: 'Part-Time', description: 'Handles customer transactions and ensures smooth operation.', requirements: 'Good communication skills.', salary: '$15/hour' },
@@ -33,6 +34,7 @@ const CareerPage = () => {
     setSelectedJob(job);
     setShowPopup(true);
     setApplying(false);
+    setSubmitted(false);
   };
 
   const handleApplyNow = () => {
@@ -43,6 +45,12 @@ const CareerPage = () => {
     setShowPopup(false);
     setSelectedJob(null);
     setApplying(false);
+    setSubmitted(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
   };
 
   return (
@@ -112,14 +120,21 @@ const CareerPage = () => {
                 <button className="apply-button" onClick={handleApplyNow}>Apply Now</button>
               </>
             ) : (
-              <form>
-                <h2>Application</h2>
-                <p>Applying for: {selectedJob.title}</p>
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email" required />
-                <input type="tel" placeholder="Phone Number" required />
-                <button type="submit">Submit</button>
-              </form>
+              submitted ? (
+                <div>
+                  <h2>Application Submitted</h2>
+                  <p>Thank you for applying for the {selectedJob.title} position. We will review your application and get back to you soon.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <h2>Application</h2>
+                  <p>Applying for: {selectedJob.title}</p>
+                  <input type="text" placeholder="Full Name" required />
+                  <input type="email" placeholder="Email" required />
+                  <input type="tel" placeholder="Phone Number" required />
+                  <button type="submit">Submit</button>
+                </form>
+              )
             )}
           </div>
         </div>

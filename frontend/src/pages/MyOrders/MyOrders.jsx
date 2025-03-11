@@ -34,6 +34,9 @@ const MyOrders = () => {
           const taxAmount = order.amount * 0.045;
           const totalAmount = order.amount + taxAmount;
 
+          // Calculate total quantity of food items
+          const totalQuantity = order.items.reduce((acc, item) => acc + item.quantity, 0);
+
           return (
             <div key={index} className="my-order-order">
               <img src={assets.parcel_icon} alt="" />
@@ -48,6 +51,7 @@ const MyOrders = () => {
               </p>
               <p>${totalAmount.toFixed(2)}</p> {/* Display only the total amount with tax */}
               <p>Items: {order.items.length}</p>
+              <p>Total Quantity: {totalQuantity}</p> {/* Display total quantity of food items */}
               <p>
                 <span>&#x25cf;</span>
                 <b> {order.status}</b>
