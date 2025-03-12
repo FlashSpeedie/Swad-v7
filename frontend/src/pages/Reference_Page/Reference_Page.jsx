@@ -25,14 +25,14 @@ const ReferencePage = () => {
                             rel="noopener noreferrer"
                             className="pdf-link"
                         >
-                            Open Copyright & Plan of Work Checklist Checklist PDF
+                            Open Copyright & Plan of Work Checklist PDF
                         </a>
                     </li>
                 </ul>
 
                 <h2>Images and Information</h2>
                 <ul className="source-list">
-                    <p>For the logo of our website we utilized Adobe Illustrator.</p>
+                    <p>For the logo of our website we used Adobe Illustrator.</p>
 
                     <li><b className="footer-links-title">Food Images Links:</b></li>
 
@@ -55,7 +55,7 @@ const ReferencePage = () => {
                         <li>Item: Twin Tomato Tortilla Burritos - <a href="https://pixabay.com/photos/burrito-food-mexican-tortilla-4126108/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
-                    <li><b>Category: Dessert</b></li>
+                    <li><b>Category: Desserts</b></li>
                     <ul>
                         <li>Item: Vegan Chocolate Mousse - <a href="https://pixabay.com/photos/chocolate-mousse-au-chocolat-cream-3913334/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Apple Cinnamon Crumble - <a href="https://pixabay.com/photos/food-drinks-apple-bake-brulee-2940287/" target="_blank" rel="noopener noreferrer">Link</a></li>
@@ -64,7 +64,7 @@ const ReferencePage = () => {
                         <li>Item: Raspberry Almond Tart - <a href="https://pixabay.com/photos/tart-raspberry-tart-dessert-cake-7322951/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
-                    <li><b>Category: Sandwich</b></li>
+                    <li><b>Category: Sandwiches</b></li>
                     <ul>
                         <li>Item: Grilled Veggie and Hummus Sandwich - <a href="https://pixabay.com/photos/bread-sandwich-food-plate-toast-1867208/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Avocado Toast with Roasted Tomatoes - <a href="https://pixabay.com/photos/toast-food-flat-lay-breakfast-6011147/" target="_blank" rel="noopener noreferrer">Link</a></li>
@@ -73,7 +73,7 @@ const ReferencePage = () => {
                         <li>Item: Falafel Pita - <a href="https://pixabay.com/photos/falafel-food-pitta-bread-1781656/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
-                    <li><b>Category: Cake</b></li>
+                    <li><b>Category: Cakes</b></li>
                     <ul>
                         <li>Item: Carrot Cake with Cream Cheese Frosting - <a href="https://pixabay.com/photos/carrot-carrot-cake-rawan-cake-cake-4343497/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Chocolate Raspberry Layer Cake - <a href="https://pixabay.com/photos/cake-berries-dessert-sweet-8233676/" target="_blank" rel="noopener noreferrer">Link</a></li>
@@ -111,11 +111,11 @@ const ReferencePage = () => {
 
                     <li><b>Category Images:</b></li>
                     <ul>
-                        <li>Salad - <a href="https://pixabay.com/photos/meal-salad-cucumbers-food-leaves-2834549/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Salads - <a href="https://pixabay.com/photos/meal-salad-cucumbers-food-leaves-2834549/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Rolls - <a href="https://pixabay.com/photos/burrito-tortilla-food-mexican-4126116/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                        <li>Dessert - <a href="https://pixabay.com/photos/dessert-berries-calories-ice-cream-1786311/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                        <li>Sandwich - <a href="https://pixabay.com/photos/bread-sandwich-food-plate-toast-1867208/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                        <li>Cake - <a href="https://pixabay.com/photos/cake-torte-dessert-sweet-fruit-1284548/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Desserts - <a href="https://pixabay.com/photos/dessert-berries-calories-ice-cream-1786311/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Sandwiches - <a href="https://pixabay.com/photos/bread-sandwich-food-plate-toast-1867208/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Cakes - <a href="https://pixabay.com/photos/cake-torte-dessert-sweet-fruit-1284548/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Vegan - <a href="https://pixabay.com/photos/vegan-vegan-food-potatos-food-4833041/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Pasta - <a href="https://pixabay.com/photos/tortelloni-pasta-tortellini-food-646680/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Noodles - <a href="https://pixabay.com/photos/feast-noodles-noodles-noodle-image-1168322/" target="_blank" rel="noopener noreferrer">Link</a></li>

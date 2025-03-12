@@ -10,15 +10,15 @@ const PlaceOrder = () => {
 
   // State for form data
   const [data, setData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    street: "",
-    city: "",
+    firstName: "Test",
+    lastName: "User",
+    email: "testuser@gmail.com",
+    street: "12345 Test Rd",
+    city: "Oklahoma City",
     state: "Oklahoma",
-    zipcode: "",
+    zipcode: "73025",
     country: "United States",
-    phone: "",
+    phone: "4051209327",
   });
 
   // State for payment method
@@ -88,7 +88,7 @@ const PlaceOrder = () => {
   const subtotal = getTotalCartAmount();
   const deliveryFee = subtotal === 0 ? 0 : 2;
   const taxRate = 0.045; // 4.5% tax rate
-  const taxes = (subtotal * taxRate) + 0.09 ;
+  const taxes = (subtotal * taxRate) + 0.09;
   const total = subtotal + taxes + deliveryFee;
 
   return (
@@ -182,6 +182,7 @@ const PlaceOrder = () => {
           value={data.phone}
           placeholder="Phone"
         />
+        <p>* To the actual users they have to fill in the First Name, Last Name, Email Address, Street, City, Zip Code, and their phone number.</p>
       </div>
       <div className="place-order-right">
         <div className="cart-total">
@@ -209,31 +210,16 @@ const PlaceOrder = () => {
           </div>
           <button className="proceed" type="submit">PROCEED TO PAYMENT</button>
         </div>
-        {/* <div className="payment-method">
-          <p className="title">Payment Method</p>
+        <div className="payment-method">
+          <p className="title">Payment Method (Test Mode)</p>
           <div className="payment-options">
-            <label>
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="card"
-                checked={paymentMethod === "card"}
-                onChange={() => setPaymentMethod("card")}
-              />
-              Card/Online
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="paymentMethod"
-                value="cash"
-                checked={paymentMethod === "cash"}
-                onChange={() => setPaymentMethod("cash")}
-              />
-              Cash
-            </label>
-          </div> */}
-        {/* </div> */}
+            <p>Email: testuser@gmail.com (Any Email)</p>
+            <p>Card Number: 4242 4242 4242 4242 (This is the dummy card)</p>
+            <p>MM/YY: 03/29 (Can be any date after today)</p>
+            <p>CVC: 231 (Any Numbers)</p>
+            <p>Zip Code: 12345 (Any Zip Code)</p>
+          </div>
+        </div>
       </div>
     </form>
   );

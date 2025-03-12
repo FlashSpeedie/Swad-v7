@@ -102,7 +102,6 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Contact Form Section on the right */}
       <div className="contact-form">
         <h2>Connect with us</h2>
         {!isSubmitted ? (

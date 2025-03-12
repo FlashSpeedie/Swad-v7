@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './FoodItem.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id, name, price, description, image, category }) => {
-  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext); 
+  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const [isTooltipVisible, setTooltipVisible] = useState(true); // State to handle tooltip visibility
+
+  const handleAddToCart = (id) => {
+    addToCart(id);
+    setTooltipVisible(false); // Hide tooltip when item is added
+  };
 
   return (
     <div className="food-item">
@@ -16,12 +22,17 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
         />
 
         {!cartItems?.[id] ? (
-          <img
-            className="add"
-            onClick={() => addToCart(id)} 
-            src={assets.add_icon_white}
-            alt="Add item"
-          />
+          <>
+            {isTooltipVisible && (
+              <div className="add-tooltip">Add to Cart</div>
+            )}
+            <img
+              className="add"
+              onClick={() => handleAddToCart(id)} 
+              src={assets.add_icon_white}
+              alt="Add item"
+            />
+          </>
         ) : (
           <div className="food-item-counter">
             <img
