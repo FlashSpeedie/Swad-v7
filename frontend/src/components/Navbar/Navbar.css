@@ -68,15 +68,11 @@ body {
 .navbar-right {
     position: absolute;
     right: 30px;
-    /* Small gap from the right */
     top: 10px;
-    /* Aligning to the top */
     display: flex;
     align-items: center;
     gap: 20px;
-    /* Reduced gap for better spacing */
 }
-
 
 .navbar-right img {
     width: 40px;
@@ -171,7 +167,6 @@ body {
     border-radius: 50%;
 }
 
-/* Hamburger Menu */
 .navbar-hamburger {
     display: none;
     cursor: pointer;
@@ -229,7 +224,6 @@ body {
     cursor: pointer;
 }
 
-/* Overlay background when the sidebar is open */
 .navbar-sidebar-overlay {
     position: fixed;
     top: 0;
@@ -271,7 +265,6 @@ body {
     background-color: #28a45c;
 }
 
-/* Ensure it fits nicely with the layout */
 .navbar-right .my-orders img {
     width: 30px;
     height: auto;
@@ -284,7 +277,6 @@ body {
     margin-bottom: 2px;
 }
 
-/* Responsive Design */
 @media (max-width: 1050px) {
     .navbar-logo {
         width: 45px;

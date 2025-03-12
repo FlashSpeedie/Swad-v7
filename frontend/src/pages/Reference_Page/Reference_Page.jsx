@@ -33,6 +33,8 @@ const ReferencePage = () => {
                 <h2>Images and Information</h2>
                 <ul className="source-list">
                     <p>For the logo of our website we used Adobe Illustrator.</p>
+                    <p>For the fonts of our website we used Google Fonts </p>
+                    <p>For the images in the menu we used Cloudinary</p>
 
                     <li><b className="footer-links-title">Food Images Links:</b></li>
 
