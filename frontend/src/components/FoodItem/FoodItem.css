@@ -71,10 +71,12 @@
   margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 15px;
   padding: 6px;
   border-radius: 50px;
   background-color: white;
+  margin-left: -12px;
 }
 
 .food-item-counter img {

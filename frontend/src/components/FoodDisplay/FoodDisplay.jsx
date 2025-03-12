@@ -20,7 +20,7 @@ const FoodDisplay = ({ category }) => {
                                 price={item.price} 
                                 image={item.image} 
                                 alt={`Image of ${item.name}`}
-                                category={item.category} // Added category prop
+                                category={item.category}
                             />
                         );
                     }
