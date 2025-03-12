@@ -71,7 +71,7 @@
   margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   padding: 6px;
   border-radius: 50px;
   background-color: white;
@@ -93,6 +93,9 @@
   padding-left: 4px;
   padding-right: 0px;
   text-align: center;
+  padding: 25px, 0px;
+  padding-left: 25px;
+  text-decoration: underline;
 }
 
 .add-to-cart-btn {

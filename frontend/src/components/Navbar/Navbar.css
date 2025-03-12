@@ -11,17 +11,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 260%;
+    width: 100%;
     top: 0;
     z-index: 1000;
     height: 100px;
-    position: sticky;
-    background: rgb(255, 255, 255);
-    margin-left: -310px;
 }
 
 .navbar-logo-container {
-    position: fixed;
+    position: absolute;
     left: 30px;
     top: 10px;
     display: flex;
@@ -34,7 +31,6 @@ body {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    margin-top: -20px;
 }
 
 .navbar-logo-text {
@@ -42,7 +38,6 @@ body {
     font-size: 3.5rem;
     color: #49557e;
     font-weight: 600;
-    margin-top: -15px;    
 }
 
 .navbar-menu {
@@ -71,13 +66,17 @@ body {
 }
 
 .navbar-right {
-    position: fixed;
+    position: absolute;
     right: 30px;
+    /* Small gap from the right */
     top: 10px;
+    /* Aligning to the top */
     display: flex;
     align-items: center;
     gap: 20px;
+    /* Reduced gap for better spacing */
 }
+
 
 .navbar-right img {
     width: 40px;
@@ -172,6 +171,7 @@ body {
     border-radius: 50%;
 }
 
+/* Hamburger Menu */
 .navbar-hamburger {
     display: none;
     cursor: pointer;
@@ -188,7 +188,7 @@ body {
 
 .navbar-sidebar {
     position: fixed;
-    top: 100px;
+    top: 0;
     right: -250px;
     width: 250px;
     height: 100vh;
@@ -229,6 +229,7 @@ body {
     cursor: pointer;
 }
 
+/* Overlay background when the sidebar is open */
 .navbar-sidebar-overlay {
     position: fixed;
     top: 0;
@@ -270,6 +271,7 @@ body {
     background-color: #28a45c;
 }
 
+/* Ensure it fits nicely with the layout */
 .navbar-right .my-orders img {
     width: 30px;
     height: auto;
@@ -282,6 +284,7 @@ body {
     margin-bottom: 2px;
 }
 
+/* Responsive Design */
 @media (max-width: 1050px) {
     .navbar-logo {
         width: 45px;

@@ -5,11 +5,10 @@ import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id, name, price, description, image, category }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
-  const [isTooltipVisible, setTooltipVisible] = useState(true); // State to handle tooltip visibility
-  const [isItemAdded, setItemAdded] = useState(false); // State to track if item is added to the cart
+  const [isTooltipVisible, setTooltipVisible] = useState(true);
+  const [isItemAdded, setItemAdded] = useState(false);
 
   useEffect(() => {
-    // If the item is in the cart, show the "Item added" message
     if (cartItems?.[id] > 0) {
       setItemAdded(true);
     } else {
@@ -19,7 +18,7 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
 
   const handleAddToCart = (id) => {
     addToCart(id);
-    setTooltipVisible(false); // Hide tooltip when item is added
+    setTooltipVisible(false);
   };
 
   const handleRemoveFromCart = (id) => {
@@ -55,7 +54,14 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
 
         { isItemAdded && (
           <div className="food-item-counter">
-            <div className="item-added-message">✔ Item added to the basket</div>
+            <a 
+              href="/cart" 
+              className="item-added-message"
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <img src={assets.basket_icon} alt="Cart" className="cart-icon" style={{ marginRight: '5px' }} />
+              Go to Basket
+            </a>
             <img
               onClick={() => handleRemoveFromCart(id)} 
               src={assets.remove_icon_red}
