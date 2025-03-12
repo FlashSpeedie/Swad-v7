@@ -8,13 +8,10 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
   const [isTooltipVisible, setTooltipVisible] = useState(true);
   const [isItemAdded, setItemAdded] = useState(false);
 
-  // useEffect to sync state with cartItems
   useEffect(() => {
-    // Check if the current item is in the cart
     setItemAdded(cartItems?.[id] > 0);
   }, [cartItems, id]);
 
-  // Handle adding item to cart
   const handleAddToCart = (id) => {
     if (cartItems[id] < 20) {
       addToCart(id);
@@ -22,7 +19,6 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
     }
   };
 
-  // Handle removing item from cart
   const handleRemoveFromCart = (id) => {
     removeFromCart(id);
   };
