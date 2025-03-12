@@ -16,8 +16,8 @@ body {
     z-index: 1000;
     height: 100px;
     position: sticky;
-    background: rgb(255, 255, 255);
-    margin-left: -120px;
+    background: rgb(216, 8, 8);
+    margin-left: -210px;
 }
 
 .navbar-logo-container {
@@ -34,6 +34,7 @@ body {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    margin-top: -20px;
 }
 
 .navbar-logo-text {
@@ -41,6 +42,7 @@ body {
     font-size: 3.5rem;
     color: #49557e;
     font-weight: 600;
+    margin-top: -15px;    
 }
 
 .navbar-menu {
