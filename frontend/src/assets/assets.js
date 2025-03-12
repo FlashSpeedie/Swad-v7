@@ -31,6 +31,7 @@ import land from './land.png'
 import farmer from './farmer.png'
 import celebrate from './celebrate.png'
 import food from './food.png'
+import reserve from './reserve.png'
 
 export const assets = {
     logo,
@@ -56,7 +57,8 @@ export const assets = {
     land,
     farmer,
     celebrate,
-    food
+    food,
+    reserve
 }
 
 export const menu_list = [

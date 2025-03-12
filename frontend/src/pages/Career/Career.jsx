@@ -71,6 +71,7 @@ const CareerPage = () => {
         <select className="dropdown" onChange={(e) => setLocationFilter(e.target.value)}>
           <option value="">All Locations</option>
           <option value="Edmond">Edmond</option>
+          <option value="Oklahoma">Oklahoma</option>
           <option value="Tulsa">Tulsa</option>
         </select>
         <select className="dropdown" onChange={(e) => setTypeFilter(e.target.value)}>

@@ -17,8 +17,10 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
   }, [cartItems, id]);
 
   const handleAddToCart = (id) => {
-    addToCart(id);
-    setTooltipVisible(false);
+    if (cartItems[id] < 20) {
+      addToCart(id);
+      setTooltipVisible(false);
+    }
   };
 
   const handleRemoveFromCart = (id) => {
@@ -72,6 +74,7 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
               onClick={() => handleAddToCart(id)} 
               src={assets.add_icon_green}
               alt="Add item"
+              style={{ cursor: cartItems[id] >= 20 ? 'not-allowed' : 'pointer' }}
             />
           </div>
         )}

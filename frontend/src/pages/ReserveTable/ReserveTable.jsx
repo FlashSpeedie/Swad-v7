@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Reserve.css";
+import { assets } from "../../assets/assets";
 
 const Reserve = () => {
   const [date, setDate] = useState("");
@@ -7,7 +8,7 @@ const Reserve = () => {
   const [selectedTime, setSelectedTime] = useState("");
   const [showDetailsForm, setShowDetailsForm] = useState(false);
   const [phone, setPhone] = useState("");
-  const [isConfirmed, setIsConfirmed] = useState(false); // Added state for confirmation
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
@@ -28,8 +29,8 @@ const Reserve = () => {
   };
 
   const handlePhoneChange = (event) => {
-    let input = event.target.value.replace(/\D/g, ""); // Remove all non-digit characters
-    if (input.length > 10) input = input.slice(0, 10); // Limit to 10 digits
+    let input = event.target.value.replace(/\D/g, "");
+    if (input.length > 10) input = input.slice(0, 10);
 
     const formattedPhone = input.replace(
       /(\d{3})(\d{3})(\d{4})/,
@@ -45,16 +46,15 @@ const Reserve = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    setIsConfirmed(true); // Show confirmation message
+    setIsConfirmed(true);
   };
 
   return (
     <div className="reserve-container">
-      {/* Top Section with Garden Image and Text */}
       <div className="top-section">
         <img
           className="top-section-image"
-          src="https://cdn.pixabay.com/photo/2023/10/04/20/31/sunrise-8294459_1280.jpg"
+          src={assets.reserve}
           alt="Beautiful Garden Seating"
         />
         <div className="top-section-text">
@@ -66,11 +66,9 @@ const Reserve = () => {
         </div>
       </div>
 
-      {/* Reservation Functionality */}
       {!isConfirmed && (
         <>
           <div className="date-time-section">
-            {/* Date Selection */}
             <div className="column">
               <label className="label-text" htmlFor="reservationDate">
                 Date:
@@ -84,11 +82,10 @@ const Reserve = () => {
                 className={`input-field ${!isValidDate ? "error" : ""}`}
               />
               {!isValidDate && (
-                <p className="error-text">Please select a valid date.</p>
+                <p className="error-text">Please select a future date.</p>
               )}
             </div>
 
-            {/* Time Selection */}
             {isValidDate && date && (
               <div className="column">
                 <label className="label-text">Time:</label>
@@ -112,7 +109,6 @@ const Reserve = () => {
             )}
           </div>
 
-          {/* Details Form */}
           {showDetailsForm && (
             <div className="details-form">
               <h3 className="form-title">Your Details</h3>
@@ -212,7 +208,6 @@ const Reserve = () => {
         </>
       )}
 
-      {/* Confirmation Section */}
       {isConfirmed && (
         <div id="reservationConfirmation" className="text-center">
           <svg

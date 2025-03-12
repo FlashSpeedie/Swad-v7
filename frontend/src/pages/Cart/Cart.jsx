@@ -16,9 +16,26 @@ const Cart = () => {
   const navigate = useNavigate();
 
   // Handle quantity change
-  const handleQuantityChange = (itemId, value) => {
-    const quantity = Math.max(0, Math.min(20, value)); // Ensure quantity is between 0 and 20
-    updateCartItem(itemId, quantity); // Update the cart with new quantity
+  const handleQuantityChange = async (itemId, value) => {
+    const quantity = Math.max(0, Math.min(20, value)); 
+    updateCartItem(itemId, quantity); 
+
+    // Update the quantity in the database
+    try {
+      const response = await fetch(`${url}/update-cart-item`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ itemId, quantity }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update cart item in the database');
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
