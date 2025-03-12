@@ -9,12 +9,9 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
   const [isItemAdded, setItemAdded] = useState(false);
 
   useEffect(() => {
-    if (cartItems?.[id] > 0) {
-      setItemAdded(true);
-    } else {
-      setItemAdded(false);
-    }
-  }, [cartItems, id]);
+    // Check if the item is in the cart and update isItemAdded
+    setItemAdded(cartItems?.[id] > 0);
+  }, [cartItems, id]); // Re-run whenever cartItems or id changes
 
   const handleAddToCart = (id) => {
     if (cartItems[id] < 20) {
