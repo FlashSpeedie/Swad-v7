@@ -185,7 +185,7 @@ body {
 
 .navbar-sidebar {
     position: fixed;
-    top: 0;
+    top: 100px;
     right: -250px;
     width: 250px;
     height: 100vh;
