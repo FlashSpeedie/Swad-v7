@@ -43,9 +43,18 @@
     border: none;
     padding: 12px 0px;
     border-radius: 4px;
-    background-color: #e4ffe1;
+    background-color: #009919;
     cursor: pointer;
-    color: #454545;
+    color: #ffffff;
+}
+
+.my-order-order button :hover {
+    border: none;
+    padding: 12px 0px;
+    border-radius: 4px;
+    background-color: #018606;
+    cursor: pointer;
+    color: #e2e2e2;
 }
 
 @media (max-width:900px) {

@@ -30,11 +30,8 @@ const MyOrders = () => {
       <h2>Orders</h2>
       <div className="container">
         {data.map((order, index) => {
-          // Calculate tax and total amount (without displaying tax)
           const taxAmount = order.amount * 0.045;
           const totalAmount = order.amount + taxAmount;
-
-          // Calculate total quantity of food items
           const totalQuantity = order.items.reduce((acc, item) => acc + item.quantity, 0);
 
           return (
@@ -49,9 +46,9 @@ const MyOrders = () => {
                   }
                 })}
               </p>
-              <p>${totalAmount.toFixed(2)}</p> {/* Display only the total amount with tax */}
+              <p>${totalAmount.toFixed(2)}</p>
               <p>Items: {order.items.length}</p>
-              <p>Total Quantity: {totalQuantity}</p> {/* Display total quantity of food items */}
+              <p>Total Quantity: {totalQuantity}</p>
               <p>
                 <span>&#x25cf;</span>
                 <b> {order.status}</b>
