@@ -17,8 +17,10 @@
 .navbar-logo {
     width: 60px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 0%;
     object-fit: cover;
+    background-color: transparent;
+    transform: rotate(-25deg);
 }
 
 .navbar-logo-text {

@@ -36,7 +36,6 @@ const Navbar = () => {
         <a href="/add" className={`navbar-item ${location.pathname === '/add-items' ? 'active' : ''}`}>Add Items</a>
         <a href="/list" className={`navbar-item ${location.pathname === '/list-items' ? 'active' : ''}`}>List Items</a>
         <a href="/orders" className={`navbar-item ${location.pathname === '/orders' ? 'active' : ''}`}>Orders</a>
-        <a href="/sales" className={`navbar-item ${location.pathname === '/sales-report' ? 'active' : ''}`}>Sales Report</a>
         <a href="/message" className={`navbar-item ${location.pathname === '/messages' ? 'active' : ''}`}>Messages</a>
       </div>
     </div>
