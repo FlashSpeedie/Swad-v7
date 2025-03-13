@@ -39,7 +39,7 @@
   }
   
   input:focus {
-  border-color: #f16322;
+  border-color: #018606;
   }
   
   input::placeholder {
@@ -71,6 +71,10 @@
 
   .cart-total .proceed{
   margin-top: 20px;
+  background-color: #009919;
+  }
+  .cart-total .proceed:hover{
+  background-color: #018606;
   }
   
   .cart-total-details div {
@@ -93,7 +97,7 @@
   button[type="submit"] {
   width: 100%;
   padding: 15px;
-  background-color: #f16322;
+  background-color: #37f122;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -103,7 +107,7 @@
   }
   
   button[type="submit"]:hover {
-  background-color: #e14a13;
+  background-color: #21e113;
   }
   
   @media screen and (max-width: 768px) {
@@ -151,17 +155,6 @@
   font-size: 16px;
   color: #555;
   cursor: pointer;
-}
-
-.payment-options input[type="radio"] {
-  width: 18px;
-  height: 18px;
-  accent-color: #007bff;
-  cursor: pointer;
-}
-
-.payment-options label:hover {
-  color: #007bff;
 }
 
 .payment-method {

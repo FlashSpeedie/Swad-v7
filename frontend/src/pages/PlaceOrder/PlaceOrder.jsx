@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
 
-  // State for form data
   const [data, setData] = useState({
     firstName: "Test",
     lastName: "User",
@@ -21,16 +20,13 @@ const PlaceOrder = () => {
     phone: "4051209327",
   });
 
-  // State for payment method
   const [paymentMethod, setPaymentMethod] = useState("card");
 
-  // Handle input changes
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  // Handle order placement
   const placeOrder = async (event) => {
     event.preventDefault();
 
@@ -49,7 +45,7 @@ const PlaceOrder = () => {
     const orderData = {
       address: data,
       items: orderItems,
-      amount: getTotalCartAmount() + 2, // Adding delivery fee
+      amount: getTotalCartAmount() + 2,
       paymentMethod,
     };
 
@@ -84,10 +80,9 @@ const PlaceOrder = () => {
     }
   }, [token, getTotalCartAmount, navigate]);
 
-  // Calculate cart totals
   const subtotal = getTotalCartAmount();
   const deliveryFee = subtotal === 0 ? 0 : 2;
-  const taxRate = 0.045; // 4.5% tax rate
+  const taxRate = 0.045;
   const taxes = (subtotal * taxRate) + 0.09;
   const total = subtotal + taxes + deliveryFee;
 
