@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 4%;
+    flex-wrap: wrap;
 }
 
 .navbar-logo-container {
@@ -14,18 +15,17 @@
 }
 
 .navbar-logo {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .navbar-logo-text {
     font-family: 'Dancing Script', cursive;
-    font-size: 2rem;
-    color: #49557e;
+    font-size: 3.5rem;
+    color: green;
     font-weight: 600;
-    margin: 0;
 }
 
 .navbar-admin-text {
@@ -39,14 +39,16 @@
 .profile {
     width: 50px;
 }
+
 .navbar-menu {
     display: flex;
     gap: 30px;
     justify-content: center;
     flex-grow: 1;
+    margin-left: 50px;
 }
 
-.navbar-menu-item {
+.navbar-item {
     font-family: 'Times New Roman', serif;
     font-size: 1rem;
     font-weight: bold;
@@ -55,6 +57,88 @@
     transition: color 0.3s ease;
 }
 
-.navbar-menu-item:hover {
+.navbar-item:hover {
     color: #ff6347;
+}
+
+.navbar-item.active {
+    color: #ff6347;
+}
+
+/* Hamburger menu styles */
+.navbar-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger-bar {
+    width: 30px;
+    height: 4px;
+    background-color: #49557e;
+    transition: transform 0.3s ease;
+}
+
+.hamburger-bar.active:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-bar.active:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-bar.active:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 8px 2%;
+    }
+
+    .navbar-logo-text {
+        font-size: 2.5rem;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 15px;
+        margin-left: 0;
+        align-items: center;
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-menu.open {
+        display: flex;
+    }
+
+    .navbar-item {
+        font-size: 1.2rem;
+    }
+
+    /* Show hamburger on small screens */
+    .navbar-hamburger {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .navbar-logo-text {
+        font-size: 2rem;
+    }
+
+    .navbar-admin-text {
+        font-size: 0.9rem;
+    }
+
+    .navbar-menu {
+        gap: 10px;
+    }
+
+    .navbar-item {
+        font-size: 1.1rem;
+    }
 }
