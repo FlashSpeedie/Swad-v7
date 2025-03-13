@@ -1,14 +1,6 @@
 .our-believe {
     background-color: transparent;
     padding: 50px 0;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
 }
 
 .our-believe .container {
@@ -28,18 +20,6 @@
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    opacity: 0;
-    animation: fadeIn 1s forwards, rotateIn 1s forwards;
-    animation-delay: 0.5s;
-}
-
-@keyframes rotateIn {
-    from {
-        transform: rotate(-360deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
 }
 
 .our-believe .block:hover {
@@ -72,9 +52,6 @@
 .section-header {
     text-align: left;
     margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-    animation-delay: 0.2s;
 }
 
 .section-header h1 {
