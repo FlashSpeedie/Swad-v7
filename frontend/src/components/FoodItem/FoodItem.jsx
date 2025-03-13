@@ -6,32 +6,36 @@ import { StoreContext } from '../../context/StoreContext';
 const FoodItem = ({ id, name, price, description, image, category }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
   const [isTooltipVisible, setTooltipVisible] = useState(true);
-  const [isItemAdded, setItemAdded] = useState(false);
+  const [isItemAdded, setItemAdded] = useState(cartItems?.[id] > 0); // Initialize based on current cart state
 
   useEffect(() => {
-    if (cartItems?.[id] > 0) {
-      setItemAdded(true);
-    } else {
-      setItemAdded(false);
-    }
-  }, [cartItems, id]);
+    console.log('cartItems in useEffect:', cartItems); // Debugging cartItems in useEffect
+    setItemAdded(cartItems?.[id] > 0);
+  }, [cartItems, id]);  // This ensures it reflects changes when cartItems update
 
   const handleAddToCart = (id) => {
+    console.log('handleAddToCart called for id:', id);
     if (cartItems[id] < 20) {
       addToCart(id);
-      setTooltipVisible(false);
+      setTooltipVisible(false); // Optionally, hide tooltip
+      console.log('Added item to cart. Updated cartItems:', cartItems); // Debug after adding
     }
   };
 
   const handleRemoveFromCart = (id) => {
+    console.log('handleRemoveFromCart called for id:', id);
     removeFromCart(id);
+    setTooltipVisible(true); // Show tooltip when item is removed
+    console.log('Removed item from cart. Updated cartItems:', cartItems); // Debug after removing
   };
+
+  console.log('Rendering FoodItem component. isItemAdded:', isItemAdded); // Debug rendering state
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
         <img
-          src={image ? image : assets.fallback_image} 
+          src={image ? image : assets.fallback_image}
           alt={name || "Food Item"}
           className="food-item-image"
         />
