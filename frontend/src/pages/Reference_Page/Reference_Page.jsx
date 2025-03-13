@@ -38,6 +38,7 @@ const ReferencePage = () => {
                     <p>We designed our own logo using Adobe Illustrator</p>
                     <p>We used Google Fonts for our website fonts </p>
                     <p>We used Cloudinary to host our images see image links below</p>
+                    <p>For the icons on our website we used Icon8</p>
 
                     <li><b className="footer-links-title">Food Images Links:</b></li>
 
