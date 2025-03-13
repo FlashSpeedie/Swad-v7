@@ -14,7 +14,7 @@ const PlaceOrder = () => {
     lastName: "User",
     email: "testuser@gmail.com",
     street: "12345 Test Rd",
-    city: "Oklahoma City",
+    city: "Oklahoma",
     state: "Oklahoma",
     zipcode: "73025",
     country: "United States",
