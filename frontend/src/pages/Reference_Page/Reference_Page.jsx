@@ -132,7 +132,7 @@ const ReferencePage = () => {
                     <ul>
                         <li>Paragraph 1 - <a href="https://pixabay.com/photos/family-love-heart-reunion-winter-7727035/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Paragraph 2 - <a href="https://pixabay.com/illustrations/health-food-vegetable-person-9086445/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                        <li>Paragraph 3 - <a href="https://www.istockphoto.com/photo/healthy-food-gm1887123734-553723077" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Paragraph 3 - <a href="https://www.pexels.com/photo/flat-lay-photography-of-vegetable-salad-on-plate-1640777/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
                     <li><b>Blog Page</b></li>
