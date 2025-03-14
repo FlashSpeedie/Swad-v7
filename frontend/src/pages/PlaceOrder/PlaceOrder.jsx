@@ -177,7 +177,7 @@ const PlaceOrder = () => {
           value={data.phone}
           placeholder="Phone"
         />
-        <p>* To the actual users they have to fill in the First Name, Last Name, Email Address, Street, City, Zip Code, and their phone number.</p>
+        <p>* On the production website users have to fill in the First Name, Last Name, Email Address, Street, City, Zip Code, and their phone number. <b>For the competition, this information is auto filled but remains changeable.</b></p>
       </div>
       <div className="place-order-right">
         <div className="cart-total">
@@ -209,10 +209,11 @@ const PlaceOrder = () => {
           <p className="title">Payment Method (Test Mode)</p>
           <div className="payment-options">
             <p>Email: testuser@gmail.com (Any Email)</p>
-            <p>Card Number: 4242 4242 4242 4242 (This is the dummy card)</p>
+            <p>Card Number: 4242 4242 4242 4242 (This is the dummy card to be used)</p>
             <p>MM/YY: 03/29 (Can be any date after today)</p>
-            <p>CVC: 231 (Any Numbers)</p>
-            <p>Zip Code: 12345 (Any Zip Code)</p>
+            <p>CVC: 231 (Any 3 digit number)</p>
+            <p>Zip Code: 12345 (Any 5 digit number)</p>
+            <p>Uncheck "Save my info for 1-click checkout with Link"</p>
           </div>
         </div>
       </div>
