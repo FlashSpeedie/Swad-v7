@@ -14,12 +14,16 @@ const Reserve = () => {
     const selectedDate = event.target.value;
     const today = new Date().toISOString().split("T")[0];
 
-    if (selectedDate >= today) {
-      setDate(selectedDate);
-      setIsValidDate(true);
-      setShowDetailsForm(false);
+    setDate(selectedDate);
+    if (selectedDate.length === 10) {
+      if (selectedDate >= today) {
+        setIsValidDate(true);
+        setShowDetailsForm(false);
+      } else {
+        setIsValidDate(false);
+      }
     } else {
-      setIsValidDate(false);
+      setIsValidDate(true);
     }
   };
 
