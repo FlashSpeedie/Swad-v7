@@ -1,15 +1,20 @@
-.login-popup{
-    position: absolute;
-    z-index: 1;
+.login-popup {
+    position: fixed;
+    /* Change to fixed to ensure it stays in place */
+    z-index: 9999;
+    /* High z-index to bring it in front of everything */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: #00000090;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Dark gray background with transparency */
     display: grid;
 }
 
-.login-popup-container{
+.login-popup-container {
     place-self: center;
-    width: max(23vw,330px);
+    width: max(23vw, 330px);
     color: #808080;
     background-color: white;
     display: flex;
@@ -19,216 +24,69 @@
     border-radius: 8px;
     font-size: 14px;
     animation: fadeIn 0.5s;
+    z-index: 10000;
+    /* Ensure the container is above the background */
+    position: relative;
+    /* For positioning child elements */
 }
 
-.login-popup-title{
+.login-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: black;
-}
-
-.login-popup-title img{
-    width: 16px;
-    cursor: pointer;
-}
-
-.login-popup-inputs{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.login-popup-inputs input{
-    outline: none;
-    border: 1px solid #c9c9c9;
-    padding: 10px;
-    border-radius: 4px;
-    position: relative;
-}
-
-.password-strength-bar {
-    height: 5px;
-    border-radius: 4px;
-    background-color: #e0e0e0;
-    margin-top: 5px;
-}
-
-.password-strength-bar div {
-    height: 100%;
-    border-radius: 4px;
-}
-
-.strength-weak {
-    width: 33%;
-    background-color: red;
-}
-
-.strength-medium {
-    width: 66%;
-    background-color: orange;
-}
-
-.strength-strong {
-    width: 100%;
-    background-color: green;
-}
-
-.password-input-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.password-input-container input {
-    flex: 1;
-}
-
-.password-input-container img {
-    position: absolute;
-    right: 10px;
-    width: 20px;
-    cursor: pointer;
-}
-
-.login-popup-container button{
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    color: white;
-    /* background-color: green; */
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.login-popup-container button:hover{
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    color: white;
-    background-color: darkgreen;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-.login-popup-condition {
-    display: flex;
-    align-items: center; /* Align checkbox and text vertically */
-    gap: 10px; /* Adjust the space between checkbox and text */
-    line-height: 1.4; /* Improve text readability */
-    margin-top: 5px; /* Reduce excessive spacing above */
-}
-
-.login-popup-condition input {
-    margin: 0; /* Remove any default margin */
-    width: 15%;
-}
-
-.login-popup-condition p {
-    margin: 0; /* Remove extra margins for the text */
-    flex: 1; /* Allow the text to take remaining space */
-}
-
-.login-popup p span{
-    color: green;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.login-popup-condition a {
-    color: blue;
-    text-decoration: none;
-}
-
-.login-popup-condition a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    .login-popup-condition {
-        flex-wrap: wrap; 
-        align-items: flex-start;
-    }
-    .login-popup-condition p {
-        margin: 0;
-    }
-}
-
-/* CSS for the eye icon and password strength bar */
-.password-input-container {
-    position: relative;
-}
-
-.password-toggle-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    background-color: transparent;
-}
-
-.password-strength {
-    margin-top: 10px;
-}
-
-.password-strength p {
-    margin: 0;
+    font-size: 18px;
     font-weight: bold;
 }
 
-.password-strength ul {
-    list-style: none;
-    padding: 0;
+.close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #808080;
 }
 
-.password-strength li {
-    margin: 5px 0;
-    padding-left: 20px;
+.password-container {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.password-strength li::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+.password-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 35px;
+    /* room for eye icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.eye-icon {
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.password-strength .valid::before {
-    background-color: green;
-}
-
-.password-strength .invalid::before {
-    background-color: red;
-}
-
-.password-toggle-icon {
-    position: absolute;
-    right: 10px;
+    right: 15px;
     top: 35%;
     transform: translateY(-50%);
     cursor: pointer;
-    background: none;
-    border: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
     color: #808080;
-    
 }
 
-.password-toggle-icon:hover {
+.eye-icon:hover {
     color: #000;
 }
 
-svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
-    color: grey;
+.login-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.close-button:hover {
+    transform: scale(1.2);
 }

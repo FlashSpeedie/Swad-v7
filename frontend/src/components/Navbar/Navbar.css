@@ -27,12 +27,11 @@ body {
 }
 
 .navbar-logo {
-    width: 60px;
+    width: 70px;
     height: auto;
     border-radius: 0%;
     object-fit: cover;
     background-color: transparent;
-    transform: rotate(-25deg);
 }
 
 .navbar-logo-text {
@@ -357,8 +356,8 @@ body {
 
 @media (max-width: 450px) {
     .navbar-logo {
-        width: 45px;
-        height: 45px;
+        width: 60px;
+        height: 60px;
         transform: translateY(-5px);
     }
 

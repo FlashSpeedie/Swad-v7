@@ -16,11 +16,13 @@ const Navbar = ({ setShowLogin }) => {
     const currentPath = location.pathname;
     if (currentPath.includes("menu")) setMenu("Menu");
     else if (currentPath.includes("reserve")) setMenu("Reservation");
-    else if (currentPath.includes("contact")) setMenu("Contact Us");
+    else if (currentPath.includes("locations")) setMenu("Locations");
     else if (currentPath.includes("reference")) setMenu("Reference Page");
     else if (currentPath.includes("ai-swad")) setMenu("AI - Swad");
     else setMenu("Home");
   }, [location]);
+
+  // Commented out auto-login functionality
 
   useEffect(() => {
     const autoLogin = async () => {
@@ -46,6 +48,7 @@ const Navbar = ({ setShowLogin }) => {
 
     autoLogin();
   }, [token, setToken, url]);
+
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -89,11 +92,11 @@ const Navbar = ({ setShowLogin }) => {
           </li>
           <li>
             <Link
-              to="/contact"
-              onClick={() => setMenu("Contact Us")}
-              className={menu === "Contact Us" ? "active" : ""}
+              to="/locations"
+              onClick={() => setMenu("Locations")}
+              className={menu === "Locations" ? "active" : ""}
             >
-              Contact Us
+              Locations
             </Link>
           </li>
           <li>
@@ -124,16 +127,21 @@ const Navbar = ({ setShowLogin }) => {
             </Link>
             <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
           </div>
+          <div className="my-orders" onClick={() => navigate("/myorders")}>
+            <img src={assets.bag_icon} alt="Basket" />
+            <p>My Orders</p>
+          </div>
+
           {/* {!token ? (
             <button onClick={() => setShowLogin(true)}>Sign In</button>
           ) : (
             <div className="navbar-profile">
               <img src={assets.profile_icon} alt="" className="navbar-profile-icon" />
               <ul className="nav-profile-dropdown">
-                {/* <li onClick={() => navigate("/contact")}>
+                <li onClick={() => navigate("/contact")}>
                   <img src={assets.profile_icon} alt="" />
-                  {/* <p>Profile</p>
-                </li> </div>
+                  <p>Profile</p>
+                </li>
                 <hr />
                 <li onClick={() => navigate("/myorders")}>
                   <img src={assets.bag_icon} alt="" />
@@ -143,15 +151,10 @@ const Navbar = ({ setShowLogin }) => {
                 <li onClick={logout}>
                   <img src={assets.logout_icon} alt="" />
                   <p>Logout</p>
-                </li> 
+                </li>
               </ul>
             </div>
           )} */}
-          <div className="my-orders" onClick={() => navigate("/myorders")}>
-            <img src={assets.bag_icon} alt="Basket" />
-            <p>My Orders</p>
-          </div>
-
         </div>
         <div className="navbar-hamburger" onClick={toggleSidebar}>
           <div></div>
@@ -165,7 +168,7 @@ const Navbar = ({ setShowLogin }) => {
         <ul>
           <li onClick={() => { navigate("/"); setMenu("Home"); toggleSidebar(); }}>Home</li>
           <li onClick={() => { navigate("/reserve"); setMenu("Reservation"); toggleSidebar(); }}>Table Reservation</li>
-          <li onClick={() => { navigate("/contact"); setMenu("Contact Us"); toggleSidebar(); }}>Contact Us</li>
+          <li onClick={() => { navigate("/locations"); setMenu("Locations"); toggleSidebar(); }}>Locations</li>
           <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); toggleSidebar(); }}>Reference Page</li>
           <li onClick={() => { navigate("/myorders"); setMenu("My Orders"); toggleSidebar(); }}>My Orders</li>
 

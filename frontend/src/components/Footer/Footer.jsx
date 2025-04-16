@@ -16,10 +16,11 @@ const Footer = () => {
                 </div>
                 <div className="footer-links">
                     <ul>
+                        <li onClick={() => navigate('/contact')}>Contact Us</li>
                         <li onClick={() => navigate('/about')}>About Us</li>
+                        <li onClick={() => navigate('/donate')}>Donations</li>
                         <li onClick={() => navigate('/blog')}>Blog</li>
                         <li onClick={() => navigate('/careers')}>Careers</li>
-                        {/* <li onClick={() => navigate('/gift-cards')}>Gift Cards</li> */}
                     </ul>
                 </div>
             </div>

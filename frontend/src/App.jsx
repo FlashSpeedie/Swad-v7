@@ -20,6 +20,8 @@ import GiftCard from './pages/GiftCard/GiftCard'
 import Reference_Page from './pages/Reference_Page/Reference_Page';
 import Career from './pages/Career/Career';
 import AI_Swad from './pages/AI_Swad/AI_Swad';
+import Popup from './components/Popup/Popup';
+import Locations from './pages/Locations/Locations';
 
 
 const App = () => {
@@ -29,6 +31,7 @@ const App = () => {
     <>
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <ScrollToTop />
+      <Popup />
       <div className="app">
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
@@ -48,6 +51,8 @@ const App = () => {
           <Route path='/careers' element={<Career/>}/>
           <Route path='/reference' element={<Reference_Page/>}/>
           <Route path='/ai-swad' element={<AI_Swad/>}/>
+          <Route path='/locations' element={<Locations/>}/>
+          
 
         </Routes>
       </div>

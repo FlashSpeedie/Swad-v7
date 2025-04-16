@@ -108,7 +108,6 @@
     height: auto;
     border-radius: 50%;
     object-fit: cover;
-    transform: rotate(-25deg);
 }
 
 .footer-logo-text {
