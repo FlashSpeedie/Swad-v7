@@ -1,25 +1,93 @@
-import React from 'react'
-import './ExploreMenu.css'
-import { menu_list } from '../../assets/assets'
+import React, { useRef, useState, useEffect } from 'react';
+import './ExploreMenu.css';
+import { assets, menu_list } from '../../assets/assets';
 
 const ExploreMenu = ({ category, setCategory }) => {
+  const menuRef = useRef(null);
+  const [isScrollNeeded, setIsScrollNeeded] = useState(false);
+  const [scrollLeftVisible, setScrollLeftVisible] = useState(false);
+  const [scrollRightVisible, setScrollRightVisible] = useState(false);
+
+  const scrollMenu = (direction) => {
+    const scrollAmount = direction === 'right' ? 200 : -200;
+    if (menuRef.current) {
+      menuRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const updateScrollVisibility = () => {
+    if (menuRef.current) {
+      const menu = menuRef.current;
+      const scrollLeft = menu.scrollLeft;
+      const maxScrollLeft = menu.scrollWidth - menu.clientWidth;
+
+      setIsScrollNeeded(menu.scrollWidth > menu.clientWidth);
+      setScrollLeftVisible(scrollLeft > 5);
+      setScrollRightVisible(scrollLeft < maxScrollLeft - 5);
+    }
+  };
+
+  useEffect(() => {
+    const menu = menuRef.current;
+    if (menu) {
+      updateScrollVisibility();
+      menu.addEventListener('scroll', updateScrollVisibility);
+    }
+
+    window.addEventListener('resize', updateScrollVisibility);
+
+    return () => {
+      if (menu) menu.removeEventListener('scroll', updateScrollVisibility);
+      window.removeEventListener('resize', updateScrollVisibility);
+    };
+  }, []);
+
   return (
-    <div className='explore-menu' id='explore-menu'>
+    <div className="explore-menu" id="explore-menu">
       <h1>Menu</h1>
-      <div className="explore-menu-list">
-        {menu_list.map((item, index) => (
-          <div onClick={() => setCategory(prev => (prev === item.menu_name ? "All" : item.menu_name))} key={index} className="explore-menu-list-item">
-            <img className={category === item.menu_name ? "active" : ""} src={item.menu_image} alt={item.menu_name} />
-            <p>{item.menu_name}</p>
+      <div className="explore-menu-list-container">
+        {scrollLeftVisible && (
+          <div className="scroll-arrow left" onClick={() => scrollMenu('left')}>
+            <div className="arrow-circle"><svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+              <path d="M16 4L8 12L16 20" stroke="#009919" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            </div>
           </div>
-        ))}
+        )}
+
+        <div className="explore-menu-list" ref={menuRef}>
+          {menu_list.map((item, index) => (
+            <div
+              key={index}
+              className="explore-menu-list-item"
+              onClick={() => setCategory(prev => (prev === item.menu_name ? 'All' : item.menu_name))}
+            >
+              <img
+                src={item.menu_image}
+                alt={item.menu_name}
+                className={category === item.menu_name ? 'active' : ''}
+              />
+              <p>{item.menu_name}</p>
+            </div>
+          ))}
+        </div>
+
+        {scrollRightVisible && (
+          <div className="scroll-arrow right" onClick={() => scrollMenu('right')}>
+            <div className="arrow-circle"><svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+              <path d="M8 4L16 12L8 20" stroke="#009919" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            </div>
+          </div>
+        )}
       </div>
+
       <hr />
-      <p className='explore-menu-text'>
-        * Select a category to view its items. If the category is already selected, clicking it again will show all items.
+      <p className="explore-menu-text">
+        * Select a category to view its items. Click again to view all.
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default ExploreMenu
+export default ExploreMenu;

@@ -18,7 +18,7 @@ const Footer = () => {
                     <ul>
                         <li onClick={() => navigate('/contact')}>Contact Us</li>
                         <li onClick={() => navigate('/about')}>About Us</li>
-                        <li onClick={() => navigate('/donate')}>Donations</li>
+                        <li onClick={() => navigate('/donate')}>Partnership</li>
                         <li onClick={() => navigate('/blog')}>Blog</li>
                         <li onClick={() => navigate('/careers')}>Careers</li>
                     </ul>

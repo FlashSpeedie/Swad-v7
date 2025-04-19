@@ -16,6 +16,7 @@ const ReferencePage = () => {
 
 
                 <h2>Copyright & Plan of Work Checklist</h2>
+
                 <ul className="source-list">
                     <li>
                         {/* Link to open PDF in a new tab */}
@@ -25,10 +26,19 @@ const ReferencePage = () => {
                             rel="noopener noreferrer"
                             className="pdf-link"
                         >
-                            Open Copyright & Plan of Work Checklist PDF
-                        </a>
+                            Click Here</a> to Open Copyright & Plan of Work Checklist PDF if the PDF below doesn't load properly.
+                        
                     </li>
                 </ul>
+                <div>
+                    <iframe
+                        src="/Copyright.pdf"
+                        width="100%"
+                        height="800px"
+                        style={{ border: 'none' }}
+                        title="Copyright Document"
+                    />
+                </div>
 
                 <h2>Images and Information</h2>
                 <ul className="source-list">

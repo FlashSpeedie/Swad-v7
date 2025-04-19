@@ -32,6 +32,8 @@ import farmer from './farmer.png'
 import celebrate from './celebrate.png'
 import food from './food.png'
 import reserve from './reserve.png'
+import right_arrow from './right_arrow.png'
+import left_arrow from './left_arrow.png'
 
 export const assets = {
     logo,
@@ -58,7 +60,9 @@ export const assets = {
     farmer,
     celebrate,
     food,
-    reserve
+    reserve,
+    right_arrow,
+    left_arrow
 }
 
 export const menu_list = [
