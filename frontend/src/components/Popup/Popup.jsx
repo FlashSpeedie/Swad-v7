@@ -7,12 +7,12 @@ const Popup = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    const closed = localStorage.getItem('popupClosed');
-    if (closed) {
-      setIsVisible(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const closed = localStorage.getItem('popupClosed');
+  //   if (closed) {
+  //     setIsVisible(false);
+  //   }
+  // }, []);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -46,9 +46,9 @@ const Popup = () => {
           <div className="popup-container">
             <button className="popup-close" onClick={handleClose}>×</button>
             <h2>Free food and drinks, just for you.</h2>
-            <p>Earn points for every dollar you spend at Game Day Grill. Use your points to redeem free food and drinks, and get access to exclusive offers and events.</p>
+            <p>Earn points for every dollar you spend at Swad. Use your points to redeem free food and drinks, and get access to exclusive offers and events.</p>
             <p>✅ Earn 1 point for every dollar you spend</p>
-            <p>🥤 Get a free drink when you sign up</p>
+            {/* <p>🥤 Get a free drink when you sign up</p> */}
             <p>🎉 Get a free appetizer on your birthday</p>
 
             {!isSubmitted ? (
@@ -64,7 +64,7 @@ const Popup = () => {
                   required
                 />
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
-                <button type="submit">Sign Up</button>
+                <button className="custom-button" type="submit">Sign Up</button>
               </form>
             ) : (
               <div className="thank-you-message">

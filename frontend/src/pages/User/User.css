@@ -1,0 +1,89 @@
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f5f5f5;
+}
+
+.account-form {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.account-form h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.account-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.account-form button {
+    padding: 10px;
+    border: none;
+    background-color: #009919;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.account-form button:hover {
+    background-color: #247724;
+}
+
+.account-form .link {
+    color: #2d8f2d;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.account-form .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
+.profile-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Add responsiveness for screens smaller than 600px */
+@media (max-width: 600px) {
+    .account-form {
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .account-form h2 {
+        font-size: 18px;
+    }
+
+    .account-form input {
+        padding: 8px;
+    }
+
+    .account-form button {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .profile-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+}

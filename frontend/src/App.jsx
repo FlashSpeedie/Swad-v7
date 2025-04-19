@@ -12,7 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy/Policy';
 import ReserveTable from './pages/ReserveTable/ReserveTable';  
 import ContactUs from './pages/ContactUs/ContactUs';
 import Menu from './pages/Menu/Menu';
-import LoginPopup from './components/LoginPopup/LoginPopup'
+// import LoginPopup from './components/LoginPopup/LoginPopup'
 import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 import Blog from './pages/Blog/Blog'
@@ -22,6 +22,7 @@ import Career from './pages/Career/Career';
 import AI_Swad from './pages/AI_Swad/AI_Swad';
 import Popup from './components/Popup/Popup';
 import Locations from './pages/Locations/Locations';
+import User from './pages/User/User'
 
 
 const App = () => {
@@ -29,7 +30,7 @@ const App = () => {
 
   return (
     <>
-      {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
+      {showLogin && <User setShowLogin={setShowLogin} />}
       <ScrollToTop />
       <Popup />
       <div className="app">
@@ -52,6 +53,8 @@ const App = () => {
           <Route path='/reference' element={<Reference_Page/>}/>
           <Route path='/ai-swad' element={<AI_Swad/>}/>
           <Route path='/locations' element={<Locations/>}/>
+          <Route path='/user' element={<User/>}/>
+
           
 
         </Routes>

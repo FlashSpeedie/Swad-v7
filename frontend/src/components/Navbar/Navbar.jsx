@@ -24,30 +24,30 @@ const Navbar = ({ setShowLogin }) => {
 
   // Commented out auto-login functionality
 
-  useEffect(() => {
-    const autoLogin = async () => {
-      if (!token) {
-        const autoLoginData = {
-          email: "12345@gmail.com",
-          password: "12345@gmail.com",
-        };
+  // useEffect(() => {
+  //   const autoLogin = async () => {
+  //     if (!token) {
+  //       const autoLoginData = {
+  //         email: "12345@gmail.com",
+  //         password: "12345@gmail.com",
+  //       };
 
-        try {
-          const response = await axios.post(`${url}/api/user/login`, autoLoginData);
-          if (response.data.success) {
-            setToken(response.data.token);
-            localStorage.setItem("token", response.data.token);
-          } else {
-            console.error("Auto-login failed:", response.data.message || "Unknown error");
-          }
-        } catch (error) {
-          console.error("Auto-login error:", error.message || error);
-        }
-      }
-    };
+  //       try {
+  //         const response = await axios.post(`${url}/api/user/login`, autoLoginData);
+  //         if (response.data.success) {
+  //           setToken(response.data.token);
+  //           localStorage.setItem("token", response.data.token);
+  //         } else {
+  //           console.error("Auto-login failed:", response.data.message || "Unknown error");
+  //         }
+  //       } catch (error) {
+  //         console.error("Auto-login error:", error.message || error);
+  //       }
+  //     }
+  //   };
 
-    autoLogin();
-  }, [token, setToken, url]);
+  //   autoLogin();
+  // }, [token, setToken, url]);
 
 
   const logout = () => {
@@ -108,17 +108,6 @@ const Navbar = ({ setShowLogin }) => {
               Reference Page
             </Link>
           </li>
-          {/* <li>
-            <Link
-              to="/ai-swad"
-              onClick={() => setMenu("AI - Swad")}
-              className={menu === "AI - Swad" ? "active" : ""}
-            >
-              AI - Swad
-            </Link>
-          </li> */}
-
-
         </ul>
         <div className="navbar-right">
           <div className="navbar-cart-icon">
@@ -132,30 +121,18 @@ const Navbar = ({ setShowLogin }) => {
             <p>My Orders</p>
           </div>
 
-          {/* {!token ? (
-            <button onClick={() => setShowLogin(true)}>Sign In</button>
+          {!token ? (
+            <Link to="/user">
+              <button className="signin-button">Sign In</button>
+            </Link>
           ) : (
-            <div className="navbar-profile">
-              <img src={assets.profile_icon} alt="" className="navbar-profile-icon" />
-              <ul className="nav-profile-dropdown">
-                <li onClick={() => navigate("/contact")}>
-                  <img src={assets.profile_icon} alt="" />
-                  <p>Profile</p>
-                </li>
-                <hr />
-                <li onClick={() => navigate("/myorders")}>
-                  <img src={assets.bag_icon} alt="" />
-                  <p>Orders</p>
-                </li>
-                <hr />
-                <li onClick={logout}>
-                  <img src={assets.logout_icon} alt="" />
-                  <p>Logout</p>
-                </li>
-              </ul>
+            <div className="logout-button" onClick={logout}>
+              <img src={assets.logout_icon} alt="Logout" />
+              <p>Logout</p>
             </div>
-          )} */}
+          )}
         </div>
+
         <div className="navbar-hamburger" onClick={toggleSidebar}>
           <div></div>
           <div></div>
@@ -171,11 +148,13 @@ const Navbar = ({ setShowLogin }) => {
           <li onClick={() => { navigate("/locations"); setMenu("Locations"); toggleSidebar(); }}>Locations</li>
           <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); toggleSidebar(); }}>Reference Page</li>
           <li onClick={() => { navigate("/myorders"); setMenu("My Orders"); toggleSidebar(); }}>My Orders</li>
-
+          {!token ? (
+            <li onClick={() => { navigate("/user"); setMenu("Sign In"); toggleSidebar(); }}>Sign In</li>
+          ) : (
+            <li onClick={() => { logout(); setMenu("Logout"); toggleSidebar(); }}>Logout</li>
+          )}
         </ul>
       </div>
-
-
     </>
   );
 };

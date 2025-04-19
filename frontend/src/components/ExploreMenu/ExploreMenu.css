@@ -1,7 +1,7 @@
 .explore-menu {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 0px;
     padding: 20px;
 }
 
@@ -13,7 +13,6 @@
     padding: 0;
 }
 
-
 .explore-menu-text {
     max-width: 100%;
     color: #808080;
@@ -24,6 +23,15 @@
 
 .explore-menu-list-container {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.explore-menu-list-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 .explore-menu-list {
@@ -31,13 +39,11 @@
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
-    text-align: center;
     margin: 20px 0px;
-    overflow-x: auto;
     padding: 10px;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    
     /* Firefox */
 }
 
@@ -48,6 +54,7 @@
 
 .explore-menu-list-item {
     scroll-snap-align: center;
+    text-align: center;
 }
 
 .explore-menu-list-item img {
@@ -74,29 +81,25 @@
 /* Arrow Styling */
 .scroll-arrow {
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     cursor: pointer;
     z-index: 10;
-    
 }
 
 .scroll-arrow.left {
-    left: -10px;
-    top: 125px;
+    left: 0px;
 }
 
 .scroll-arrow.right {
-    right: -10px;
-    top: 115px; /* Adjusted from 125px to 115px */
+    right: 0px;
 }
-
-
 
 .arrow-circle {
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    background-color: #009919;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,5 +151,13 @@
 
     .explore-menu-list-item p {
         font-size: 12px;
+    }
+
+    .scroll-arrow.left {
+        left: -20px;
+    }
+
+    .scroll-arrow.right {
+        right: -20px;
     }
 }

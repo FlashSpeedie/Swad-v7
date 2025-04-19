@@ -4,7 +4,6 @@ import { assets, menu_list } from '../../assets/assets';
 
 const ExploreMenu = ({ category, setCategory }) => {
   const menuRef = useRef(null);
-  const [isScrollNeeded, setIsScrollNeeded] = useState(false);
   const [scrollLeftVisible, setScrollLeftVisible] = useState(false);
   const [scrollRightVisible, setScrollRightVisible] = useState(false);
 
@@ -16,12 +15,11 @@ const ExploreMenu = ({ category, setCategory }) => {
   };
 
   const updateScrollVisibility = () => {
-    if (menuRef.current) {
-      const menu = menuRef.current;
+    const menu = menuRef.current;
+    if (menu) {
       const scrollLeft = menu.scrollLeft;
       const maxScrollLeft = menu.scrollWidth - menu.clientWidth;
 
-      setIsScrollNeeded(menu.scrollWidth > menu.clientWidth);
       setScrollLeftVisible(scrollLeft > 5);
       setScrollRightVisible(scrollLeft < maxScrollLeft - 5);
     }
@@ -48,35 +46,39 @@ const ExploreMenu = ({ category, setCategory }) => {
       <div className="explore-menu-list-container">
         {scrollLeftVisible && (
           <div className="scroll-arrow left" onClick={() => scrollMenu('left')}>
-            <div className="arrow-circle"><svg width="50" height="50" viewBox="0 0 24 24" fill="none">
-              <path d="M16 4L8 12L16 20" stroke="#009919" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <div className="arrow-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M16 4L8 12L16 20" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
           </div>
         )}
 
-        <div className="explore-menu-list" ref={menuRef}>
-          {menu_list.map((item, index) => (
-            <div
-              key={index}
-              className="explore-menu-list-item"
-              onClick={() => setCategory(prev => (prev === item.menu_name ? 'All' : item.menu_name))}
-            >
-              <img
-                src={item.menu_image}
-                alt={item.menu_name}
-                className={category === item.menu_name ? 'active' : ''}
-              />
-              <p>{item.menu_name}</p>
-            </div>
-          ))}
+        <div className="explore-menu-list-wrapper">
+          <div className="explore-menu-list" ref={menuRef}>
+            {menu_list.map((item, index) => (
+              <div
+                key={index}
+                className="explore-menu-list-item"
+                onClick={() => setCategory(prev => (prev === item.menu_name ? 'All' : item.menu_name))}
+              >
+                <img
+                  src={item.menu_image}
+                  alt={item.menu_name}
+                  className={category === item.menu_name ? 'active' : ''}
+                />
+                <p>{item.menu_name}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {scrollRightVisible && (
           <div className="scroll-arrow right" onClick={() => scrollMenu('right')}>
-            <div className="arrow-circle"><svg width="50" height="50" viewBox="0 0 24 24" fill="none">
-              <path d="M8 4L16 12L8 20" stroke="#009919" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <div className="arrow-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M8 4L16 12L8 20" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
           </div>
         )}

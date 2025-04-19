@@ -19,8 +19,10 @@ const FoodDisplay = ({ category }) => {
                                 description={item.description} 
                                 price={item.price} 
                                 image={item.image} 
+                                label="Vegetarian"
                                 alt={`Image of ${item.name}`}
                                 category={item.category}
+                                
                             />
                         );
                     }
