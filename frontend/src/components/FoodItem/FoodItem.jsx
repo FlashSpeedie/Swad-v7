@@ -37,7 +37,10 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
         </div>
         <p className="food-item-desc">{description || 'No description available.'}</p>
         <p className="food-item-category">Category: {category || 'Category not available'}</p>
-        <p className="food-item-category">Category: {category || 'Category not available'}</p>
+        <p className="food-item-list">
+          {name?.toLowerCase().includes('vegan') || category === 'Specials' ? 'Vegan' : 'Vegetarian'}
+        </p>
+
         <p className="food-item-price">{price ? `$${price}` : 'Price not available'}</p>
 
         {!isItemAdded && (

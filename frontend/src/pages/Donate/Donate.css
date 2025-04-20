@@ -1,0 +1,49 @@
+/* Donate.css */
+
+/* General container styling for responsiveness */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styling for the image */
+.image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the text */
+.text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+    color: #333;
+    padding: 0 15px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .image {
+        width: 50%;
+        margin-bottom: 0;
+    }
+
+    .text {
+        width: 45%;
+        text-align: left;
+    }
+}

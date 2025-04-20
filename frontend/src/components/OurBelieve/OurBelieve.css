@@ -10,7 +10,9 @@
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
+    align-items: stretch; 
 }
+
 
 .our-believe .block {
     flex: 1;
