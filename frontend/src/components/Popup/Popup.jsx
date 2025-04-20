@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Popup.css';
 
 const Popup = () => {
@@ -6,13 +7,7 @@ const Popup = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // useEffect(() => {
-  //   const closed = localStorage.getItem('popupClosed');
-  //   if (closed) {
-  //     setIsVisible(false);
-  //   }
-  // }, []);
+  const location = useLocation();
 
   const handleClose = () => {
     setIsVisible(false);
@@ -39,6 +34,10 @@ const Popup = () => {
     }
   };
 
+  if (location.pathname !== '/') {
+    return null;
+  }
+
   return (
     <>
       {isVisible && (
@@ -48,7 +47,6 @@ const Popup = () => {
             <h2>Free food and drinks, just for you.</h2>
             <p>Earn points for every dollar you spend at Swad. Use your points to redeem free food and drinks, and get access to exclusive offers and events.</p>
             <p>✅ Earn 1 point for every dollar you spend</p>
-            {/* <p>🥤 Get a free drink when you sign up</p> */}
             <p>🎉 Get a free appetizer on your birthday</p>
 
             {!isSubmitted ? (

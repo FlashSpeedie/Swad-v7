@@ -1,45 +1,61 @@
-import React, { useContext } from "react";
-import "./Cart.css";
+import React, { useContext, useState } from "react";
+import "./Cart.css"; // All styles including popup
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url, updateCartItem } =
-    useContext(StoreContext);
+  const {
+    cartItems,
+    food_list,
+    removeFromCart,
+    getTotalCartAmount,
+    url,
+    updateCartItem,
+    user,
+  } = useContext(StoreContext);
+
+  const navigate = useNavigate();
+
+  const [showAccountMessage, setShowAccountMessage] = useState(false);
 
   const subtotal = getTotalCartAmount();
   const deliveryFee = subtotal > 0 ? 2 : 0;
   const taxRate = 0.045;
-  const taxes = (subtotal) * taxRate + (subtotal > 0 ? 0.09 : 0);
+  const taxes = subtotal * taxRate + (subtotal > 0 ? 0.09 : 0);
   const total = subtotal + taxes + deliveryFee;
 
-  const navigate = useNavigate();
-
-  // Handle quantity change
   const handleQuantityChange = async (itemId, value) => {
-    const quantity = Math.max(0, Math.min(20, value)); 
-    updateCartItem(itemId, quantity); 
+    const quantity = Math.max(0, Math.min(20, value));
+    updateCartItem(itemId, quantity);
 
-    // Update the quantity in the database
     try {
       const response = await fetch(`${url}/update-cart-item`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ itemId, quantity }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to update cart item in the database');
+        throw new Error("Failed to update cart item in the database");
       }
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleCheckout = () => {
+    if (!user) {
+      setShowAccountMessage(true);
+      return;
+    }
+    navigate("/order", { state: { total } });
+  };
+
   return (
     <div className="cart">
+      {/* Cart Content */}
       <div className="cart-items">
         <h2>Cart Total</h2>
         <hr />
@@ -67,13 +83,19 @@ const Cart = () => {
                         className="quantity-input"
                         value={cartItems[item._id]}
                         onChange={(e) =>
-                          handleQuantityChange(item._id, parseInt(e.target.value) || 0)
+                          handleQuantityChange(
+                            item._id,
+                            parseInt(e.target.value) || 0
+                          )
                         }
                         min="0"
                         max="20"
                       />
                       <p>${(item.price * cartItems[item._id]).toFixed(2)}</p>
-                      <p onClick={() => removeFromCart(item._id)} className="cross">
+                      <p
+                        onClick={() => removeFromCart(item._id)}
+                        className="cross"
+                      >
                         X
                       </p>
                     </div>
@@ -91,27 +113,43 @@ const Cart = () => {
         <div className="cart-total">
           <div className="cart-total-summary">
             <span className="label">Subtotal</span>
-            <span className="value">${subtotal > 0 ? subtotal.toFixed(2) : "-"}</span>
+            <span className="value">
+              ${subtotal > 0 ? subtotal.toFixed(2) : "0"}
+            </span>
           </div>
           <hr />
           <div className="cart-total-summary">
             <span className="label">Delivery Fee</span>
-            <span className="value">${subtotal > 0 ? deliveryFee.toFixed(2) : "-"}</span>
+            <span className="value">
+              ${subtotal > 0 ? deliveryFee.toFixed(2) : "0"}
+            </span>
           </div>
           <hr />
           <div className="cart-total-summary">
             <span className="label">Taxes (4.5%)</span>
-            <span className="value">${subtotal > 0 ? taxes.toFixed(2) : "-"}</span>
+            <span className="value">
+              ${subtotal > 0 ? taxes.toFixed(2) : "0"}
+            </span>
           </div>
           <hr />
           <div className="cart-total-summary total">
             <b>Total</b>
-            <b>${subtotal > 0 ? total.toFixed(2) : "-"}</b>
+            <b>${subtotal > 0 ? total.toFixed(2) : "0"}</b>
           </div>
           {subtotal > 0 && (
-            <button className="checkout" onClick={() => navigate("/order", { state: { total } })}>
-              PROCEED TO CHECKOUT
-            </button>
+            <>
+              <button className="checkout" onClick={handleCheckout}>
+                PROCEED TO CHECKOUT
+              </button>
+              {showAccountMessage && (
+                <p className="checkout-message">
+                  Please create an account to check out.{" "}
+                  <a href="/user" className="checkout-link">
+                    Sign In / Create Account
+                  </a>
+                </p>
+              )}
+            </>
           )}
         </div>
       </div>

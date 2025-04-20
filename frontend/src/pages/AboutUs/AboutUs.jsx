@@ -30,7 +30,7 @@ const AboutUs = () => {
           <p className="about-text">
             Over the years, Swad has grown into a beloved restaurant known for our commitment to sustainability and quality. We believe in supporting local farmers and using organic produce to create dishes that are not only tasty but also good for the environment.
 
-            Join us on our journey and experience the best of farm-to-table dining. For more information, viswe our <a href="https://swad-sv13.onrender.com/blog"><b>Blog Page</b></a>.
+            Join us on our journey and experience the best of farm-to-table dining. For more information, visit our <a href="https://swad-sv13.onrender.com/blog"><b>Blog Page</b></a>.
 
             For inquiries, email us at: <b>contact@swad.com</b>
           </p>
