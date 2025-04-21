@@ -16,7 +16,7 @@ const Donate = () => {
                     />
                     <div>
                         <p className="about-text">
-                            Swad was founded in 2010 with a mission to bring fresh, farm-to-table vegetarian dishes to the community. Our journey started in a small kitchen with a big dream: to provide healthy, delicious meals made from locally sourced ingredients from farmers.
+                            Ruzycki Farms is a local family-run farm and a proud supplier of genuine fresh produce rich in nutrients. We at Swad are truly grateful for these wonderful folks who share our passion in growing the Farm-To-Table movement, and hope to continue interesting people of all ages about their environment through our dishes crafted through our partnership with Ruzycki Farms and to keep learning through each experience.
                         </p>
                     </div>
                 </section>
