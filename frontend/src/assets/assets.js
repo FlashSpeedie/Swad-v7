@@ -34,6 +34,12 @@ import food from './food.png'
 import reserve from './reserve.png'
 import right_arrow from './right_arrow.png'
 import left_arrow from './left_arrow.png'
+import oklahoma_city from'./oklahoma_city.png'
+import edmond_city from'./edmon_city.png'
+import norman_city from'./norman_city.png'
+import phone from'./telephone.png'
+import locations from'./location.png'
+import clock from'./clock.png'
 
 export const assets = {
     logo,
@@ -62,7 +68,13 @@ export const assets = {
     food,
     reserve,
     right_arrow,
-    left_arrow
+    left_arrow,
+    oklahoma_city,
+    norman_city,
+    edmond_city,
+    locations,
+    phone,
+    clock
 }
 
 export const menu_list = [

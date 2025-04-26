@@ -44,7 +44,7 @@ const ReferencePage = () => {
                 <ul className="source-list">
                     <p>We designed our own logo using Adobe Illustrator</p>
                     <p>For the fonts of our website we used Google Fonts </p>
-                    <p>For the icons on our website we used Icon8</p>
+                    <p>For the icons on our website we used Icon8 and Flaticons</p>
                     <p>We used Cloudinary to host our images, see image links below</p>
 
                     <li><b className="footer-links-title">Food Images Links:</b></li>

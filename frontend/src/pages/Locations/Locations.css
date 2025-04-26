@@ -1,82 +1,86 @@
 /* Locations.css */
 
-.gameday-locations-wrapper {
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: auto;
-    font-family: 'Segoe UI', sans-serif;
+.swad-locations-wrapper {
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.swad-location-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 50px;
+  gap: 30px;
+}
+
+.swad-reverse {
+  flex-direction: row-reverse;
+}
+
+.swad-location-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.swad-city {
+  font-size: 2rem;
+  color: #2f6238;
+  margin-bottom: 20px;
+}
+
+.swad-detail-block {
+  margin-bottom: 15px;
+}
+
+.swad-detail-title {
+  font-size: 2.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #3a7544;
+}
+
+.swad-detail-line {
+  font-size: 1rem;
+  color: #405c49;
+  margin-left: 10px;
+}
+
+.swad-location-image-wrapper {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.swad-location-image {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1; /* Ensures a square aspect ratio */
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .swad-location-card,
+  .swad-reverse {
+    flex-direction: column !important;
   }
-  
-  .gameday-location-card {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 50px;
-    gap: 30px;
-  }
-  
-  .gameday-reverse {
-    flex-direction: row-reverse;
-  }
-  
-  .gameday-location-text {
-    flex: 1;
-    min-width: 300px;
-  }
-  
-  .gameday-city {
-    font-size: 2rem;
-    color: #2f6238;
-    margin-bottom: 20px;
-  }
-  
-  .gameday-detail-block {
-    margin-bottom: 15px;
-  }
-  
-  .gameday-detail-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #3a7544;
-  }
-  
-  .gameday-detail-line {
-    font-size: 1rem;
-    color: #405c49;
-    margin-left: 10px;
-  }
-  
-  .gameday-location-image-wrapper {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .gameday-location-image {
+
+  .swad-location-text,
+  .swad-location-image-wrapper {
     width: 100%;
-    max-width: 450px;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .gameday-location-card,
-    .gameday-reverse {
-      flex-direction: column !important;
-    }
-  
-    .gameday-location-text,
-    .gameday-location-image-wrapper {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .gameday-detail-line {
-      margin-left: 0;
-    }
+
+  .swad-detail-line {
+    margin-left: 0;
   }
-  
+
+  .swad-location-image {
+    max-width: 300px; /* Adjust for smaller screens */
+  }
+}
