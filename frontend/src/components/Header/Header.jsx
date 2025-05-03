@@ -7,9 +7,9 @@ const Header = () => {
     <div className="Header">
       <img src={assets.header_img} alt="" />
       <div className="header-contents">
-        <h2>
+        <h1>
           Elevate Your <span className="highlight-green">Dining Experience!</span>
-        </h2>
+        </h1>
         <p>
           Choose from our extensive menu of delicious vegetarian dishes, each one expertly prepared with 
            fresh ingredients. We’re dedicated to bringing you 
