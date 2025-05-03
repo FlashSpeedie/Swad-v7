@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <div className="about-container">
       <div className="about-content">
-        <h1 className="about-title">About Swad - Farm to Table</h1>
+        <h1 className="about-title">About Swad</h1>
 
         <section className="about-section">
           <img

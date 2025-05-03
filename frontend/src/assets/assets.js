@@ -40,6 +40,8 @@ import norman_city from'./norman_city.png'
 import phone from'./telephone.png'
 import locations from'./location.png'
 import clock from'./clock.png'
+import intiatives from './initiatives.png'
+import dots_bg from './dots1-green.svg'
 
 export const assets = {
     logo,
@@ -74,7 +76,9 @@ export const assets = {
     edmond_city,
     locations,
     phone,
-    clock
+    clock,
+    intiatives,
+    dots_bg
 }
 
 export const menu_list = [
