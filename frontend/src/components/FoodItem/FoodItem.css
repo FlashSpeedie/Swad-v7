@@ -125,7 +125,7 @@
   }
 
   .food-item-image {
-    height: 275px;
+    height: auto;
   }
 
   .food-item-name-rating p {
@@ -148,7 +148,7 @@
   }
 
   .food-item-image {
-    height: 225px;
+    height: auto;
   }
 
   .food-item-info {
