@@ -4,11 +4,10 @@ import multer from "multer";
 
 const foodRouter = express.Router();
 
-// Multer storage setup (for temporary local storage before Cloudinary upload)
 const storage = multer.diskStorage({
-    destination: "uploads", // Temporary storage before uploading to Cloudinary
+    destination: "uploads",
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}_${file.originalname}`); // Ensure unique file name
+        cb(null, `${Date.now()}_${file.originalname}`); 
     }
 });
 
