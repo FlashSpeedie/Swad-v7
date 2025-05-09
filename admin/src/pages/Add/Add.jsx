@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Add.css';
 import { assets } from '../../assets/assets';
 import axios from "axios";
-import { toast, ToastContainer } from 'react-toastify'; // Importing toast and ToastContainer
-import 'react-toastify/dist/ReactToastify.css'; // Importing the CSS for toast notifications
+import { toast, ToastContainer } from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const Add = ({url}) => {
 
@@ -23,7 +23,7 @@ const Add = ({url}) => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    const formData = new FormData(); // Corrected typo
+    const formData = new FormData(); 
     formData.append("name", data.name);
     formData.append("description", data.description);
     formData.append("price", Number(data.price));
@@ -33,20 +33,19 @@ const Add = ({url}) => {
     try {
       const response = await axios.post(`${url}/api/food/add`, formData);
       if (response.data.success) {
-        // Show success toast
-        toast.success(response.data.message); // Add this line for success notification
+        toast.success(response.data.message); 
         setData({
           name: "",
           description: "",
           price: "",
           category: "Salads"
         });
-        setImage(null); // Set image to null for consistency
+        setImage(null); 
       } else {
         console.error(response.data.message || "Failed to add food item");
       }
     } catch (error) {
-      console.error("Error adding food item:", error); // Error handling
+      console.error("Error adding food item:", error); // errir handling
     }
   };
 
