@@ -15,15 +15,14 @@ const addFood = async (req, res) => {
             return res.status(400).json({ success: false, message: "Invalid image type. Allowed types: jpeg, png, gif." });
         }
 
-        // Validate file size (max 5MB)
-        const maxSize = 5 * 1024 * 1024; // 5MB
+        const maxSize = 5 * 1024 * 1024; // 5MB File Size
         if (req.file.size > maxSize) {
             return res.status(400).json({ success: false, message: "File size exceeds the 5MB limit." });
         }
 
         // Upload the image to Cloudinary
         const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-            folder: 'food_images',  // Optional: Folder to store images in Cloudinary
+            folder: 'food_images',  
         });
 
         // Create food item with the Cloudinary image URL
@@ -62,7 +61,6 @@ const removeFood = async (req, res) => {
             return res.status(404).json({ success: false, message: "Food item not found" });
         }
 
-        // Extract public ID from the image URL (used by Cloudinary to delete the image)
         const publicId = food.image.split('/').pop().split('.').shift(); 
         await cloudinary.uploader.destroy(publicId);
 
