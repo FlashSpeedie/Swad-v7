@@ -9,7 +9,7 @@ const StoreContextProvider = (props) => {
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
 
-  // Max quantity per item in the cart
+  // Max quantity per item in the cart os set to 20
   const MAX_QUANTITY = 20;
 
   // Add item to cart with quantity restriction
