@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import './Donate.css';
 import { assets } from '../../assets/assets';
-import { useNavigate } from 'react-router-dom'; // Assuming you're using react-router-dom for navigation
 
 const Donate = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-    });
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleChange = (e) => {
@@ -19,88 +14,84 @@ const Donate = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        setIsSubmitted(true); // Set the form as submitted
+        setIsSubmitted(true);
     };
 
     const handleNavigate = () => {
-        window.location.href = 'https://www.ruzyckifarmstore.com'; // Navigate to Google
+        window.location.href = 'https://www.ruzyckifarmstore.com';
     };
 
     return (
-        <div className="about-container">
-            <div className="about-content">
-                <h1 className="about-title"> Farm to Table Initiatives</h1>
-
-                <section className="about-section">
+        <div className="donate-container">
+            <div className="donate-header-section">
+                <h1 className="donate-title">Farm to Table Initiatives</h1>
+                <section className="donate-info-section">
                     <img
                         src={assets.intiatives}
-                        alt="Vegetarian Dish"
-                        className="about-image"
+                        alt="Farm produce"
+                        className="donate-image"
                     />
-                    <div>
-                        <p className="about-text">
-                            Ruzycki Farms is a local family-run farm and a proud supplier of genuine fresh produce rich in nutrients. We at Swad are truly grateful for these wonderful folks who share our passion in growing the Farm-To-Table movement, and hope to continue interesting people of all ages about their environment through our dishes crafted through our partnership with Ruzycki Farms and to keep learning through each experience.
+                    <div className="donate-description">
+                        <p>
+                            Ruzycki Farms is a local family-run farm and a proud supplier of nutrient-rich fresh produce. Our collaboration promotes the Farm-To-Table movement, offering wholesome meals and raising awareness of sustainable agriculture. We are thankful for their continued partnership and your support.
                         </p>
-                        <button
-                            className="navigate-button"
-                            onClick={handleNavigate}
-                        >
+                        <button className="donate-learn-button" onClick={handleNavigate}>
                             Learn More
                         </button>
                     </div>
-                </section>                            Thank you for contributing to the farm-to-table movement!
+                </section>
+            </div>
 
-
-                <div className="contribute-section">
-                    {isSubmitted ? (
-                        <p className="thank-you-message">
+            <div className="donate-form-section">
+                {isSubmitted ? (
+                    <p className="donate-thank-you">Thank you for supporting our mission!</p>
+                ) : (
+                    <>
+                        <p className="donate-form-description">
+                            Want to help contribute to our farm-to-table efforts? Fill out the form below to get in touch or donate produce.
                         </p>
-                    ) : (
-                        <>
-                            <p className="contribute-text">
-                                If you would like to contribute to the farm-to-table movement, please fill out the form below to help and contribute vegetables from farm to table.
-                            </p>
-                            <form className="contribute-form" onSubmit={handleSubmit}>
-                                <div className="name-form-group">
-                                    <label htmlFor="name">Name:</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        className="contributers-name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="mail-form-group">
-                                    <label htmlFor="email">Email:</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        value={formData.email}
-                                        className="contributers-email"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
-                                <div className="mssge-form-group">
-                                    <label htmlFor="message">Message:</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        value={formData.message}
-                                        className="contributers-message"
-                                        onChange={handleChange}
-                                        required
-                                    ></textarea>
-                                </div>
-                                <button type="submit" className="submit-button">Submit</button>
-                            </form>
-                        </>
-                    )}
-                </div>
+                        <form className="donate-form" onSubmit={handleSubmit}>
+                            <div className="donate-form-group">
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    className="donate-input"
+                                />
+                            </div>
+                            <div className="donate-form-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    className="donate-input"
+                                />
+                            </div>
+                            <div className="donate-form-group">
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    className="donate-textarea"
+                                ></textarea>
+                            </div>
+                            <button type="submit" className="donate-submit-button">
+                                Submit
+                            </button>
+                        </form>
+                    </>
+                )}
             </div>
         </div>
     );

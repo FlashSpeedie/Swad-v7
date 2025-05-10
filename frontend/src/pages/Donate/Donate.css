@@ -1,51 +1,149 @@
-.name-form-group,
-.mail-form-group,
-.mssge-form-group {
-    width: 100%;
+/* Main container */
+.donate-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Header & Intro */
+.donate-header-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.donate-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.donate-info-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.donate-description {
+    flex: 1;
+    max-width: 600px;
+    font-size: 1.1rem;
+    text-align: left;
+    order: 1;
+}
+
+.donate-image {
+    flex: 1;
     max-width: 500px;
-    padding: 12px;
-    margin: 8px 0;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    order: 2;
+}
+
+.donate-learn-button {
+    margin-top: 1rem;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donate-learn-button:hover {
+    background-color: #219150;
+}
+
+/* Form Section */
+.donate-form-section {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.donate-form-description {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.donate-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.donate-form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.donate-form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.donate-input,
+.donate-textarea {
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
+    width: 100%;
     box-sizing: border-box;
 }
 
-/* Specific style for textarea to make it grow vertically */
-.mssge-form-group {
-    min-height: 150px;
+.donate-textarea {
+    min-height: 120px;
     resize: vertical;
 }
 
-/* Make sure form-group has some structure */
-.contribute-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+.donate-submit-button {
+    align-self: flex-start;
+    background-color: #2d89e5;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-
-    .contributers-name,
-    .contributers-email,
-    .contributers-message {
-        max-width: 100%;
-        font-size: 0.95rem;
-    }
+.donate-submit-button:hover {
+    background-color: #2274c6;
 }
 
+/* Thank You Message */
+.donate-thank-you {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    input[type="text"] {
-        width: 100%;
-        font-size: 0.9rem;
+    .donate-info-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
-}
 
-@media (max-width: 667px) {
-    input[type="text"] {
-        width: 100%;
-        font-size: 0.9rem;
+    .donate-description,
+    .donate-image {
+        order: unset;
     }
 }

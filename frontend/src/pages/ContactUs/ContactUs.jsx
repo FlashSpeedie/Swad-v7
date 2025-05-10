@@ -83,6 +83,7 @@ const ContactUs = () => {
               />
             </div>
             <p className="contact-box-title">Socials</p>
+            
             <div className="social-links">
               <a href="https://www.facebook.com/OklahomaTSA/">
                 <img
