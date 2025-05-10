@@ -134,8 +134,15 @@ const ReferencePage = () => {
                         <li>Pasta - <a href="https://pixabay.com/photos/tortelloni-pasta-tortellini-food-646680/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Noodles - <a href="https://pixabay.com/photos/feast-noodles-noodles-noodle-image-1168322/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
+                    <hr />
                     <br />
-                    <li><b className="footer-links-title">Footer Links:</b></li>
+                    <li><b>Locations Page</b></li>
+                    <ul>
+                        <li>Oklahoma City - <a href="https://pixabay.com/photos/chairs-restaurant-tables-1837293/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Edmond - <a href="https://pixabay.com/photos/kitchen-restaurant-food-breakfast-6878026/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Tulsa - <a href="https://pixabay.com/photos/restaurant-food-table-sea-plant-5521372/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                    </ul>
+
                     <li><b>About Us Page</b></li>
                     <ul>
                         <li>Paragraph 1 - <a href="https://pixabay.com/photos/family-love-heart-reunion-winter-7727035/" target="_blank" rel="noopener noreferrer">Link</a></li>
