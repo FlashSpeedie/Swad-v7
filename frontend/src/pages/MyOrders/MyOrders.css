@@ -46,6 +46,7 @@
     background-color: #009919;
     cursor: pointer;
     color: #ffffff;
+    width: 100px;
 }
 
 .my-order-order button :hover {
