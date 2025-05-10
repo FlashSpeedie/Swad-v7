@@ -24,30 +24,30 @@ const Navbar = ({ setShowLogin }) => {
 
   // Commented out auto-login functionality
 
-  // useEffect(() => {
-  //   const autoLogin = async () => {
-  //     if (!token) {
-  //       const autoLoginData = {
-  //         email: "12345@gmail.com",
-  //         password: "12345@gmail.com",
-  //       };
+  useEffect(() => {
+    const autoLogin = async () => {
+      if (!token) {
+        const autoLoginData = {
+          email: "12345@gmail.com",
+          password: "12345@gmail.com",
+        };
 
-  //       try {
-  //         const response = await axios.post(`${url}/api/user/login`, autoLoginData);
-  //         if (response.data.success) {
-  //           setToken(response.data.token);
-  //           localStorage.setItem("token", response.data.token);
-  //         } else {
-  //           console.error("Auto-login failed:", response.data.message || "Unknown error");
-  //         }
-  //       } catch (error) {
-  //         console.error("Auto-login error:", error.message || error);
-  //       }
-  //     }
-  //   };
+        try {
+          const response = await axios.post(`${url}/api/user/login`, autoLoginData);
+          if (response.data.success) {
+            setToken(response.data.token);
+            localStorage.setItem("token", response.data.token);
+          } else {
+            console.error("Auto-login failed:", response.data.message || "Unknown error");
+          }
+        } catch (error) {
+          console.error("Auto-login error:", error.message || error);
+        }
+      }
+    };
 
-  //   autoLogin();
-  // }, [token, setToken, url]);
+    autoLogin();
+  }, [token, setToken, url]);
 
 
   const logout = () => {
@@ -121,7 +121,7 @@ const Navbar = ({ setShowLogin }) => {
             <p>My Orders</p>
           </div>
 
-          {!token ? (
+          {/* {!token ? (
             <Link to="/user">
               <button className="signin-button">Sign In</button>
             </Link>
@@ -130,7 +130,7 @@ const Navbar = ({ setShowLogin }) => {
               <img src={assets.logout_icon} alt="Logout" />
               <p>Logout</p>
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="navbar-hamburger" onClick={toggleSidebar}>
@@ -148,11 +148,11 @@ const Navbar = ({ setShowLogin }) => {
           <li onClick={() => { navigate("/locations"); setMenu("Locations"); toggleSidebar(); }}>Locations</li>
           <li onClick={() => { navigate("/reference"); setMenu("Reference Page"); toggleSidebar(); }}>Reference Page</li>
           <li onClick={() => { navigate("/myorders"); setMenu("My Orders"); toggleSidebar(); }}>My Orders</li>
-          {!token ? (
+          {/* {!token ? (
             <li onClick={() => { navigate("/user"); setMenu("Sign In"); toggleSidebar(); }}>Sign In</li>
           ) : (
             <li onClick={() => { logout(); setMenu("Logout"); toggleSidebar(); }}>Logout</li>
-          )}
+          )} */}
         </ul>
       </div>
     </>

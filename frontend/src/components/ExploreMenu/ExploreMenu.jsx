@@ -41,7 +41,7 @@ const ExploreMenu = ({ category, setCategory }) => {
   }, []);
 
   return (
-    <div className="explore-menu" id="explore-menu">
+    <div className="section-header" id="section-header">
       <h1>Menu</h1>
       <div className="explore-menu-list-container">
         {scrollLeftVisible && (

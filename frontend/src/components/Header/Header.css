@@ -39,9 +39,9 @@
 .top-left-decor,
 .bottom-right-decor {
   position: absolute;
-  width: 100%;
+  width: 100;
   max-width: 120px;
-  opacity: 12px;
+  opacity: 120px;
   z-index: 3;
   pointer-events: none;
 }
