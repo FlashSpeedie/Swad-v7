@@ -1,8 +1,17 @@
+/* Base Layout and Structure */
+.reserve-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
 .top-section {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
+  padding: 2rem 0;
 }
 
 .top-section-image {
@@ -26,16 +35,35 @@
   line-height: 1.6;
 }
 
-.reserve-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Decorative Images - Professionally Enhanced */
+.left-decor,
+.right-decor {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.date-time-section {
+.left-decor {
+  top: 0;
+  left: 0;
+  transform: translate(-30%, -30%);
+}
+
+.right-decor {
+  bottom: 0;
+  right: 0;
+  transform: translate(30%, 30%);
+}
+
+/* Form Sections */
+.date-time-section,
+.row {
   display: flex;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  gap: 2rem;
   margin-bottom: 2.5rem;
 }
 
@@ -65,6 +93,10 @@
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
 }
 
+textarea.input-field {
+  resize: none;
+}
+
 .error {
   border-color: red;
 }
@@ -74,6 +106,7 @@
   font-size: 0.875rem;
 }
 
+/* Time Buttons */
 .time-buttons {
   display: flex;
   gap: 1rem;
@@ -114,26 +147,7 @@
   color: #555;
 }
 
-.details-form {
-  margin-top: 2.5rem;
-}
-
-.row {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.column {
-  flex: 1;
-  min-width: 300px;
-}
-
-textarea.input-field {
-  resize: none;
-}
-
+/* Submit Button */
 .form-btn {
   display: block;
   width: 100%;
@@ -154,15 +168,23 @@ textarea.input-field {
   transform: scale(1.03);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .reserve-container {
     padding: 1rem;
   }
 
-  .date-time-section {
+  .top-section {
     flex-direction: column;
+    align-items: flex-start;
   }
 
+  .top-section-image,
+  .top-section-text {
+    width: 100%;
+  }
+
+  .date-time-section,
   .row {
     flex-direction: column;
   }
@@ -174,27 +196,9 @@ textarea.input-field {
   .time-buttons {
     justify-content: space-around;
   }
-
-  .top-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .top-section-image {
-    width: 100%;
-  }
-
-  .top-section-text {
-    width: 100%;
-  }
 }
 
 @media (max-width: 480px) {
-  .time-button {
-    padding: 0.5rem 1.5rem;
-    font-size: 0.9rem;
-  }
-
   .input-field {
     font-size: 0.9rem;
     padding: 0.8rem;
@@ -203,5 +207,10 @@ textarea.input-field {
   .form-btn {
     font-size: 1rem;
     padding: 0.8rem;
+  }
+
+  .time-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
   }
 }

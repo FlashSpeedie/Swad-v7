@@ -56,11 +56,24 @@ const Reserve = () => {
   return (
     <div className="reserve-container">
       <div className="top-section">
+        {/* Left and Right Decorative Images */}
+        {/* <img
+          className="left-decor"
+          src={assets.dots_bg}
+          alt="Left Decor"
+        /> */}
+
+        {/* Main Section */}
         <img
           className="top-section-image"
           src={assets.reserve}
           alt="Beautiful Garden Seating"
         />
+        {/* <img
+          className="right-decor"
+          src={assets.dots_bg}
+          alt="right-decor"
+        /> */}
         <div className="top-section-text">
           <h2>Plant Lovers Beloved Spot to Eat</h2>
           <p>
@@ -99,9 +112,8 @@ const Reserve = () => {
                       <button
                         key={time}
                         onClick={() => handleTimeSelection(time)}
-                        className={`time-button ${
-                          selectedTime === time ? "selected" : ""
-                        }`}
+                        className={`time-button ${selectedTime === time ? "selected" : ""
+                          }`}
                       >
                         <span className="time-text">{time.split(" ")[0]}</span>
                         <span className="time-period">{time.split(" ")[1]}</span>
