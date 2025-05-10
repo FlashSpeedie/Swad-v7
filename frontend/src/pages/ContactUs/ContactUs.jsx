@@ -68,7 +68,7 @@ const ContactUs = () => {
             </div>
             <p className="contact-box-title">Main Location</p>
             <p className="contact-box-detail">
-              3231 Desi Corner
+              3231 Parkway Plaza,
               <br />
               Oklahoma City, OK
             </p>
