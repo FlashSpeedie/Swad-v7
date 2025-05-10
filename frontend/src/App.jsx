@@ -23,6 +23,7 @@ import AI_Swad from './pages/AI_Swad/AI_Swad';
 import Popup from './components/Popup/Popup';
 import Locations from './pages/Locations/Locations';
 import User from './pages/User/User'
+import Grading from './pages/Grading/Grading'
 
 
 const App = () => {
@@ -55,6 +56,7 @@ const App = () => {
           <Route path='/locations' element={<Locations />} />
           <Route path='/user' element={<User />} />
           <Route path='/donate' element={<Donate />} />
+          <Route path='/grading' element={<Grading />} />
         </Routes>
       </div>
       <Footer />

@@ -88,10 +88,10 @@
   border: #747474 solid 1px;
   color: #ffffff;
   font-weight: 500;
-  padding: 1.2vw 2.5vw;
+  padding: 1.2vw 0.5vw;
   background: #009919;
   font-size: 1rem;
-  width: 140px;
+  width: 150px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
