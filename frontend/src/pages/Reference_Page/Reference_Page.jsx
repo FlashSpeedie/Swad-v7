@@ -7,6 +7,7 @@ const ReferencePage = () => {
         <div>
             <ul className="content">
                 <h1>Reference Page</h1>
+                <h2>User Session</h2>
                 <p>While the production version of the site will feature a login/signup popup for users, the competition version includes an auto-login functionality to streamline access and demonstrate core features without authentication barriers.</p>
                 <p>
                     <h2>Admin Link</h2>
@@ -27,7 +28,7 @@ const ReferencePage = () => {
                             className="pdf-link"
                         >
                             Click Here</a> to Open Copyright & Plan of Work Checklist PDF if the PDF below doesn't load properly.
-                        
+
                     </li>
                 </ul>
                 <div>
