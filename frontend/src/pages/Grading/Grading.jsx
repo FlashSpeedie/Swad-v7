@@ -1,93 +1,166 @@
-import React, { useState } from "react";
-import "./Grading.css";
+import React, { useState } from 'react';
+import { db } from './firebase';
+import { ref, set } from 'firebase/database';  // Functions to interact with Realtime Database
+import './Grading.css';
 
 const criteria = [
-  { title: "Theme", weight: 2 },
-  { title: "Challenge", weight: 3 },
-  { title: "Content", weight: 2 },
-  { title: "Layout and Navigation", weight: 2 },
-  { title: "Graphics and Color Scheme", weight: 2 },
-  { title: "Function and Compatibility", weight: 1 },
-  { title: "Spelling and Grammar", weight: 1 },
+  {
+    title: "Theme",
+    multiplier: 2,
+    description: [
+      "The annual theme is not addressed.",
+      "The annual theme is somewhat addressed, but the supporting pages do not adequately support or contribute to the overall design.",
+      "The annual theme is addressed and is reflected in the supporting pages."
+    ]
+  },
+  {
+    title: "Challenge",
+    multiplier: 3,
+    description: [
+      "The challenge is not addressed, or addressed but not in detail; it is generally ineffective, and/or missing many parts of the required research and presentation; unrelated or distracting elements are present.",
+      "The challenge solution is generally well presented; it addresses most major parts of the required research and presentation; there are few or no unrelated or distracting elements.",
+      "The design brief solution is well presented, well researched, and highly effective; all expected components are present, and additional related elements that enhance the final product are incorporated; there are no unrelated or distracting elements."
+    ]
+  },
+  {
+    title: "Content",
+    multiplier: 2,
+    description: [
+      "The content lacks originality and does not contribute to the overall design of the webpage; the content does not align with the purpose of the website.",
+      "Very basic information is presented; the content aligns somewhat with the purpose of the website; some pages are irrelevant.",
+      "The content aligns well with the purpose of the website and adds to its effectiveness."
+    ]
+  },
+  {
+    title: "Layout and Navigation",
+    multiplier: 2,
+    description: [
+      "The web pages are cluttered and confusing; it is often difficult to locate important elements; the navigation structure is unclear, unintuitive, and ineffective in getting users to relevant information.",
+      "The web pages have a reasonably usable layout, and all major elements can be found; the design is generally pleasing to the user; the navigation structure is generally effective and intuitive, and provides reasonable ability to navigate the website.",
+      "The layout is exceptionally user-friendly; the relationship of elements and content are effective and attractive to the viewer; the navigation structure is highly intuitive, and provides efficient access to all pertinent information on the website."
+    ]
+  },
+  {
+    title: "Graphics and Color Scheme",
+    multiplier: 2,
+    description: [
+      "Graphic content is nonexistent or of low quality and questionable relation to the topic; colors are of poor contrast and detract from the user experience.",
+      "Graphic content effectively relates to the purpose of the site, provides enhancement of the user experience, and is of acceptable quality; the color scheme is effective and does not detract from the viewer's experience.",
+      "Graphics are well-used, of high quality, and clearly enhance the user experience; interactive elements effectively engage the user; the color scheme is attractive, appropriate, and clearly enhances the viewing experience."
+    ]
+  },
+  {
+    title: "Function and Compatibility",
+    multiplier: 1,
+    description: [
+      "There are several broken links and images, and/or the website does not render properly on multiple browsers.",
+      "There are no broken images, and/or few, if any, broken links; the website renders properly on most major browsers.",
+      "There are no broken images or links; the website renders properly on most major browsers and is usable on mobile devices."
+    ]
+  },
+  {
+    title: "Spelling and Grammar",
+    multiplier: 1,
+    description: [
+      "There are numerous spelling and grammatical errors.",
+      "There are only a few spelling and/or grammatical errors.",
+      "There are few, if any, spelling and grammatical errors."
+    ]
+  }
 ];
 
-const Grading = () => {
-  const [scores, setScores] = useState(Array(criteria.length).fill(""));
-  const [name, setName] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+export default function Grading() {
+  const [name, setName] = useState('');
+  const [scores, setScores] = useState(Array(criteria.length).fill(0));
+  const [feedback, setFeedback] = useState('');
+  const [error, setError] = useState('');
 
-  const handleScoreChange = (index, value) => {
+  const handleChange = (index, value) => {
     const newScores = [...scores];
-    newScores[index] = parseInt(value) || 0;
+    newScores[index] = value;
     setScores(newScores);
   };
 
-  const calculateTotal = () =>
-    scores.reduce(
-      (acc, score, i) => acc + (parseInt(score) || 0) * criteria[i].weight,
-      0
-    );
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = async () => {
-    const total = calculateTotal();
-
-    try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbykmxfr0MGvKwDzqZfmOa6w0mdSrVL2xOXGS_zp2cfsaa9yTntpdtF5-PcU25guo7EwYQ/exec", {
-        method: "POST",
-        body: JSON.stringify({ name, scores, total, feedback }),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const result = await response.json();
-      if (result.result === "Success") {
-        setSubmitted(true);
-      } else {
-        alert("Submission failed.");
-      }
-    } catch (error) {
-      alert("Error submitting to Google Sheets. Check console.");
-      console.error(error);
+    if (!name) {
+      setError('Please provide your name.');
+      return;
     }
+
+    const total = scores.reduce((acc, score, idx) => {
+      return acc + (score * criteria[idx].multiplier);
+    }, 0);
+
+    const gradeData = {
+      scores: criteria.reduce((acc, item, index) => {
+        acc[`${item.title} (x${item.multiplier})`] = scores[index];
+        return acc;
+      }, {}),
+      feedback,
+      total,
+      timestamp: new Date().toISOString(),
+    };
+
+    // Reference to the 'grades' node in Firebase
+    const gradeRef = ref(db, `grades/${name}`);
+    
+    set(gradeRef, gradeData)
+      .then(() => {
+        setError('');
+        alert('Grade submitted successfully!');
+        setName('');
+        setScores(Array(criteria.length).fill(0));
+        setFeedback('');
+      })
+      .catch((err) => {
+        console.error('Error submitting grade:', err);
+        setError('Failed to submit grade. Please try again.');
+      });
   };
 
-  if (submitted) {
-    return <div className="thank-you">✅ Thank you! Submission recorded.</div>;
-  }
-
   return (
-    <div className="grading-container">
-      <h1>Preliminary Website Grading</h1>
-      <label>
-        <strong>Name:</strong>
+    <div className="grading-form">
+      <h1>Grading Form</h1>
+
+      {error && <div className="error-message">{error}</div>}
+
+      <div>
+        <label htmlFor="name">Name:</label>
         <input
           type="text"
-          placeholder="Enter full name"
+          id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          required
+          placeholder="Enter your name"
         />
-      </label>
+      </div>
+
       <table>
         <thead>
           <tr>
-            <th>Criteria</th>
-            <th>Weight</th>
-            <th>Score (1–10)</th>
+            <th>CRITERIA</th>
+            <th>Minimal Performance<br />1-4 points</th>
+            <th>Adequate Performance<br />5-8 points</th>
+            <th>Exemplary Performance<br />9-10 points</th>
+            <th>Score</th>
           </tr>
         </thead>
         <tbody>
-          {criteria.map((item, index) => (
-            <tr key={index}>
-              <td>{item.title}</td>
-              <td>X{item.weight}</td>
+          {criteria.map((item, i) => (
+            <tr key={i}>
+              <td>{item.title} (×{item.multiplier})</td>
+              <td>{item.description[0]}</td>
+              <td>{item.description[1]}</td>
+              <td>{item.description[2]}</td>
               <td>
                 <input
                   type="number"
-                  min="1"
+                  min="0"
                   max="10"
-                  value={scores[index]}
-                  onChange={(e) => handleScoreChange(index, e.target.value)}
+                  value={scores[i]}
+                  onChange={(e) => handleChange(i, parseInt(e.target.value) || 0)}
                 />
               </td>
             </tr>
@@ -95,20 +168,17 @@ const Grading = () => {
         </tbody>
       </table>
 
-      <label>
-        <strong>Feedback:</strong>
+      <div>
+        <label htmlFor="feedback">Feedback:</label>
         <textarea
-          rows="4"
-          placeholder="Write feedback here..."
+          id="feedback"
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
+          placeholder="Enter your feedback here..."
         />
-      </label>
+      </div>
 
-      <div className="total-score">Total: {calculateTotal()} / 130</div>
       <button onClick={handleSubmit}>Submit</button>
     </div>
   );
-};
-
-export default Grading;
+}
