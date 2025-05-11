@@ -33,7 +33,7 @@ const Grading = () => {
     const total = calculateTotal();
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxvrQp6LQnxMgbAWwLpycF0BLS-Xj8mkXF2apXGtbJzWLLJzmaEAfd3l-7kRPXJwUeUfw/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbykmxfr0MGvKwDzqZfmOa6w0mdSrVL2xOXGS_zp2cfsaa9yTntpdtF5-PcU25guo7EwYQ/exec", {
         method: "POST",
         body: JSON.stringify({ name, scores, total, feedback }),
         headers: { "Content-Type": "application/json" },
