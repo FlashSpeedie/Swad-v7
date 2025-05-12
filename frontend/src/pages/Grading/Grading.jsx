@@ -127,7 +127,7 @@ export default function Grading() {
       {error && <div className="error-message">{error}</div>}
 
       <div>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Name: </label>
         <input
           type="text"
           id="name"
@@ -144,7 +144,7 @@ export default function Grading() {
             <th>Minimal Performance<br />1-4 points</th>
             <th>Adequate Performance<br />5-8 points</th>
             <th>Exemplary Performance<br />9-10 points</th>
-            <th>Score</th>
+            <th>Score (1-10)</th>
           </tr>
         </thead>
         <tbody>
