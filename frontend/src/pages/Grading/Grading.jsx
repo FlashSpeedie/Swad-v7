@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { db } from './firebase';
-import { ref, set } from 'firebase/database';  // Functions to interact with Realtime Database
+import { ref, set } from 'firebase/database';  
 import './Grading.css';
-
+// The critieria for grading
 const criteria = [
   {
     title: "Theme",
@@ -103,7 +103,6 @@ export default function Grading() {
       timestamp: new Date().toISOString(),
     };
 
-    // Reference to the 'grades' node in Firebase
     const gradeRef = ref(db, `grades/${name}`);
     
     set(gradeRef, gradeData)

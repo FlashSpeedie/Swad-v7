@@ -1,96 +1,78 @@
-/* Base Layout and Structure */
 .reserve-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1.5rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
 }
 
 .top-section {
-  position: relative;
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   margin-bottom: 2rem;
-  padding: 2rem 0;
 }
 
 .top-section-image {
-  width: 50%;
-  border-radius: 1rem;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  flex: 1;
 }
 
 .top-section-text {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .top-section-text h2 {
-  font-size: 1.8rem;
+  font-size: 1.75rem;
+  font-weight: 700;
   color: #2e7d32;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .top-section-text p {
   font-size: 1rem;
+  line-height: 1.5;
   color: #4caf50;
-  line-height: 1.6;
 }
 
-/* Decorative Images - Professionally Enhanced */
-.left-decor,
-.right-decor {
-  position: absolute;
-  width: 100px;
-  height: auto;
-  opacity: 0.15;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.left-decor {
-  top: 0;
-  left: 0;
-  transform: translate(-30%, -30%);
-}
-
-.right-decor {
-  bottom: 0;
-  right: 0;
-  transform: translate(30%, 30%);
-}
-
-/* Form Sections */
 .date-time-section,
 .row {
   display: flex;
-  gap: 1.5rem;
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .column {
   flex: 1;
-  min-width: 300px;
+  min-width: 240px;
 }
 
 .label-text {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  display: inline-block;
+  margin-bottom: 0.25rem;
+  display: block;
 }
 
 .input-field {
   width: 100%;
-  padding: 1rem;
-  border: 1px solid #d1d5db;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
   border-radius: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .input-field:focus {
   outline: none;
   border-color: #4caf50;
-  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.4);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
 }
 
 textarea.input-field {
@@ -103,80 +85,78 @@ textarea.input-field {
 
 .error-text {
   color: red;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
 }
 
-/* Time Buttons */
 .time-buttons {
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .time-button {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 2rem;
-  background-color: #00c521;
-  border: 1px solid #d1d5db;
+  flex: 1 1 100px;
+  padding: 0.6rem 1rem;
+  background: #00c521;
+  border: none;
   border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s, transform 0.2s;
-  color: #555;
+  transition: all 0.2s;
 }
 
 .time-button:hover {
-  background-color: #018606;
+  background-color: #018706;
 }
 
 .time-button.selected {
-  background-color: #018706;
-  color: #555;
-  border-color: #4caf50;
+  background-color: #015f04;
 }
 
 .time-text {
-  font-size: 1rem;
-  font-weight: bold;
-  margin-right: 0.2rem;
+  margin-right: 0.25rem;
 }
 
-.time-period {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* Submit Button */
 .form-btn {
-  display: block;
   width: 100%;
-  padding: 1rem;
+  padding: 0.85rem;
   background-color: #4caf50;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
+  color: #fff;
   border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
   border-radius: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.2s;
 }
 
 .form-btn:hover {
   background-color: #388e3c;
-  transform: scale(1.03);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .reserve-container {
-    padding: 1rem;
-  }
+.confirmation {
+  text-align: center;
+  margin-top: 3rem;
+}
 
+.confirmation h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  color: #2e7d32;
+}
+
+.confirmation p {
+  color: #4caf50;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
   .top-section {
     flex-direction: column;
-    align-items: flex-start;
   }
 
   .top-section-image,
@@ -184,33 +164,24 @@ textarea.input-field {
     width: 100%;
   }
 
-  .date-time-section,
-  .row {
-    flex-direction: column;
-  }
-
-  .column {
-    min-width: 100%;
-  }
-
-  .time-buttons {
-    justify-content: space-around;
+  .time-button {
+    flex: 1 1 45%;
   }
 }
 
 @media (max-width: 480px) {
   .input-field {
     font-size: 0.9rem;
-    padding: 0.8rem;
+    padding: 0.65rem;
   }
 
   .form-btn {
     font-size: 1rem;
-    padding: 0.8rem;
+    padding: 0.7rem;
   }
 
   .time-button {
-    padding: 0.5rem 1.5rem;
     font-size: 0.9rem;
+    padding: 0.5rem;
   }
 }

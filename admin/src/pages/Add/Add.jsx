@@ -51,8 +51,8 @@ const Add = ({url}) => {
 
   return (
     <div className="add">
-      <ToastContainer /> {/* Add the ToastContainer to your component */}
-      <form className="flex-col" onSubmit={onSubmitHandler}> {/* Corrected form submission handler */}
+      <ToastContainer /> 
+      <form className="flex-col" onSubmit={onSubmitHandler}> 
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">

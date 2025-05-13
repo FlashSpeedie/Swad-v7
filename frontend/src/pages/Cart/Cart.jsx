@@ -16,8 +16,6 @@ const Cart = () => {
 
   const navigate = useNavigate();
 
-  const [showAccountMessage, setShowAccountMessage] = useState(false);
-
   const subtotal = getTotalCartAmount();
   const deliveryFee = subtotal > 0 ? 2 : 0;
   const taxRate = 0.045;
@@ -46,10 +44,6 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    if (!user) {
-      setShowAccountMessage(true);
-      return;
-    }
     navigate("/order", { state: { total } });
   };
 
@@ -141,14 +135,6 @@ const Cart = () => {
               <button className="checkout" onClick={handleCheckout}>
                 PROCEED TO CHECKOUT
               </button>
-              {showAccountMessage && (
-                <p className="checkout-message">
-                  Please create an account to check out.{" "}
-                  <a href="/user" className="checkout-link">
-                    Sign In / Create Account
-                  </a>
-                </p>
-              )}
             </>
           )}
         </div>

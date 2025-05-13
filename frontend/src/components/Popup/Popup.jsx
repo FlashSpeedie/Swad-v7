@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Popup.css';
 
@@ -22,7 +22,6 @@ const Popup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const phoneRegex = /^\d{10}$/;
-
     if (!phoneRegex.test(phoneNumber)) {
       setErrorMessage('Please enter a valid 10-digit phone number.');
     } else {
@@ -34,9 +33,7 @@ const Popup = () => {
     }
   };
 
-  if (location.pathname !== '/') {
-    return null;
-  }
+  if (location.pathname !== '/') return null;
 
   return (
     <>
