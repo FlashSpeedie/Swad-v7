@@ -1,130 +1,117 @@
 import orderModel from './../models/orderModel.js';
 import userModel from './../models/userModel.js';
-import Stripe from 'stripe';
+import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
-const frontend_url = process.env.FRONTEND_URL || 'https://yourfrontend.com';
-
+// Placing user order for frontend
 const placeOrder = async (req, res) => {
-  try {
-    const { userId, items, amount, address } = req.body;
 
-    // Basic validation:
-    if (!userId || !Array.isArray(items) || items.length === 0 || !amount || !address) {
-      return res.status(400).json({ success: false, message: 'Missing or invalid order data' });
+    const frontend_url = 'https://swad-sv13.onrender.com';
+    // const frontend_url = 'http://localhost:5173';
+    try {
+        const newOrder = new orderModel({
+            userId: req.body.userId,
+            items: req.body.items,
+            amount: req.body.amount,
+            address: req.body.address
+        })
+
+        await newOrder.save();
+        await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
+
+        // Map food items to line items with quantity
+        const line_items = req.body.items.map((item) => ({
+            price_data: {
+                currency: "usd",
+                product_data: {
+                    name: item.name
+                },
+                unit_amount: Math.round(item.price * 100)
+            },
+            quantity: item.quantity
+        }))
+
+        // Instead of adding delivery and tax as line items (which show Qty 1),
+        // we will add them as a separate total amount adjustment via 'payment_intent_data'
+
+        const deliveryCharge = 2.00;
+        const taxAmount = req.body.amount * 0.045;
+
+        // Calculate total amount in cents including delivery and tax
+        const totalAmountCents = Math.round((req.body.amount + deliveryCharge + taxAmount) * 100);
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: line_items,
+            mode: 'payment',
+            payment_intent_data: {
+                amount: totalAmountCents,
+                currency: "usd",
+                // Note: This overrides the amount for the payment intent to the total
+            },
+            success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
+            cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`
+        })
+
+        res.json({ success: true, session_url: session.url })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: "Error" })
     }
-
-    // Save order in DB
-    const newOrder = new orderModel({
-      userId,
-      items,
-      amount,
-      address,
-      payment: false,
-      status: 'Pending',
-      createdAt: new Date(),
-    });
-
-    await newOrder.save();
-
-    // Clear user cart (optional)
-    await userModel.findByIdAndUpdate(userId, { cartData: {} });
-
-    // Prepare line items for Stripe Checkout
-    const line_items = items.map((item) => ({
-      price_data: {
-        currency: 'usd',
-        product_data: {
-          name: item.name,
-        },
-        unit_amount: Math.round(item.price * 100),
-      },
-      quantity: item.quantity,
-    }));
-
-    const deliveryCharge = 2.0;
-    const taxAmount = amount * 0.045;
-
-    const totalAmountCents = Math.round((amount + deliveryCharge + taxAmount) * 100);
-
-    // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items,
-      mode: 'payment',
-      payment_intent_data: {
-        amount: totalAmountCents,
-        currency: 'usd',
-      },
-      success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
-    });
-
-    return res.json({ success: true, session_url: session.url });
-  } catch (error) {
-    console.error('Place order error:', error);
-    return res.status(500).json({ success: false, message: error.message || 'Server error' });
-  }
-};
+}
 
 const verifyOrder = async (req, res) => {
-  try {
     const { orderId, success } = req.body;
-
-    if (!orderId || typeof success === 'undefined') {
-      return res.status(400).json({ success: false, message: 'Missing order verification data' });
+    try {
+        if (success == "true") {
+            await orderModel.findByIdAndUpdate(orderId, { payment: true });
+            res.json({ success: true, message: "Paid" })
+        }
+        else {
+            await orderModel.findByIdAndDelete(orderId);
+            res.json({ success: false, message: "Not Paid" })
+        }
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
     }
+}
 
-    if (success === 'true' || success === true) {
-      await orderModel.findByIdAndUpdate(orderId, { payment: true, status: 'Paid' });
-      return res.json({ success: true, message: 'Order paid successfully' });
-    } else {
-      await orderModel.findByIdAndDelete(orderId);
-      return res.json({ success: false, message: 'Order payment canceled' });
-    }
-  } catch (error) {
-    console.error('Verify order error:', error);
-    return res.status(500).json({ success: false, message: 'Server error' });
-  }
-};
+
+// user orders for frontend
 
 const userOrders = async (req, res) => {
-  try {
-    const { userId } = req.body;
-    if (!userId) {
-      return res.status(400).json({ success: false, message: 'Missing userId' });
+    try {
+        const orders = await orderModel.find({ userId: req.body.userId });
+        res.json({ success: true, data: orders })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
     }
-    const orders = await orderModel.find({ userId });
-    return res.json({ success: true, data: orders });
-  } catch (error) {
-    console.error('User orders error:', error);
-    return res.status(500).json({ success: false, message: 'Server error' });
-  }
+}
+
+const listOrders = async (req, res) => { 
+    try {
+        const orders = await orderModel.find({});
+        res.json({ success: true, data: orders });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error fetching orders" }); 
+    }
 };
 
-const listOrders = async (req, res) => {
-  try {
-    const orders = await orderModel.find({});
-    return res.json({ success: true, data: orders });
-  } catch (error) {
-    console.error('List orders error:', error);
-    return res.status(500).json({ success: false, message: 'Server error' });
-  }
-};
 
+// api for updating order status
 const updateStatus = async (req, res) => {
-  try {
-    const { orderId, status } = req.body;
-    if (!orderId || !status) {
-      return res.status(400).json({ success: false, message: 'Missing orderId or status' });
+    try {
+        await orderModel.findByIdAndUpdate(req.body.orderId, { status: req.body.status });
+        res.json({ success: true, message: "Status Updated" })
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" })
     }
-    await orderModel.findByIdAndUpdate(orderId, { status });
-    return res.json({ success: true, message: 'Status updated' });
-  } catch (error) {
-    console.error('Update status error:', error);
-    return res.status(500).json({ success: false, message: 'Server error' });
-  }
-};
+}
 
-export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus };
+
+export { placeOrder, verifyOrder, userOrders, listOrders, updateStatus }
