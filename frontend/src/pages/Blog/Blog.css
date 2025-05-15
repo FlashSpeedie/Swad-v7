@@ -39,20 +39,24 @@ body {
   text-align: center;
   margin-bottom: 40px;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 12px;
 }
 
 .filters button {
   background-color: #0fb900;
   color: #fff;
-  padding: 10px 20px;
+  padding: 10px 16px;
   border: none;
   border-radius: 5px;
   margin: 5px;
   cursor: pointer;
   font-size: 1rem;
+  min-width: 100px;
+  max-width: 140px;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
 .filters button:hover {
@@ -60,12 +64,14 @@ body {
 }
 
 .filters button.active {
-  background-color: #046b00; /* Darker color for selected button */
+  background-color: #046b00;
+  cursor: default;
+  pointer-events: none;
 }
 
 .blog-posts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Landscape layout */
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 30px;
 }
 
@@ -76,7 +82,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #333;
   display: flex;
-  flex-direction: row; /* Horizontal layout */
+  flex-direction: row;
   align-items: center;
 }
 
@@ -134,17 +140,20 @@ body {
   }
 
   .filters {
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 15px; /* Add space between stacked buttons */
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
   }
 
   .filters button {
-    width: 80%; /* Make buttons wider on small screens */
+    width: 70%;
+    max-width: 220px;
     font-size: 1rem;
+    padding: 12px 16px;
   }
 
   .blog-posts {
-    grid-template-columns: 1fr; /* Single column on smaller screens */
+    grid-template-columns: 1fr;
   }
 
   .blog-post {
@@ -160,6 +169,15 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .filters button {
+    width: 90%;
+    max-width: none;
+    font-size: 1.1rem;
+    padding: 14px 16px;
+  }
+}
+
 @media (orientation: landscape) {
   .blog-header h1 {
     font-size: 2.2em;
@@ -170,7 +188,7 @@ body {
   }
 
   .blog-posts {
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Landscape grid */
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
 
   .post-image {

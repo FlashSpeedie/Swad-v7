@@ -68,13 +68,13 @@ const CareerPage = () => {
           value={searchTerm} 
           onChange={(e) => setSearchTerm(e.target.value)} 
         />
-        <select className="dropdown" onChange={(e) => setLocationFilter(e.target.value)}>
+        <select className="dropdown" onChange={(e) => setLocationFilter(e.target.value)} value={locationFilter}>
           <option value="">All Locations</option>
           <option value="Edmond">Edmond</option>
           <option value="Oklahoma">Oklahoma</option>
           <option value="Tulsa">Tulsa</option>
         </select>
-        <select className="dropdown" onChange={(e) => setTypeFilter(e.target.value)}>
+        <select className="dropdown" onChange={(e) => setTypeFilter(e.target.value)} value={typeFilter}>
           <option value="">All Types</option>
           <option value="Full-Time">Full-Time</option>
           <option value="Part-Time">Part-Time</option>
@@ -107,9 +107,9 @@ const CareerPage = () => {
       </div>
 
       {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup">
-            <button className="close-button" onClick={closePopup}>X</button>
+        <div className="popup-wrapper">
+          <div className="popup-container">
+            <button className="popup-close" onClick={closePopup}>×</button>
             {!applying ? (
               <>
                 <h2>{selectedJob.title}</h2>
@@ -133,7 +133,7 @@ const CareerPage = () => {
                   <input type="text" placeholder="Full Name" required />
                   <input type="email" placeholder="Email" required />
                   <input type="tel" placeholder="Phone Number" required />
-                  <button type="submit">Submit</button>
+                  <button type="submit" className="apply-submit-button">Submit</button>
                 </form>
               )
             )}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputMask from 'react-input-mask-next';
+import { IMaskInput } from "react-imask";
 
 import "./ContactUs.css";
 
@@ -23,13 +23,14 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitted(true);
-    // Optionally reset form or add further logic
   };
 
   return (
     <div>
       {/* Title at the top */}
-      <h1 className="about-title" style={{ textAlign: "center" }}>Contact Swad</h1>
+      <h1 className="about-title" style={{ textAlign: "center" }}>
+        Contact Swad
+      </h1>
 
       <div className="contact-container">
         {/* Contact Details Section on the left */}
@@ -75,6 +76,7 @@ const ContactUs = () => {
           </div>
 
           {/* Socials */}
+      
           <div className="contact-box">
             <div className="contact-box-icon">
               <img
@@ -83,27 +85,40 @@ const ContactUs = () => {
               />
             </div>
             <p className="contact-box-title">Socials</p>
-            
-            <div className="social-links">
-              <a href="https://www.facebook.com/OklahomaTSA/">
+
+            <div className="contact-social-links">
+              <a
+                href="https://www.facebook.com/OklahomaTSA/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-fb.svg"
                   alt="Facebook"
                 />
               </a>
-              <a href="https://twitter.com/oktsa78?lang=en">
+              <a
+                href="https://twitter.com/oktsa78?lang=en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-twitter.svg"
                   alt="Twitter"
                 />
               </a>
-              <a href="https://www.instagram.com/oktsa78/?hl=en">
+              <a
+                href="https://www.instagram.com/oktsa78/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-insta.svg"
                   alt="Instagram"
                 />
               </a>
             </div>
+            <div className="contact-social-line" />
           </div>
         </div>
 
@@ -120,6 +135,7 @@ const ContactUs = () => {
                   placeholder="Enter your name"
                   value={data.name}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -132,18 +148,23 @@ const ContactUs = () => {
                   placeholder="Enter your email"
                   value={data.email}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
               <div className="form-group">
                 <label htmlFor="phone">Phone Number</label>
-                <InputMask
-                  mask="+1 (999) 999 - 9999"
-                  required
+                <IMaskInput
+                  mask="+{1} (000) 000-0000"
+                  id="phone"
                   name="phone"
-                  onChange={handleChange}
                   value={data.phone}
-                  placeholder="Phone"
+                  onAccept={(value) =>
+                    setData((prev) => ({ ...prev, phone: value }))
+                  }
+                  placeholder="+1 (___) ___-____"
+                  required
+  
                 />
               </div>
 
@@ -156,7 +177,8 @@ const ContactUs = () => {
                   placeholder="Write your message here"
                   value={data.message}
                   onChange={handleChange}
-                ></textarea>
+                  required
+                />
               </div>
 
               <button type="submit" className="submit-btn">
@@ -165,11 +187,21 @@ const ContactUs = () => {
             </form>
           ) : (
             <div className="thank-you-message">
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/190/190411.png"
-                alt="Thank you icon"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
                 className="thank-you-icon"
-              />
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 
+                    10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 
+                    8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 
+                    14.17l-2.59-2.58L6 13l4 4 8-8z"
+                />
+              </svg>
               <p>
                 Thank you for contacting us! One of our team members will connect
                 with you as soon as possible.

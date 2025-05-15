@@ -51,14 +51,21 @@
   color: #5c5c5c;
 }
 
-.social-links {
+.contact-social-links {
   display: flex;
   gap: 10px;
+  margin-bottom: 10px;
 }
 
-.social-links img {
+.contact-social-links img {
   width: 24px;
   height: 24px;
+}
+
+.contact-social-line {
+  border-top: 1px solid #ffffff;
+  width: 100%;
+  margin-top: 10%;
 }
 
 .contact-form {
@@ -82,15 +89,12 @@
   margin-bottom: 20px;
 }
 
-.form-group label {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  color: #333333;
-}
-
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.contact-form input,
+.contact-form textarea,
+.imask-input {
+  width: 100%;
   padding: 10px 15px;
   border: 1px solid #cccccc;
   border-radius: 4px;
@@ -133,15 +137,8 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  width: 100%;
-  padding: 15px;
   background-color: #005e16;
   color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .add-gap {

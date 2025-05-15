@@ -82,41 +82,42 @@ const BlogPage = () => {
       <div className="filters">
         <button
           onClick={() => filterPosts('All')}
-          className={selectedCategory === 'All' ? 'active' : ''}
+          className={`blog-filter-btn ${selectedCategory === 'All' ? 'active' : ''}`}
         >
           All
         </button>
         <button
           onClick={() => filterPosts('Health')}
-          className={selectedCategory === 'Health' ? 'active' : ''}
+          className={`blog-filter-btn ${selectedCategory === 'Health' ? 'active' : ''}`}
         >
           Health
         </button>
         <button
           onClick={() => filterPosts('Seasonal')}
-          className={selectedCategory === 'Seasonal' ? 'active' : ''}
+          className={`blog-filter-btn ${selectedCategory === 'Seasonal' ? 'active' : ''}`}
         >
           Seasonal
         </button>
         <button
           onClick={() => filterPosts('Mission')}
-          className={selectedCategory === 'Mission' ? 'active' : ''}
+          className={`blog-filter-btn ${selectedCategory === 'Mission' ? 'active' : ''}`}
         >
           Mission
         </button>
         <button
           onClick={() => filterPosts('Dishes')}
-          className={selectedCategory === 'Dishes' ? 'active' : ''}
+          className={`blog-filter-btn ${selectedCategory === 'Dishes' ? 'active' : ''}`}
         >
           Dishes
         </button>
         <button
           onClick={() => filterPosts('Community')}
-          className={selectedCategory === 'Community' ? 'active' : ''}
+          className={`blog-filter-btn ${selectedCategory === 'Community' ? 'active' : ''}`}
         >
           Community
         </button>
       </div>
+
 
       <section className="blog-posts">
         {filteredPosts.map((post) => (

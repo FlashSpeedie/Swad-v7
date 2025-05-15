@@ -136,6 +136,10 @@ const ReferencePage = () => {
                     </ul>
                     <hr />
                     <br />
+                    <li><b>Home Page</b></li>
+                    <ul>
+                        <li>Image 1 - <a href="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8NDgyMTM5MXx8ZW58MHx8fHw%3D&dpr=2&auto=format&fit=crop&w=291.2&q=60" target="_blank" rel="noopener noreferrer">Link</a></li>
+                    </ul>
                     <li><b>Locations Page</b></li>
                     <ul>
                         <li>Oklahoma City - <a href="https://pixabay.com/photos/chairs-restaurant-tables-1837293/" target="_blank" rel="noopener noreferrer">Link</a></li>
