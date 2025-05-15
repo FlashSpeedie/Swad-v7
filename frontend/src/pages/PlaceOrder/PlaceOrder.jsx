@@ -45,7 +45,7 @@ const PlaceOrder = () => {
     const orderData = {
       address: data,
       items: orderItems,
-      amount: getTotalCartAmount(),
+      amount: getTotalCartAmount() + 2,
       paymentMethod,
     };
 
@@ -56,7 +56,8 @@ const PlaceOrder = () => {
 
       if (response.data.success) {
         if (paymentMethod === 'card') {
-          window.location.replace(response.data.session_url);
+          const { session_url } = response.data;
+          window.location.replace(session_url);
         } else {
           navigate('/myorders');
         }
@@ -65,7 +66,6 @@ const PlaceOrder = () => {
       }
     } catch (error) {
       alert('Failed to place the order. Please check your network or try again later.');
-      console.error(error);
     }
   };
 
@@ -83,8 +83,139 @@ const PlaceOrder = () => {
 
   return (
     <form onSubmit={placeOrder} className="place-order">
-      {/* Form contents unchanged... */}
-      <button className="proceed" type="submit">PROCEED TO PAYMENT</button>
+      <div className="place-order-left">
+        <p className="title">Delivery Information</p>
+        <div className="multi-fields">
+          <input
+            required
+            name="firstName"
+            onChange={onChangeHandler}
+            value={data.firstName}
+            type="text"
+            placeholder="First name"
+            pattern="[A-Za-z]+"
+          />
+          <input
+            required
+            name="lastName"
+            onChange={onChangeHandler}
+            value={data.lastName}
+            type="text"
+            placeholder="Last name"
+            pattern="[A-Za-z]+"
+          />
+        </div>
+        <input
+          required
+          name="email"
+          onChange={onChangeHandler}
+          value={data.email}
+          type="email"
+          placeholder="Email address"
+        />
+        <input
+          required
+          name="street"
+          onChange={onChangeHandler}
+          value={data.street}
+          type="text"
+          placeholder="Street"
+        />
+        <div className="multi-fields">
+          <input
+            required
+            name="city"
+            onChange={onChangeHandler}
+            value={data.city}
+            type="text"
+            placeholder="City"
+            pattern="[A-Za-z]+"
+          />
+          <input
+            required
+            name="state"
+            onChange={onChangeHandler}
+            value={data.state}
+            type="text"
+            placeholder="State"
+            readOnly
+          />
+        </div>
+        <div className="multi-fields">
+          <input
+            required
+            name="zipcode"
+            onChange={onChangeHandler}
+            value={data.zipcode}
+            type="text"
+            placeholder="Zip code"
+            pattern="\d*"
+            maxLength="5"
+          />
+          <input
+            required
+            name="country"
+            onChange={onChangeHandler}
+            value={data.country}
+            type="text"
+            placeholder="Country"
+            readOnly
+          />
+        </div>
+        <input
+          required
+          name="phone"
+          onChange={onChangeHandler}
+          value={data.phone}
+          placeholder="Phone"
+          pattern="\d{10}"
+          title="Enter a 10-digit phone number"
+        />
+        <p>
+          * On the production website users have to fill in the First Name, Last Name, Email Address,
+          Street, City, Zip Code, and their phone number. <b>For the competition, this information is auto filled but remains changeable.</b>
+        </p>
+      </div>
+
+      <div className="place-order-right">
+        <div className="cart-total">
+          <h2>Cart Totals</h2>
+          <div className="cart-total-details">
+            <div>
+              <span>Subtotal</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+            <hr />
+            <div>
+              <span>Delivery Fee</span>
+              <span>${deliveryFee.toFixed(2)}</span>
+            </div>
+            <hr />
+            <div>
+              <span>Taxes (4.5%)</span>
+              <span>${taxes.toFixed(2)}</span>
+            </div>
+            <hr />
+            <div className="total">
+              <span><b>Total</b></span>
+              <span><b>${total.toFixed(2)}</b></span>
+            </div>
+          </div>
+          <button className="proceed" type="submit">PROCEED TO PAYMENT</button>
+        </div>
+
+        <div className="payment-method">
+          <p className="title">Payment Method (Test Mode)</p>
+          <div className="payment-options">
+            <p>Email: testuser@gmail.com (Any Email)</p>
+            <p>Card Number: 4242 4242 4242 4242 (This is the dummy card to be used)</p>
+            <p>MM/YY: 03/29 (Can be any date after today)</p>
+            <p>CVC: 231 (Any 3 digit number)</p>
+            <p>Zip Code: 12345 (Any 5 digit number)</p>
+            <p>Uncheck "Save my info for 1-click checkout with Link"</p>
+          </div>
+        </div>
+      </div>
     </form>
   );
 };
