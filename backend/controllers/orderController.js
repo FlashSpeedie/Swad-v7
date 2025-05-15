@@ -38,8 +38,8 @@ const placeOrder = async (req, res) => {
                     name: "Delivery Charges"
                 },
                 unit_amount: 2 * 100
-            }
-        
+            },
+            quantity: 1
         })
 
         const totalAmount = req.body.amount;
@@ -52,7 +52,8 @@ const placeOrder = async (req, res) => {
                     name: "Taxes/Convenience Fee"
                 },
                 unit_amount: Math.round(taxAmount * 100)
-            }
+            },
+            quantity: 1
         })
 
         const session = await stripe.checkout.sessions.create({
