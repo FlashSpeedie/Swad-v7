@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "./Cart.css"; // All styles including popup
+import "./Cart.css"; 
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 

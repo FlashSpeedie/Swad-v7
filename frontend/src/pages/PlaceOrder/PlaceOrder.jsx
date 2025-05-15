@@ -1,26 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './PlaceOrder.css';
-import InputMask from 'react-input-mask';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const PlaceOrder = () => {
   const { getTotalCartAmount, token, food_list, cartItems, url } = useContext(StoreContext);
+  const navigate = useNavigate();
 
   const [data, setData] = useState({
-    firstName: "Test",
-    lastName: "User",
-    email: "testuser@gmail.com",
-    street: "12345 Test Rd",
-    city: "Oklahoma",
-    state: "Oklahoma",
-    zipcode: "73025",
-    country: "United States",
-    phone: "4051209327",
+    firstName: 'Test',
+    lastName: 'User',
+    email: 'testuser@gmail.com',
+    street: '12345 Test Rd',
+    city: 'Oklahoma',
+    state: 'Oklahoma',
+    zipcode: '73025',
+    country: 'United States',
+    phone: '4051209327',
   });
 
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState('card');
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -38,7 +38,7 @@ const PlaceOrder = () => {
       }));
 
     if (orderItems.length === 0) {
-      alert("Your cart is empty. Please add items before placing an order.");
+      alert('Your cart is empty. Please add items before placing an order.');
       return;
     }
 
@@ -55,27 +55,22 @@ const PlaceOrder = () => {
       });
 
       if (response.data.success) {
-        if (paymentMethod === "card") {
+        if (paymentMethod === 'card') {
           const { session_url } = response.data;
           window.location.replace(session_url);
         } else {
           navigate('/myorders');
         }
-        return;
       } else {
-        alert("Error: " + (response.data.message || "An unknown error occurred."));
+        alert('Error: ' + (response.data.message || 'An unknown error occurred.'));
       }
     } catch (error) {
-      alert("Failed to place the order. Please check your network or try again later.");
+      alert('Failed to place the order. Please check your network or try again later.');
     }
   };
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    if (!token) {
-      navigate('/cart');
-    } else if (getTotalCartAmount() === 0) {
+    if (!token || getTotalCartAmount() === 0) {
       navigate('/cart');
     }
   }, [token, getTotalCartAmount, navigate]);
@@ -83,7 +78,7 @@ const PlaceOrder = () => {
   const subtotal = getTotalCartAmount();
   const deliveryFee = subtotal === 0 ? 0 : 2;
   const taxRate = 0.045;
-  const taxes = (subtotal * taxRate) + 0.09;
+  const taxes = subtotal * taxRate + 0.09;
   const total = subtotal + taxes + deliveryFee;
 
   return (
@@ -99,7 +94,6 @@ const PlaceOrder = () => {
             type="text"
             placeholder="First name"
             pattern="[A-Za-z]+"
-            onInput={(e) => (e.target.value = e.target.value.replace(/[^A-Za-z]/g, ''))}
           />
           <input
             required
@@ -109,7 +103,6 @@ const PlaceOrder = () => {
             type="text"
             placeholder="Last name"
             pattern="[A-Za-z]+"
-            onInput={(e) => (e.target.value = e.target.value.replace(/[^A-Za-z]/g, ''))}
           />
         </div>
         <input
@@ -169,16 +162,21 @@ const PlaceOrder = () => {
             readOnly
           />
         </div>
-        <InputMask
-          mask="+1 (999) 999 - 9999"
+        <input
           required
           name="phone"
           onChange={onChangeHandler}
           value={data.phone}
           placeholder="Phone"
+          pattern="\d{10}"
+          title="Enter a 10-digit phone number"
         />
-        <p>* On the production website users have to fill in the First Name, Last Name, Email Address, Street, City, Zip Code, and their phone number. <b>For the competition, this information is auto filled but remains changeable.</b></p>
+        <p>
+          * On the production website users have to fill in the First Name, Last Name, Email Address,
+          Street, City, Zip Code, and their phone number. <b>For the competition, this information is auto filled but remains changeable.</b>
+        </p>
       </div>
+
       <div className="place-order-right">
         <div className="cart-total">
           <h2>Cart Totals</h2>
@@ -205,6 +203,7 @@ const PlaceOrder = () => {
           </div>
           <button className="proceed" type="submit">PROCEED TO PAYMENT</button>
         </div>
+
         <div className="payment-method">
           <p className="title">Payment Method (Test Mode)</p>
           <div className="payment-options">

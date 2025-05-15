@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputMask from "react-input-mask"; // Import InputMask
+import InputMask from 'react-input-mask-next';
 
 import "./ContactUs.css";
 

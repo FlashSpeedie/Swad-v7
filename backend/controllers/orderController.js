@@ -20,45 +20,36 @@ const placeOrder = async (req, res) => {
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
+        // Map food items to line items with quantity
         const line_items = req.body.items.map((item) => ({
             price_data: {
                 currency: "usd",
                 product_data: {
                     name: item.name
                 },
-                unit_amount: item.price * 100
+                unit_amount: Math.round(item.price * 100)
             },
             quantity: item.quantity
         }))
 
-        line_items.push({
-            price_data: {
-                currency: "usd",
-                product_data: {
-                    name: "Delivery Charges"
-                },
-                unit_amount: 2 * 100
-            },
-            quantity: 1
-        })
+        // Instead of adding delivery and tax as line items (which show Qty 1),
+        // we will add them as a separate total amount adjustment via 'payment_intent_data'
 
-        const totalAmount = req.body.amount;
-        const taxAmount = totalAmount * 0.045;
+        const deliveryCharge = 2.00;
+        const taxAmount = req.body.amount * 0.045;
 
-        line_items.push({
-            price_data: {
-                currency: "usd",
-                product_data: {
-                    name: "Taxes/Convenience Fee"
-                },
-                unit_amount: Math.round(taxAmount * 100)
-            },
-            quantity: 1
-        })
+        // Calculate total amount in cents including delivery and tax
+        const totalAmountCents = Math.round((req.body.amount + deliveryCharge + taxAmount) * 100);
 
         const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
             line_items: line_items,
             mode: 'payment',
+            payment_intent_data: {
+                amount: totalAmountCents,
+                currency: "usd",
+                // Note: This overrides the amount for the payment intent to the total
+            },
             success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
             cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`
         })
