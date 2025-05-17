@@ -140,6 +140,10 @@ const ReferencePage = () => {
                     <ul>
                         <li>Image 1 - <a href="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXRodW1ibmFpbHx8NDgyMTM5MXx8ZW58MHx8fHw%3D&dpr=2&auto=format&fit=crop&w=291.2&q=60" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
+                    <li><b>Book a Table Page</b></li>
+                    <ul>
+                        <li>Image 1 - <a href="https://unsplash.com/it/foto/un-tavolo-e-sedie-sotto-un-albero-in-un-campo-m1Jnyio2pUs" target="_blank" rel="noopener noreferrer">Link</a></li>
+                    </ul>
                     <li><b>Locations Page</b></li>
                     <ul>
                         <li>Oklahoma City - <a href="https://pixabay.com/photos/chairs-restaurant-tables-1837293/" target="_blank" rel="noopener noreferrer">Link</a></li>
@@ -162,6 +166,11 @@ const ReferencePage = () => {
                         <li>Seasonal Ingredients: What's Fresh This Spring? - <a href="https://pixabay.com/photos/tree-blossoms-blooms-spring-blossom-7022041/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Our Signature Dishes Made with Local Ingredients - <a href="https://pixabay.com/photos/loaf-sandwich-breakfast-fruit-3488727/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Healthy Eating: The Benefits of Eating Fresh, Local Foods - <a href="https://pixabay.com/photos/vegetables-water-droplets-fresh-1584999/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                    </ul>
+
+                    <li><b>Initiatives Page</b></li>
+                    <ul>
+                        <li>Image 1 - <a href="https://pixabay.com/photos/plant-planting-life-nature-natural-7702558/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
                 </ul>
 

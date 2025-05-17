@@ -40,7 +40,7 @@ import norman_city from'./norman_city.png'
 import phone from'./telephone.png'
 import locations from'./location.png'
 import clock from'./clock.png'
-import intiatives from './initiatives.png'
+import intiatives from './initiatives.webp'
 import dots_bg from './dots1-green.svg'
 
 export const assets = {
