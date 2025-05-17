@@ -33,13 +33,12 @@ const placeOrder = async (req, res) => {
 
         line_items.push({
             price_data: {
-                currency: "usd",
-                product_data: {
-                    name: "Delivery Charges"
-                },
-                unit_amount: 2 * 100
+            currency: "usd",
+            product_data: {
+                name: "Delivery Charges"
             },
-            quantity: 1
+            unit_amount: 2 * 100
+            }
         })
 
         const totalAmount = req.body.amount;
@@ -47,13 +46,12 @@ const placeOrder = async (req, res) => {
 
         line_items.push({
             price_data: {
-                currency: "usd",
-                product_data: {
-                    name: "Taxes/Convenience Fee"
-                },
-                unit_amount: Math.round(taxAmount * 100)
+            currency: "usd",
+            product_data: {
+                name: "Taxes/Convenience Fee"
             },
-            quantity: 1
+            unit_amount: Math.round(taxAmount * 100)
+            }
         })
 
         const session = await stripe.checkout.sessions.create({
