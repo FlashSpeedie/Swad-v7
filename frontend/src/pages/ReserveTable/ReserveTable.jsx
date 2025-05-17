@@ -14,25 +14,21 @@ const Reserve = () => {
     const selectedDate = event.target.value;
     setDate(selectedDate);
 
-    if (selectedDate.length === 10) {
-      const selected = new Date(selectedDate);
-      const today = new Date();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-      selected.setHours(0, 0, 0, 0);
-      today.setHours(0, 0, 0, 0);
+    const [year, month, day] = selectedDate.split("-");
+    const selected = new Date(year, month - 1, day);
+    selected.setHours(0, 0, 0, 0);
 
-      const timeDiff = selected.getTime() - today.getTime();
-      const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
 
-      if (dayDiff >= 1) {
-        setIsValidDate(true);
-        setShowDetailsForm(false);
-      } else {
-        setIsValidDate(false);
-        setShowDetailsForm(false);
-      }
-    } else {
+    if (selected >= tomorrow) {
       setIsValidDate(true);
+      setShowDetailsForm(false);
+    } else {
+      setIsValidDate(false);
       setShowDetailsForm(false);
     }
   };
@@ -64,10 +60,17 @@ const Reserve = () => {
   return (
     <div className="reserve-container">
       <div className="top-section">
-        <img className="top-section-image" src={assets.reserve} alt="Garden Seating" />
+        <img
+          className="top-section-image"
+          src={assets.reserve}
+          alt="Garden Seating"
+        />
         <div className="top-section-text">
           <h2>Plant Lovers Beloved Spot to Eat</h2>
-          <p>Experience the charm of our garden seating surrounded by lush greenery. A perfect blend of nature and cuisine.</p>
+          <p>
+            Experience the charm of our garden seating surrounded by lush
+            greenery. A perfect blend of nature and cuisine.
+          </p>
         </div>
       </div>
 
@@ -75,7 +78,9 @@ const Reserve = () => {
         <>
           <div className="date-time-section">
             <div className="column">
-              <label className="label-text" htmlFor="reservationDate">Date:</label>
+              <label className="label-text" htmlFor="reservationDate">
+                Date:
+              </label>
               <input
                 type="date"
                 id="reservationDate"
@@ -84,7 +89,9 @@ const Reserve = () => {
                 className={`input-field ${!isValidDate ? "error" : ""}`}
               />
               {!isValidDate && (
-                <p className="error-text">Please select a future date (not today).</p>
+                <p className="error-text">
+                  Please select a future date (not today).
+                </p>
               )}
             </div>
 
@@ -92,16 +99,20 @@ const Reserve = () => {
               <div className="column">
                 <label className="label-text">Time:</label>
                 <div className="time-buttons">
-                  {["4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"].map((time) => (
-                    <button
-                      key={time}
-                      onClick={() => handleTimeSelection(time)}
-                      className={`time-button ${selectedTime === time ? "selected" : ""}`}
-                    >
-                      <span className="time-text">{time.split(" ")[0]}</span>
-                      <span className="time-period">{time.split(" ")[1]}</span>
-                    </button>
-                  ))}
+                  {["4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"].map(
+                    (time) => (
+                      <button
+                        key={time}
+                        onClick={() => handleTimeSelection(time)}
+                        className={`time-button ${
+                          selectedTime === time ? "selected" : ""
+                        }`}
+                      >
+                        <span className="time-text">{time.split(" ")[0]}</span>
+                        <span className="time-period">{time.split(" ")[1]}</span>
+                      </button>
+                    )
+                  )}
                 </div>
               </div>
             )}
@@ -112,11 +123,21 @@ const Reserve = () => {
               <h3 className="form-title">Your Details</h3>
               <div className="row">
                 <div className="column">
-                  <label className="label-text" htmlFor="name">Name:</label>
-                  <input type="text" id="name" className="input-field" placeholder="Your Name" required />
+                  <label className="label-text" htmlFor="name">
+                    Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="input-field"
+                    placeholder="Your Name"
+                    required
+                  />
                 </div>
                 <div className="column">
-                  <label className="label-text" htmlFor="partySize">Party Size:</label>
+                  <label className="label-text" htmlFor="partySize">
+                    Party Size:
+                  </label>
                   <input
                     type="number"
                     id="partySize"
@@ -125,7 +146,7 @@ const Reserve = () => {
                     required
                     min={1}
                     max={20}
-                    onInput={e => {
+                    onInput={(e) => {
                       let val = parseInt(e.target.value, 10);
                       if (isNaN(val) || val < 1) {
                         e.target.value = 1;
@@ -138,7 +159,9 @@ const Reserve = () => {
               </div>
               <div className="row">
                 <div className="column">
-                  <label className="label-text" htmlFor="phone">Phone:</label>
+                  <label className="label-text" htmlFor="phone">
+                    Phone:
+                  </label>
                   <input
                     type="tel"
                     id="phone"
@@ -150,7 +173,9 @@ const Reserve = () => {
                   />
                 </div>
                 <div className="column">
-                  <label className="label-text" htmlFor="seating">Seat:</label>
+                  <label className="label-text" htmlFor="seating">
+                    Seat:
+                  </label>
                   <select id="seating" className="input-field">
                     <option value="farm-view">Farm View</option>
                     <option value="garden-table">Garden Table</option>
@@ -160,9 +185,18 @@ const Reserve = () => {
                   </select>
                 </div>
                 <div className="column">
-                  <label className="label-text" htmlFor="location">Location:</label>
-                  <select id="location" className="input-field" required>
-                    <option value="" disabled selected>Choose a location</option>
+                  <label className="label-text" htmlFor="location">
+                    Location:
+                  </label>
+                  <select
+                    id="location"
+                    className="input-field"
+                    required
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Choose a location
+                    </option>
                     <option value="Tulsa">Tulsa</option>
                     <option value="Oklahoma City">Oklahoma City</option>
                     <option value="Edmond">Edmond</option>
@@ -170,10 +204,19 @@ const Reserve = () => {
                 </div>
               </div>
               <div className="row">
-                <label className="label-text" htmlFor="notes">Notes:</label>
-                <textarea id="notes" className="input-field" rows="2" placeholder="Any special requests..." />
+                <label className="label-text" htmlFor="notes">
+                  Notes:
+                </label>
+                <textarea
+                  id="notes"
+                  className="input-field"
+                  rows="2"
+                  placeholder="Any special requests..."
+                />
               </div>
-              <button type="submit" className="form-btn">Reserve Now</button>
+              <button type="submit" className="form-btn">
+                Reserve Now
+              </button>
             </form>
           )}
         </>
@@ -181,14 +224,26 @@ const Reserve = () => {
 
       {isConfirmed && (
         <div className="confirmation">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 
-              10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 
-              8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 
-              14.17l-2.59-2.58L6 13l4 4 8-8z"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 
+                10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 
+                8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 
+                14.17l-2.59-2.58L6 13l4 4 8-8z"
+            />
           </svg>
           <h3>Reservation Confirmed</h3>
-          <p>Thank you! Your reservation information has been sent to your email, and your reservation number is <b>{generateReservationNumber()}</b>.</p>
+          <p>
+            Thank you! Your reservation information has been sent to your
+            email, and your reservation number is{" "}
+            <b>{generateReservationNumber()}</b>.
+          </p>
         </div>
       )}
     </div>
