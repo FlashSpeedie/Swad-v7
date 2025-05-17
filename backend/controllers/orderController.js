@@ -20,24 +20,24 @@ const placeOrder = async (req, res) => {
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
-        const line_items = req.body.items.map((item) => ({
+        line_items.push({
             price_data: {
                 currency: "usd",
                 product_data: {
-                    name: item.name
+                    name: "Delivery Fee (Fixed)"
                 },
-                unit_amount: item.price * 100
+                unit_amount: 200
             },
-            quantity: item.quantity
-        }))
+            quantity: 1
+        });
 
         line_items.push({
             price_data: {
-            currency: "usd",
-            product_data: {
-                name: "Delivery Charges"
-            },
-            unit_amount: 2 * 100
+                currency: "usd",
+                product_data: {
+                    name: "Delivery Charges"
+                },
+                unit_amount: 2 * 100
             }
         })
 
@@ -46,13 +46,14 @@ const placeOrder = async (req, res) => {
 
         line_items.push({
             price_data: {
-            currency: "usd",
-            product_data: {
-                name: "Taxes/Convenience Fee"
+                currency: "usd",
+                product_data: {
+                    name: "Taxes & Convenience (Fixed)"
+                },
+                unit_amount: Math.round(taxAmount * 100)
             },
-            unit_amount: Math.round(taxAmount * 100)
-            }
-        })
+            quantity: 1
+        });
 
         const session = await stripe.checkout.sessions.create({
             line_items: line_items,
@@ -98,13 +99,13 @@ const userOrders = async (req, res) => {
     }
 }
 
-const listOrders = async (req, res) => { 
+const listOrders = async (req, res) => {
     try {
         const orders = await orderModel.find({});
         res.json({ success: true, data: orders });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Error fetching orders" }); 
+        res.status(500).json({ success: false, message: "Error fetching orders" });
     }
 };
 

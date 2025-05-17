@@ -21,7 +21,10 @@ const Reserve = () => {
 
     setDate(selectedDate);
     if (selectedDate.length === 10) {
-      if (selected > today) {
+      // Allow tomorrow or any future date, but not today or past
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      if (selected >= tomorrow) {
         setIsValidDate(true);
         setShowDetailsForm(false);
       } else {
@@ -114,7 +117,23 @@ const Reserve = () => {
                 </div>
                 <div className="column">
                   <label className="label-text" htmlFor="partySize">Party Size:</label>
-                  <input type="number" id="partySize" className="input-field" placeholder="2" required />
+                  <input
+                    type="number"
+                    id="partySize"
+                    className="input-field"
+                    placeholder="2"
+                    required
+                    min={1}
+                    max={20}
+                    onInput={e => {
+                      let val = parseInt(e.target.value, 10);
+                      if (isNaN(val) || val < 1) {
+                        e.target.value = 1;
+                      } else if (val > 20) {
+                        e.target.value = 20;
+                      }
+                    }}
+                  />
                 </div>
               </div>
               <div className="row">
