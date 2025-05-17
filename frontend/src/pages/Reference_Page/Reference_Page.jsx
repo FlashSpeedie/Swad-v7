@@ -65,7 +65,7 @@ const ReferencePage = () => {
                         <li>Item: Vegan Sushi Rolls - <a href="https://pixabay.com/photos/food-sushi-seafood-japan-oriental-3581341/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Caprese Spring Rolls - <a href="https://pixabay.com/photos/egg-roll-spring-roll-avocado-roll-2680478/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Vegetarian Egg Rolls - <a href="https://pixabay.com/photos/food-refreshment-plate-meal-3228057/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                        <li>Item: Sweet Potato & Black Bean Tortilla Wraps - <a href="https://pixabay.com/photos/wraps-food-tortilla-healthy-1170195/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Sweet Potato & Black Bean Tortilla Wraps - <a href="https://pixabay.com/photos/food-wrap-vegan-snack-a-drink-3048691/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Twin Tomato Tortilla Burritos - <a href="https://pixabay.com/photos/burrito-food-mexican-tortilla-4126108/" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
@@ -111,7 +111,7 @@ const ReferencePage = () => {
                         <li>Item: Pesto Primavera - <a href="https://pixabay.com/photos/pasta-pesto-farfalle-pesto-pasta-1854245/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Creamy Garlic Sauce Egg Noodles - <a href="https://pixabay.com/photos/food-dish-cheese-salad-garnish-8151625/" target="_blank" rel="noopener noreferrer">Link</a></li>
                         <li>Item: Swiss Mac & Cheese - <a href="https://pixabay.com/photos/macaroni-aelpler-swiss-switzerland-3479021/" target="_blank" rel="noopener noreferrer">Link</a></li>
-                        <li>Item: Butternut Squash Ravioli - <a href="https://pixabay.com/photos/ravioli-lemon-butter-pasta-noodles-1949698/" target="_blank" rel="noopener noreferrer">Link</a></li>
+                        <li>Item: Butternut Squash Ravioli - <a href="https://www.freepik.com/free-photo/closeup-tasty-italian-ravioli_7061190.htm#fromView=search&page=1&position=2&uuid=30d3629b-04fa-4b48-be38-5da87d1d1a95&query=Ravioli" target="_blank" rel="noopener noreferrer">Link</a></li>
                     </ul>
 
                     <li><b>Category: Noodles</b></li>
