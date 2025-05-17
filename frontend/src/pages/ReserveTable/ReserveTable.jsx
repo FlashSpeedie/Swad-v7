@@ -12,29 +12,30 @@ const Reserve = () => {
 
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
-    const today = new Date();
-    const selected = new Date(selectedDate);
-
-    // Remove time part for fair comparison
-    today.setHours(0, 0, 0, 0);
-    selected.setHours(0, 0, 0, 0);
-
     setDate(selectedDate);
+
     if (selectedDate.length === 10) {
-      // Allow tomorrow or any future date, but not today or past
-      const tomorrow = new Date(today);
-      tomorrow.setDate(today.getDate() + 1);
-      if (selected >= tomorrow) {
+      const selected = new Date(selectedDate);
+      const today = new Date();
+
+      selected.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      const timeDiff = selected.getTime() - today.getTime();
+      const dayDiff = timeDiff / (1000 * 60 * 60 * 24);
+
+      if (dayDiff >= 1) {
         setIsValidDate(true);
         setShowDetailsForm(false);
       } else {
         setIsValidDate(false);
+        setShowDetailsForm(false);
       }
     } else {
       setIsValidDate(true);
+      setShowDetailsForm(false);
     }
   };
-
 
   const handleTimeSelection = (time) => {
     setSelectedTime(time);
@@ -85,7 +86,6 @@ const Reserve = () => {
               {!isValidDate && (
                 <p className="error-text">Please select a future date (not today).</p>
               )}
-
             </div>
 
             {isValidDate && date && (

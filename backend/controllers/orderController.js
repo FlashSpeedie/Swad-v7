@@ -20,16 +20,16 @@ const placeOrder = async (req, res) => {
         await newOrder.save();
         await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
 
-        line_items.push({
+        const line_items = req.body.items.map((item) => ({
             price_data: {
                 currency: "usd",
                 product_data: {
-                    name: "Delivery Fee (Fixed)"
+                    name: item.name
                 },
-                unit_amount: 200
+                unit_amount: item.price * 100
             },
-            quantity: 1
-        });
+            quantity: item.quantity
+        }))
 
         line_items.push({
             price_data: {
@@ -38,7 +38,8 @@ const placeOrder = async (req, res) => {
                     name: "Delivery Charges"
                 },
                 unit_amount: 2 * 100
-            }
+            },
+            quantity: 1
         })
 
         const totalAmount = req.body.amount;
@@ -48,12 +49,12 @@ const placeOrder = async (req, res) => {
             price_data: {
                 currency: "usd",
                 product_data: {
-                    name: "Taxes & Convenience (Fixed)"
+                    name: "Taxes/Convenience Fee"
                 },
                 unit_amount: Math.round(taxAmount * 100)
             },
             quantity: 1
-        });
+        })
 
         const session = await stripe.checkout.sessions.create({
             line_items: line_items,
@@ -99,13 +100,13 @@ const userOrders = async (req, res) => {
     }
 }
 
-const listOrders = async (req, res) => {
+const listOrders = async (req, res) => { 
     try {
         const orders = await orderModel.find({});
         res.json({ success: true, data: orders });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: "Error fetching orders" });
+        res.status(500).json({ success: false, message: "Error fetching orders" }); 
     }
 };
 
