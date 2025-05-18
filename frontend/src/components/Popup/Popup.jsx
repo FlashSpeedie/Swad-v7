@@ -52,11 +52,27 @@ const Popup = () => {
                 <input
                   type="text"
                   id="phoneNumber"
-                  value={phoneNumber}
-                  onChange={handlePhoneChange}
-                  placeholder="Enter phone number"
-                  maxLength={10}
+                  value={
+                    phoneNumber
+                      ? `+1 (${phoneNumber.replace(
+                          /^(\d{0,3})(\d{0,3})(\d{0,4})$/,
+                          (match, p1, p2, p3) =>
+                            (p1 ? p1 : '') +
+                            (p2 ? `) ${p2}` : p1 && p1.length === 3 ? ')' : '') +
+                            (p3 ? ` - ${p3}` : '')
+                        )}`
+                      : '+1 '
+                  }
+                  onChange={e => {
+                    let raw = e.target.value.replace(/[^0-9]/g, '');
+                    if (raw.startsWith('1')) raw = raw.slice(1);
+                    setPhoneNumber(raw.slice(0, 10));
+                    setErrorMessage('');
+                  }}
+                  placeholder="+1 (123) 456 - 7890"
+                  maxLength={19}
                   required
+                  style={{ width: '100%' }}
                 />
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
                 <button className="custom-button" type="submit">Sign Up</button>

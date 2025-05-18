@@ -30,7 +30,7 @@
 }
 
 .explore-menu-list-wrapper {
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
     position: relative;
 }
@@ -39,22 +39,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
     margin: 20px 0px;
     padding: 10px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    /* Firefox */
-}
-
-.explore-menu-list::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari */
+    overflow-x: hidden;
+    flex-wrap: nowrap;
 }
 
 .explore-menu-list-item {
-    scroll-snap-align: center;
+    flex: 0 0 calc(100% / 8);
     text-align: center;
 }
 
@@ -79,7 +71,6 @@
     padding: 2px;
 }
 
-/* Arrow Styling */
 .scroll-arrow {
     position: absolute;
     top: 40%;
@@ -117,8 +108,11 @@
     color: white;
 }
 
-/* Responsive Sizes */
 @media (min-width: 1200px) {
+    .explore-menu-list-item {
+        flex: 0 0 calc(100% / 8);
+    }
+
     .explore-menu-list-item img {
         width: 175px;
         height: 175px;
@@ -130,6 +124,10 @@
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
+    .explore-menu-list-item {
+        flex: 0 0 calc(100% / 6);
+    }
+
     .explore-menu-list-item img {
         width: 150px;
         height: 150px;
@@ -141,8 +139,12 @@
 }
 
 @media (max-width: 767px) {
+    .explore-menu-list-item {
+        flex: 0 0 calc(100% / 4);
+    }
+
     .explore-menu-list {
-        gap: 10px;
+        gap: 0;
     }
 
     .explore-menu-list-item img {

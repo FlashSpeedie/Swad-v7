@@ -14,6 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  background-color: #fff;
 }
 
 .food-item-image {
@@ -42,11 +43,19 @@
 .food-item-name-rating p {
   font-size: 20px;
   font-weight: 500;
+  margin: 0;
 }
 
-.food-item-name-rating img {
+.rating-stars {
   width: 140px;
   height: auto;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.rating-stars:hover {
+  transform: scale(1.1);
 }
 
 .food-item-desc {
@@ -91,12 +100,13 @@
   color: green;
   font-weight: bold;
   white-space: nowrap;
-  padding-left: 4px;
-  padding-right: 0px;
-  text-align: center;
-  padding: 25px, 0px;
   padding-left: 25px;
+  padding-right: 0;
+  text-align: center;
   text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .add-to-cart-btn {
@@ -119,6 +129,98 @@
   background-color: #018606;
 }
 
+/* REVIEW MODAL STYLES */
+
+.review-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.review-modal {
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  padding: 40px 30px 30px 30px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  animation: slideInFromRight 0.7s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.review-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.review-modal-close:hover {
+  color: #000;
+}
+
+.review-modal-title {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #009919;
+  font-weight: 700;
+}
+
+.review-content {
+  max-width: 100%;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.review-stars {
+  font-size: 22px;
+  color: #f4c150; /* gold star color */
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+.review-text {
+  font-style: italic;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.3;
+  margin: 0 10px;
+}
+
+/* RESPONSIVE */
+
 @media (max-width: 768px) {
   .food-item {
     flex: 1 1 calc(100% - 20px);
@@ -138,6 +240,19 @@
 
   .food-item-category {
     font-size: 18px;
+  }
+
+  .review-modal {
+    max-width: 90%;
+    padding: 30px 20px 20px 20px;
+  }
+
+  .review-modal-title {
+    font-size: 24px;
+  }
+
+  .review-text {
+    font-size: 14px;
   }
 }
 
@@ -165,5 +280,17 @@
 
   .food-item-category {
     font-size: 16px;
+  }
+
+  .review-modal {
+    padding: 25px 15px 15px 15px;
+  }
+
+  .review-modal-title {
+    font-size: 20px;
+  }
+
+  .review-text {
+    font-size: 13px;
   }
 }
