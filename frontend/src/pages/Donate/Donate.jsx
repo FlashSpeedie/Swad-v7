@@ -32,7 +32,7 @@ const Donate = () => {
                         className="donate-image"
                     />
                     <div className="donate-description">
-                        <p>
+                        <p style={{ fontSize: '1.2rem' }}>
                             Ruzycki Farms is a local family-run farm and a proud supplier of nutrient-rich fresh produce. Our collaboration promotes the Farm-To-Table movement, offering wholesome meals and raising awareness of sustainable agriculture. We are thankful for their continued partnership and your support.
                         </p>
                         <button className="donate-learn-button" onClick={handleNavigate}>

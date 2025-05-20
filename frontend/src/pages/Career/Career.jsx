@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Career.css';
+import { IMaskInput } from 'react-imask';
 
 const CareerPage = () => {
   const [selectedJob, setSelectedJob] = useState(null);
@@ -9,6 +10,11 @@ const CareerPage = () => {
   const [locationFilter, setLocationFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+  });
 
   const jobs = [
     { id: 1, title: 'Cashier', location: 'Tulsa', type: 'Part-Time', description: 'Handles customer transactions and ensures smooth operation.', requirements: 'Good communication skills.', salary: '$15/hour' },
@@ -19,9 +25,9 @@ const CareerPage = () => {
     { id: 6, title: 'Host', location: 'Edmond', type: 'Part-Time', description: 'Greets and seats customers.', requirements: 'Friendly and organized.', salary: '$12/hour' },
     { id: 7, title: 'Barista', location: 'Tulsa', type: 'Full-Time', description: 'Prepares and serves coffee and beverages.', requirements: 'Experience with coffee machines.', salary: '$16/hour' },
     { id: 8, title: 'Sous Chef', location: 'Oklahoma', type: 'Full-Time', description: 'Assists the head chef in the kitchen.', requirements: 'Advanced culinary skills.', salary: '$22/hour' },
-    { id: 11, title: 'Head Chef', location: 'Oklahoma', type: 'Full-Time', description: 'The head chef in the kitchen.', requirements: 'Advanced culinary skills and graduated from culinary school.', salary: '$35/hour' },
     { id: 9, title: 'Janitor', location: 'Tulsa', type: 'Part-Time', description: 'Maintains cleanliness of the restaurant.', requirements: 'Attention to detail.', salary: '$12/hour' },
     { id: 10, title: 'Delivery Driver', location: 'Oklahoma', type: 'Full-Time', description: 'Delivers food to customers.', requirements: 'Valid driver’s license.', salary: '$17/hour' },
+    { id: 11, title: 'Head Chef', location: 'Oklahoma', type: 'Full-Time', description: 'The head chef in the kitchen.', requirements: 'Advanced culinary skills and graduated from culinary school.', salary: '$35/hour' },
   ];
 
   const filteredJobs = jobs.filter(job =>
@@ -35,21 +41,30 @@ const CareerPage = () => {
     setShowPopup(true);
     setApplying(false);
     setSubmitted(false);
+    setFormData({ name: '', email: '', phone: '' });
   };
 
-  const handleApplyNow = () => {
-    setApplying(true);
-  };
+  const handleApplyNow = () => setApplying(true);
 
-  const closePopup = () => {
+  const handleClosePopup = () => {
     setShowPopup(false);
     setSelectedJob(null);
     setApplying(false);
     setSubmitted(false);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handlePhoneChange = (value) => {
+    setFormData(prev => ({ ...prev, phone: value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Normally you would also validate or send data here
     setSubmitted(true);
   };
 
@@ -61,20 +76,20 @@ const CareerPage = () => {
       </div>
 
       <div className="search-container">
-        <input 
-          type="text" 
-          placeholder="Search jobs..." 
-          className="search-bar" 
-          value={searchTerm} 
-          onChange={(e) => setSearchTerm(e.target.value)} 
+        <input
+          type="text"
+          placeholder="Search jobs..."
+          className="search-bar"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <select className="dropdown" onChange={(e) => setLocationFilter(e.target.value)} value={locationFilter}>
+        <select className="dropdown" value={locationFilter} onChange={(e) => setLocationFilter(e.target.value)}>
           <option value="">All Locations</option>
           <option value="Edmond">Edmond</option>
           <option value="Oklahoma">Oklahoma</option>
           <option value="Tulsa">Tulsa</option>
         </select>
-        <select className="dropdown" onChange={(e) => setTypeFilter(e.target.value)} value={typeFilter}>
+        <select className="dropdown" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
           <option value="">All Types</option>
           <option value="Full-Time">Full-Time</option>
           <option value="Part-Time">Part-Time</option>
@@ -93,7 +108,7 @@ const CareerPage = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredJobs.map((job) => (
+            {filteredJobs.map(job => (
               <tr key={job.id}>
                 <td>{job.title}</td>
                 <td>{job.type}</td>
@@ -106,10 +121,10 @@ const CareerPage = () => {
         </table>
       </div>
 
-      {showPopup && (
+      {showPopup && selectedJob && (
         <div className="popup-wrapper">
           <div className="popup-container">
-            <button className="popup-close" onClick={closePopup}>×</button>
+            <button className="popup-close" onClick={handleClosePopup}>×</button>
             {!applying ? (
               <>
                 <h2>{selectedJob.title}</h2>
@@ -120,22 +135,42 @@ const CareerPage = () => {
                 <p>{selectedJob.salary}</p>
                 <button className="apply-button" onClick={handleApplyNow}>Apply Now</button>
               </>
+            ) : submitted ? (
+              <div>
+                <h2>Application Submitted</h2>
+                <p>Thank you for applying for the {selectedJob.title} position. We will review your application and get back to you soon.</p>
+              </div>
             ) : (
-              submitted ? (
-                <div>
-                  <h2>Application Submitted</h2>
-                  <p>Thank you for applying for the {selectedJob.title} position. We will review your application and get back to you soon.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit}>
-                  <h2>Application</h2>
-                  <p>Applying for: {selectedJob.title}</p>
-                  <input type="text" placeholder="Full Name" required />
-                  <input type="email" placeholder="Email" required />
-                  <input type="tel" placeholder="Phone Number" required />
-                  <button type="submit" className="apply-submit-button">Submit</button>
-                </form>
-              )
+              <form onSubmit={handleSubmit} className="application-form">
+                <h2>Application</h2>
+                <p>Applying for: {selectedJob.title}</p>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <IMaskInput
+                  mask="+{1} (000) 000-0000"
+                  name="phone"
+                  value={formData.phone}
+                  onAccept={handlePhoneChange}
+                  placeholder="+1 (___) ___-____"
+                  required
+                  style={{ width: '90%' }}
+                />
+                <button type="submit" className="apply-submit-button">Submit</button>
+              </form>
             )}
           </div>
         </div>

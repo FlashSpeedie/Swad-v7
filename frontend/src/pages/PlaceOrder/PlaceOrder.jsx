@@ -17,7 +17,7 @@ const PlaceOrder = () => {
     state: 'Oklahoma',
     zipcode: '73025',
     country: 'United States',
-    phone: '4051209327',
+    phone: '(405) 120-9327',
   });
 
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -168,8 +168,8 @@ const PlaceOrder = () => {
           onChange={onChangeHandler}
           value={data.phone}
           placeholder="Phone"
-          pattern="\d{10}"
-          title="Enter a 10-digit phone number"
+          pattern="\(\d{3}\) \d{3}-\d{4}"
+          title="Enter a phone number in the format (123) 456-7890"
         />
         <p>
           * On the production website users have to fill in the First Name, Last Name, Email Address,

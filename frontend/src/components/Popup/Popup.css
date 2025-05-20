@@ -17,7 +17,7 @@
   padding: 40px 30px;
   width: 90%;
   max-width: 520px;
-  min-height: 480px;
+  min-height: auto;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   animation: popIn 0.4s ease-in-out;

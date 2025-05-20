@@ -28,8 +28,8 @@
     color: green;
 }
 
-.my-order-order p{
-    margin-bottom:0px;
+.my-order-order p {
+    margin-bottom: 0px;
     font-size: 15px;
 }
 
@@ -47,6 +47,7 @@
     cursor: pointer;
     color: #ffffff;
     width: 110px;
+    margin-bottom: 20%;
 }
 
 .my-order-order button :hover {

@@ -8,7 +8,11 @@ const ReferencePage = () => {
             <ul className="content">
                 <h1>Reference Page</h1>
                 <h2>User Session</h2>
-                <p>While the production version of the site will feature a login/signup popup for users, the competition version includes an auto-login functionality to streamline access and demonstrate core features without authentication barriers.</p>
+                <p>
+                    While the production version of the site will feature a login/signup popup for users, the competition version includes an auto-login functionality to streamline access and demonstrate core features without authentication barriers.
+                    <br />
+                    Additionally, on the My Orders page, there are items that have already been ordered for demonstration purposes; this will not be present in the production version.
+                </p>
                 <p>
                     <h2>Admin Link</h2>
                     On the production website, the admin link won't be visible to users, but for the competition, it is here:
