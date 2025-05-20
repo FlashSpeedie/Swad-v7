@@ -18,7 +18,7 @@ console.log('Cloudinary Config:', process.env.CLOUDINARY_CLOUD_NAME, process.env
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 400,
+    max: 500,
     standardHeaders: true,
     legacyHeaders: false,
 });
