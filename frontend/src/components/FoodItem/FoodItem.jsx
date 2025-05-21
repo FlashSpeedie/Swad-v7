@@ -371,7 +371,12 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
                 <img
                   src={assets.logo}
                   alt="Vegan"
-                  style={{ width: 20, height: 20, marginLeft: 4 }}
+                  style={{
+                    aspectRatio: '1 / 1',
+                    objectFit: 'cover',
+                    width: '32px',
+                    height: '32px',
+                  }}
                 />
                 Vegan
 
@@ -381,7 +386,12 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
                 <img
                   src={assets.vegetarian}
                   alt="Vegetarian"
-                  style={{ width: 20, height: 20, marginRight: 4 }}
+                  style={{
+                    aspectRatio: '1 / 1',
+                    objectFit: 'cover',
+                    width: '32px',
+                    height: '32px',
+                  }}
                 />
                 Vegetarian
               </>
