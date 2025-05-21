@@ -335,10 +335,6 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
   const openReviews = () => setShowReviews(true);
   const closeReviews = () => setShowReviews(false);
 
-  // Determine if the item is vegan or vegetarian
-  const isVegan = name?.toLowerCase().includes('vegan') || category === 'Specials';
-  const isVegetarian = !isVegan;
-
   return (
     <>
       <div className="food-item">

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                       // Modern enough for Node.js 12+
+    "module": "commonjs",                     // Node.js module system
+    "strict": true,                           // Enable all strict type checks
+    "esModuleInterop": true,                  // Allow default imports from CommonJS modules
+    "forceConsistentCasingInFileNames": true,// Case sensitive file imports
+    "skipLibCheck": true                      // Skip type checks on declaration files to speed up build
+  },
+  "include": ["src/**/*"],                    // Include all TS files in src folder
+  "exclude": ["node_modules", "dist"]         // Exclude node_modules and build output folder
+}
