@@ -84,7 +84,7 @@ const Popup = () => {
                     maxLength={16}
                     required
                     style={{
-                      width: '40%',
+                      width: '50%',
                       minWidth: '120px',
                       margin: '12px 0',
                       textAlign: 'center',
@@ -97,7 +97,13 @@ const Popup = () => {
                   />
                 </div>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
-                <button className="custom-button" type="submit">Sign Up</button>
+                <button
+                  className="custom-button"
+                  type="submit"
+                  style={{ height: 'auto' }}
+                >
+                  Sign Up
+                </button>
               </form>
             ) : (
               <div className="thank-you-message">

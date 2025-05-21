@@ -97,7 +97,7 @@
   button[type="submit"] {
   width: 100%;
   padding: 15px;
-  background-color: #37f122;
+  background-color: #009919;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -107,7 +107,7 @@
   }
   
   button[type="submit"]:hover {
-  background-color: #21e113;
+  background-color: #005203;
   }
   
   @media screen and (max-width: 768px) {
