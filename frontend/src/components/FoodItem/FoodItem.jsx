@@ -335,6 +335,10 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
   const openReviews = () => setShowReviews(true);
   const closeReviews = () => setShowReviews(false);
 
+  // Determine if the item is vegan or vegetarian
+  const isVegan = name?.toLowerCase().includes('vegan') || category === 'Specials';
+  const isVegetarian = !isVegan;
+
   return (
     <>
       <div className="food-item">
@@ -361,8 +365,26 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
           </div>
           <p className="food-item-desc">{description || 'No description available.'}</p>
           <p className="food-item-category">Category: {category || 'Category not available'}</p>
-          <p className="food-item-list">
-            {name?.toLowerCase().includes('vegan') || category === 'Specials' ? 'Vegan' : 'Vegetarian'}
+          <p className="food-item-list" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {isVegan ? (
+              <>
+                Vegan
+                <img
+                  src={assets.vegan}
+                  alt="Vegan"
+                  style={{ width: 20, height: 20, marginLeft: 4 }}
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  src={assets.vegetarian}
+                  alt="Vegetarian"
+                  style={{ width: 20, height: 20, marginRight: 4 }}
+                />
+                Vegetarian
+              </>
+            )}
           </p>
 
           <p className="food-item-price">{price ? `$${price}` : 'Price not available'}</p>

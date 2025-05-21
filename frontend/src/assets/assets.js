@@ -42,6 +42,9 @@ import locations from'./location.webp'
 import clock from'./clock.webp'
 import intiatives from './initiatives.webp'
 import dots_bg from './dots1-green.svg'
+import contact from './contact.webp'
+import vegan from './vegan.webp'
+import vegetarian from './vegetarian.webp'
 
 export const assets = {
     logo,
@@ -78,7 +81,10 @@ export const assets = {
     phone,
     clock,
     intiatives,
-    dots_bg
+    dots_bg,
+    contact,
+    vegan,
+    vegetarian
 }
 
 export const menu_list = [
