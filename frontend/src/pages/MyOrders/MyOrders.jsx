@@ -30,11 +30,14 @@ const MyOrders = () => {
   const handleTrackOrder = (index) => {
     setLoadingIndex(index);
     setShowStatusIndex(null);
-    setTimeout(() => {
+
+    setTimeout(async () => {
+      await fetchOrders(); // re-fetch all orders
       setLoadingIndex(null);
       setShowStatusIndex(index);
-    }, 1500); // 1.5 seconds loading
+    }, 1500); // show loading for 1.5s
   };
+
 
   return (
     <div className="my-order">
