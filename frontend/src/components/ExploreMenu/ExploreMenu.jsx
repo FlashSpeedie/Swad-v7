@@ -88,6 +88,34 @@ const ExploreMenu = ({ category, setCategory }) => {
       <p className="explore-menu-text">
         * Select a category to view its items. Click again to view all.
       </p>
+      <div className="key" style={{ display: 'flex', gap: '16px', marginTop: '8px', alignItems: 'center' }}>
+        <div className="key-item" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img
+            src={assets.vegetarian}
+            alt="Vegetarian"
+            style={{
+              aspectRatio: '1 / 1',
+              objectFit: 'cover',
+              width: '32px',
+              height: '32px',
+            }}
+          />
+          <span>Vegetarian</span>
+        </div>
+        <div className="key-item" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <img
+            src={assets.logo}
+            alt="Vegan"
+            style={{
+              aspectRatio: '1 / 1',
+              objectFit: 'cover',
+              width: '32px',
+              height: '32px',
+            }}
+          />
+          <span>Vegan</span>
+        </div>
+      </div>
     </div>
   );
 };
