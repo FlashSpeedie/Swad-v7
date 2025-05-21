@@ -305,10 +305,16 @@ const ReviewModal = ({ reviews, onClose }) => {
   );
 };
 
-const FoodItem = ({ id, name, price, description, image, category }) => {
+const FoodItem = ({ id, name, price, description, image, category, isVegan: propIsVegan }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
   const [isItemAdded, setItemAdded] = useState((cartItems?.[id] || 0) > 0);
   const [showReviews, setShowReviews] = useState(false);
+
+  // Determine if the item is vegan based on prop or fallback to vegetarian
+  // You can enhance this logic as needed
+  const isVegan = typeof propIsVegan === "boolean"
+    ? propIsVegan
+    : (category && category.toLowerCase().includes("vegan"));
 
   // Use hardcoded reviews if available, else show "no reviews yet"
   const itemReviews = useMemo(() => {
@@ -323,7 +329,7 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
   }, [cartItems, id]);
 
   const handleAddToCart = (id) => {
-    if ((cartItems[id] || 0) < 20) {
+    if ((cartItems?.[id] || 0) < 20) {
       addToCart(id);
     }
   };
@@ -410,14 +416,14 @@ const FoodItem = ({ id, name, price, description, image, category }) => {
                 onClick={() => handleRemoveFromCart(id)}
                 src={assets.remove_icon_red}
                 alt="Remove item"
-                style={{ cursor: cartItems[id] >= 20 ? 'not-allowed' : 'pointer' }}
+                style={{ cursor: (cartItems?.[id] || 0) >= 20 ? 'not-allowed' : 'pointer' }}
               />
-              <p>{cartItems[id] || 0}</p>
+              <p>{cartItems?.[id] || 0}</p>
               <img
                 onClick={() => handleAddToCart(id)}
                 src={assets.add_icon_green}
                 alt="Add item"
-                style={{ cursor: cartItems[id] >= 20 ? 'not-allowed' : 'pointer' }}
+                style={{ cursor: (cartItems?.[id] || 0) >= 20 ? 'not-allowed' : 'pointer' }}
               />
             </div>
           )}

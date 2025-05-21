@@ -82,7 +82,6 @@ const MyOrders = () => {
           );
         })}
       </div>
-      {/* Add styles for loading and animation */}
       <style>{`
         .loading-circle {
           display: inline-block;
